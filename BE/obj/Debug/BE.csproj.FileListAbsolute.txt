@@ -1,0 +1,18 @@
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\bin\Debug\BE.dll
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\bin\Debug\BE.pdb
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\obj\Debug\BE.dll
+C:\Users\usuario\Downloads\Proyecto-Ingenier-a-de-Software-proyecto\Proyecto-Ingenier-a-de-Software-proyecto\BE\obj\Debug\BE.pdb
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\bin\Debug\BE.dll
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\bin\Debug\BE.pdb
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\obj\Debug\BE.dll
+C:\Users\Vicky\Desktop\Facu\3er año 1 cuatri\ing de sw\Proyecto\Proyecto-Ingenier-a-de-Software\BE\obj\Debug\BE.pdb
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\bin\Debug\BE.dll
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\bin\Debug\BE.pdb
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\obj\Debug\BE.dll
+C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\BE\obj\Debug\BE.pdb
