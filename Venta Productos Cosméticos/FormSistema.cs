@@ -3,6 +3,7 @@ using DAL;
 using Servicios;
 using System.Diagnostics;
 using Venta_Productos_Cosméticos.Vista;
+using System.IO;
 
 namespace Venta_Productos_Cosméticos
 {
@@ -75,30 +76,23 @@ namespace Venta_Productos_Cosméticos
 
         private void FormSistema_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             BLLPerfil bllPerfil = new BLLPerfil();
-
             ServicioUsuario usuarioLogueado = ServicioSessionManager.GetInstance().ObtenerUsuario();
 
             if (usuarioLogueado != null)
             {
                 ConfigurarPermisosControl(this.Controls, bllPerfil, usuarioLogueado);
+                Actualizar(usuarioLogueado.Idioma);
             }
             else
             {
                 MessageBox.Show(ServicioSessionManager.GetInstance().Traducir("No se detectó una sesión activa. El sistema se cerrará."), ServicioSessionManager.GetInstance().Traducir("Error de Seguridad"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-
             RegistrarTextos(this.Controls);
             RegistrarTextosMenu(menuStrip1.Items);
-
             bllIdioma.AgregarSuscriptor(this);
-
-            var usuario = ServicioSessionManager.GetInstance().ObtenerUsuario();
-            if (usuario != null && usuario.Idioma != null)
-            {
-                Actualizar(usuario.Idioma);
-            }
         }
 
         private void RegistrarTextos(Control.ControlCollection controles)
@@ -150,6 +144,25 @@ namespace Venta_Productos_Cosméticos
                 {
                     TraducirMenu(leyendas);
                 }
+            }
+
+            var usuario = ServicioSessionManager.GetInstance().ObtenerUsuario();
+
+            if (usuario != null)
+            {
+                string bienvenida = leyendas != null && leyendas.ContainsKey("¡Bienvenido/a, {0} {1}!")
+                    ? leyendas["¡Bienvenido/a, {0} {1}!"]
+                    : "¡Bienvenido/a, {0} {1}!";
+
+                string pregunta = leyendas != null && leyendas.ContainsKey("¿Qué desea hacer hoy?")
+                    ? leyendas["¿Qué desea hacer hoy?"]
+                    : "¿Qué desea hacer hoy?";
+
+                label1.Text = string.Format(
+                    bienvenida,
+                    usuario.Nombre,
+                    usuario.Apellido
+                ) + Environment.NewLine + pregunta;
             }
         }
 
@@ -365,16 +378,18 @@ namespace Venta_Productos_Cosméticos
         {
             try
             {
-                string rutaReadme = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.md");
+                string rutaReadme = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "README.pdf");
 
                 if (!File.Exists(rutaReadme))
                 {
                     MessageBox.Show(
-                        ServicioSessionManager.GetInstance().Traducir("No se encontró el archivo README.md."),
-                        ServicioSessionManager.GetInstance().Traducir("Error"),
+                        "No se encontró la guía de instalación.",
+                        "Bookly",
                         MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
+                        MessageBoxIcon.Warning);
+
                     return;
                 }
 
@@ -387,12 +402,18 @@ namespace Venta_Productos_Cosméticos
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    ServicioSessionManager.GetInstance().Traducir("No se pudo abrir el archivo README.md: ") + ex.Message,
-                    ServicioSessionManager.GetInstance().Traducir("Error"),
+                    "No se pudo abrir la guía de instalación.\n\n" + ex.Message,
+                    "Bookly",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                    MessageBoxIcon.Error);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = bllIdioma.TraducirTexto("Fecha y Hora:") +
+              Environment.NewLine +
+              DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }

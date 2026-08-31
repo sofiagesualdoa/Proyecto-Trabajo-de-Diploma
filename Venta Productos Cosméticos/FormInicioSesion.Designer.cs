@@ -43,9 +43,9 @@
             // 
             pictureBox1.BackColor = Color.LightGray;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(64, 135);
+            pictureBox1.Location = new Point(75, 125);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(323, 163);
+            pictureBox1.Size = new Size(312, 276);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -53,64 +53,68 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(407, 149);
+            label1.BackColor = Color.Bisque;
+            label1.Font = new Font("Sitka Text", 14.2499981F, FontStyle.Bold);
+            label1.Location = new Point(421, 202);
             label1.Name = "label1";
-            label1.Size = new Size(86, 25);
+            label1.Size = new Size(93, 28);
             label1.TabIndex = 4;
             label1.Text = "Usuario:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(407, 201);
+            label2.BackColor = Color.Bisque;
+            label2.Font = new Font("Sitka Text", 14.2499981F, FontStyle.Bold);
+            label2.Location = new Point(406, 247);
             label2.Name = "label2";
-            label2.Size = new Size(118, 25);
+            label2.Size = new Size(125, 28);
             label2.TabIndex = 5;
             label2.Text = "Contraseña:";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(530, 154);
+            txtUsuario.Location = new Point(537, 204);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(218, 23);
             txtUsuario.TabIndex = 6;
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(530, 206);
+            txtContraseña.Location = new Point(537, 250);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(218, 23);
             txtContraseña.TabIndex = 7;
             // 
             // btnIniciar
             // 
-            btnIniciar.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciar.Location = new Point(491, 253);
+            btnIniciar.BackColor = Color.Bisque;
+            btnIniciar.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIniciar.Location = new Point(508, 317);
             btnIniciar.Name = "btnIniciar";
             btnIniciar.Size = new Size(184, 45);
             btnIniciar.TabIndex = 8;
             btnIniciar.Text = "Confirmar";
-            btnIniciar.UseVisualStyleBackColor = true;
+            btnIniciar.UseVisualStyleBackColor = false;
             btnIniciar.Click += btnIniciar_Click;
             // 
             // btnCambioIdioma
             // 
-            btnCambioIdioma.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCambioIdioma.BackColor = Color.Bisque;
+            btnCambioIdioma.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCambioIdioma.Location = new Point(266, 63);
             btnCambioIdioma.Name = "btnCambioIdioma";
             btnCambioIdioma.Size = new Size(290, 45);
             btnCambioIdioma.TabIndex = 9;
             btnCambioIdioma.Text = "Cambiar Idioma";
-            btnCambioIdioma.UseVisualStyleBackColor = true;
+            btnCambioIdioma.UseVisualStyleBackColor = false;
             btnCambioIdioma.Click += btnCambioIdioma_Click;
             // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.RosyBrown;
+            BackColor = Color.Tan;
             ClientSize = new Size(800, 450);
             Controls.Add(btnCambioIdioma);
             Controls.Add(btnIniciar);
@@ -120,7 +124,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "FormInicioSesion";
-            Text = "FormInicioSesion";
+            Text = "Inicio de Sesión";
             TopMost = true;
             FormClosing += FormInicioSesion_FormClosing;
             FormClosed += FormInicioSesion_FormClosed;

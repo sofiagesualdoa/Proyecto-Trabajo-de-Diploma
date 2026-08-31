@@ -40,10 +40,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(318, 67);
+            label1.BackColor = Color.Bisque;
+            label1.Font = new Font("Sitka Text", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(323, 33);
             label1.Name = "label1";
-            label1.Size = new Size(158, 32);
+            label1.Size = new Size(166, 35);
             label1.TabIndex = 1;
             label1.Text = "¡Bienvenido!";
             // 
@@ -51,26 +52,28 @@
             // 
             pictureBox1.BackColor = Color.Gainsboro;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(193, 119);
+            pictureBox1.Location = new Point(240, 79);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(411, 195);
+            pictureBox1.Size = new Size(327, 277);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
             // btnIniciarSesion
             // 
-            btnIniciarSesion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciarSesion.Location = new Point(306, 336);
+            btnIniciarSesion.BackColor = Color.Bisque;
+            btnIniciarSesion.Font = new Font("Sitka Text", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIniciarSesion.Location = new Point(323, 372);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(184, 45);
+            btnIniciarSesion.Size = new Size(166, 45);
             btnIniciarSesion.TabIndex = 3;
             btnIniciarSesion.Text = "Iniciar Sesión";
-            btnIniciarSesion.UseVisualStyleBackColor = true;
+            btnIniciarSesion.UseVisualStyleBackColor = false;
             btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Tan;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnIniciarSesion);
             panel1.Controls.Add(pictureBox1);
@@ -89,7 +92,7 @@
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "FormPantallaInicio";
-            Text = "FormBienvenida";
+            Text = "Sistema Bookly";
             FormClosing += FormPantallaInicio_FormClosing;
             Load += FormPantallaInicio_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

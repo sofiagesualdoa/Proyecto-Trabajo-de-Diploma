@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37301.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venta Productos Cosméticos", "Venta Productos Cosméticos.csproj", "{F3B63EE9-592B-4F5F-8189-1E3638F73120}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venta y Préstamo de Libros", "Venta y Préstamo de Libros.csproj", "{F3B63EE9-592B-4F5F-8189-1E3638F73120}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9929AA74-D862-42EA-BDA9-1CC6B2F84C92} = {9929AA74-D862-42EA-BDA9-1CC6B2F84C92}
 		{C076BD35-A240-4FF9-92C9-803CF952EB17} = {C076BD35-A240-4FF9-92C9-803CF952EB17}

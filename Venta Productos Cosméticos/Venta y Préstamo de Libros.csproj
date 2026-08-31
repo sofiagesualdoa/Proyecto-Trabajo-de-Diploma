@@ -10,7 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iTextSharp" Version="5.5.13.5" />
+    <None Remove="README.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="README.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.6" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
   </ItemGroup>
 
