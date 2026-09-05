@@ -13,6 +13,9 @@
     <Compile Update="FormErrorIntegridad.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormLibros.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormPantallaInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -28,5 +31,19 @@
     <Compile Update="FormUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="FormInicioSesion.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FormPantallaInicio.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FormSistema.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

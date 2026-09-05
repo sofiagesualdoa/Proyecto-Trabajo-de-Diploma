@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BE;
+using DAL;
 using DALs;
 using Servicios;
 using System;
@@ -26,6 +27,7 @@ namespace BLL
             RecalcularDVHFamiliaFamilia();
             RecalcularDVHIdioma();
             RecalcularDVHPermiso();
+            RecalcularDVHLibro();
             RecalcularTodosLosDVV();
         }
 
@@ -41,6 +43,7 @@ namespace BLL
             RecalcularDVVFamiliaFamilia();
             RecalcularDVVIdioma();
             RecalcularDVVPermiso();
+            RecalcularDVVLibro();   
         }
 
         public void RecalcularDVHUsuario()
@@ -161,6 +164,17 @@ namespace BLL
                 dal.ActualizarDVHIdioma(idioma.IdIdioma, idioma.DVH);
             }
         }
+
+        public void RecalcularDVHLibro()
+        {
+            DALLibro dal = new DALLibro();
+            List<BELibro> libros = dal.ObtenerLibros();
+            foreach (BELibro x in libros)
+            {
+                x.DVH = generador.GenerarDVH(x);
+                dal.ActualizarDVHLibro(x.ISBN_657SGA, x.DVH);
+            }
+        }
         public void RecalcularDVVUsuario()
         {
             DALUsuario dal = new DALUsuario();
@@ -220,6 +234,11 @@ namespace BLL
             GuardarDVV("Idioma", dal.ListarIdiomas().Cast<object>().ToList());
         }
 
+        public void RecalcularDVVLibro()
+        {
+            DALLibro dal = new DALLibro();
+            GuardarDVV("Libro", dal.ObtenerLibros().Cast<object>().ToList());
+        }
         private void GuardarDVV(string nombreTabla, List<object> registros)
         {
             string digito = CalcularDVV(nombreTabla, registros);
@@ -254,6 +273,7 @@ namespace BLL
             errores.AddRange(ValidarDVHTabla("Familia_x_Familia", new DALFamilia().ObtenerRelacionesFamiliaFamilia().Cast<object>().ToList()));
             errores.AddRange(ValidarDVHTabla("Permiso", new DALPermiso().ObtenerTodos().Cast<object>().ToList()));
             errores.AddRange(ValidarDVHTabla("Idioma", new DALIdioma().ListarIdiomas().Cast<object>().ToList()));
+            errores.AddRange(ValidarDVHTabla("Libro", new DALLibro().ObtenerLibros().Cast<object>().ToList()));
             errores.AddRange(ValidarDVVDetallado());
 
             return errores;
@@ -300,6 +320,7 @@ namespace BLL
             ValidarDVVTablaDetallado("Familia_x_Familia", new DALFamilia().ObtenerRelacionesFamiliaFamilia().Cast<object>().ToList(), dvvsGuardados, errores);
             ValidarDVVTablaDetallado("Permiso", new DALPermiso().ObtenerTodos().Cast<object>().ToList(), dvvsGuardados, errores);
             ValidarDVVTablaDetallado("Idioma", new DALIdioma().ListarIdiomas().Cast<object>().ToList(), dvvsGuardados, errores);
+            ValidarDVVTablaDetallado("Libro", new DALLibro().ObtenerLibros().Cast<object>().ToList(), dvvsGuardados, errores);
             return errores;
         }
 
@@ -336,7 +357,8 @@ namespace BLL
         "IdEvento",
         "IdFamiliaPadre",
         "IdFamiliaHijo",
-        "IdIdioma"
+        "IdIdioma",
+        "ISBN_657SGA"
     };
 
             List<string> partes = new List<string>();

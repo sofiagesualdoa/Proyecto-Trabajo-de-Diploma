@@ -83,7 +83,6 @@ namespace Venta_Productos_Cosméticos
             if (usuarioLogueado != null)
             {
                 ConfigurarPermisosControl(this.Controls, bllPerfil, usuarioLogueado);
-                Actualizar(usuarioLogueado.Idioma);
             }
             else
             {
@@ -92,6 +91,7 @@ namespace Venta_Productos_Cosméticos
             }
             RegistrarTextos(this.Controls);
             RegistrarTextosMenu(menuStrip1.Items);
+            Actualizar(usuarioLogueado.Idioma);
             bllIdioma.AgregarSuscriptor(this);
         }
 
@@ -414,6 +414,22 @@ namespace Venta_Productos_Cosméticos
             label2.Text = bllIdioma.TraducirTexto("Fecha y Hora:") +
               Environment.NewLine +
               DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void librosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLibros frmLib = new FormLibros();
+            frmLib.MdiParent = this.MdiParent;
+            frmLib.Show();
+            this.Close();
+        }
+
+        private void nuevaVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormVenta frmventa = new FormVenta();
+            frmventa.MdiParent = this.MdiParent;
+            frmventa.Show();
+            this.Close();
         }
     }
 }

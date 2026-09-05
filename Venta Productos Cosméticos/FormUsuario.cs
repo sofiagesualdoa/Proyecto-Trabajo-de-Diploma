@@ -25,7 +25,6 @@ namespace Venta_Productos_Cosméticos.Vista
         private void FormUsuario_Load(object sender, EventArgs e)
         {
             CargarComboPerfiles();
-
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
@@ -395,6 +394,8 @@ namespace Venta_Productos_Cosméticos.Vista
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = lista;
+            dataGridView1.Columns["Idioma"].Visible = false;
+            dataGridView1.Columns["DVH"].Visible = false;
             var usuarioActivo = ServicioSessionManager.GetInstance().ObtenerUsuario();
             if (usuarioActivo?.Idioma?.DiccionarioLeyendas != null)
             {

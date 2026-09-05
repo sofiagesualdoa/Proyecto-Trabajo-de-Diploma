@@ -41,6 +41,7 @@
             usuariosToolStripMenuItem = new ToolStripMenuItem();
             perfilesToolStripMenuItem = new ToolStripMenuItem();
             bitácoraEventosToolStripMenuItem = new ToolStripMenuItem();
+            bitácoraCambiosToolStripMenuItem = new ToolStripMenuItem();
             backUpToolStripMenuItem = new ToolStripMenuItem();
             restoreToolStripMenuItem = new ToolStripMenuItem();
             ventasToolStripMenuItem = new ToolStripMenuItem();
@@ -51,6 +52,7 @@
             inventarioToolStripMenuItem = new ToolStripMenuItem();
             librosToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
+            librosCToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             productosMásVendidosToolStripMenuItem = new ToolStripMenuItem();
             productosMenosVendidosToolStripMenuItem = new ToolStripMenuItem();
@@ -128,7 +130,7 @@
             // 
             // administraciónToolStripMenuItem
             // 
-            administraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, perfilesToolStripMenuItem, bitácoraEventosToolStripMenuItem, backUpToolStripMenuItem, restoreToolStripMenuItem });
+            administraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { usuariosToolStripMenuItem, perfilesToolStripMenuItem, bitácoraEventosToolStripMenuItem, bitácoraCambiosToolStripMenuItem, backUpToolStripMenuItem, restoreToolStripMenuItem });
             administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             administraciónToolStripMenuItem.Size = new Size(153, 28);
             administraciónToolStripMenuItem.Text = "Administración";
@@ -136,7 +138,7 @@
             // usuariosToolStripMenuItem
             // 
             usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(222, 28);
+            usuariosToolStripMenuItem.Size = new Size(227, 28);
             usuariosToolStripMenuItem.Tag = "Gestionar Usuarios";
             usuariosToolStripMenuItem.Text = "Usuarios";
             usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
@@ -144,7 +146,7 @@
             // perfilesToolStripMenuItem
             // 
             perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
-            perfilesToolStripMenuItem.Size = new Size(222, 28);
+            perfilesToolStripMenuItem.Size = new Size(227, 28);
             perfilesToolStripMenuItem.Tag = "Gestionar Perfiles";
             perfilesToolStripMenuItem.Text = "Perfiles";
             perfilesToolStripMenuItem.Click += perfilesToolStripMenuItem_Click;
@@ -152,15 +154,22 @@
             // bitácoraEventosToolStripMenuItem
             // 
             bitácoraEventosToolStripMenuItem.Name = "bitácoraEventosToolStripMenuItem";
-            bitácoraEventosToolStripMenuItem.Size = new Size(222, 28);
+            bitácoraEventosToolStripMenuItem.Size = new Size(227, 28);
             bitácoraEventosToolStripMenuItem.Tag = "Auditar Bitacora";
             bitácoraEventosToolStripMenuItem.Text = "Bitácora Eventos";
             bitácoraEventosToolStripMenuItem.Click += bitácoraEventosToolStripMenuItem_Click;
             // 
+            // bitácoraCambiosToolStripMenuItem
+            // 
+            bitácoraCambiosToolStripMenuItem.Name = "bitácoraCambiosToolStripMenuItem";
+            bitácoraCambiosToolStripMenuItem.Size = new Size(227, 28);
+            bitácoraCambiosToolStripMenuItem.Tag = "Ver Bitácora Cambios";
+            bitácoraCambiosToolStripMenuItem.Text = "Bitácora Cambios";
+            // 
             // backUpToolStripMenuItem
             // 
             backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
-            backUpToolStripMenuItem.Size = new Size(222, 28);
+            backUpToolStripMenuItem.Size = new Size(227, 28);
             backUpToolStripMenuItem.Tag = "Gestionar Backup";
             backUpToolStripMenuItem.Text = "BackUp";
             backUpToolStripMenuItem.Click += backUpToolStripMenuItem_Click;
@@ -168,7 +177,7 @@
             // restoreToolStripMenuItem
             // 
             restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            restoreToolStripMenuItem.Size = new Size(222, 28);
+            restoreToolStripMenuItem.Size = new Size(227, 28);
             restoreToolStripMenuItem.Tag = "Gestionar Restore";
             restoreToolStripMenuItem.Text = "Restore";
             restoreToolStripMenuItem.Click += restoreToolStripMenuItem_Click;
@@ -186,6 +195,7 @@
             nuevaVentaToolStripMenuItem.Size = new Size(250, 28);
             nuevaVentaToolStripMenuItem.Tag = "Registrar Venta";
             nuevaVentaToolStripMenuItem.Text = "Nueva Venta";
+            nuevaVentaToolStripMenuItem.Click += nuevaVentaToolStripMenuItem_Click;
             // 
             // nuevoPréstamoToolStripMenuItem
             // 
@@ -210,7 +220,7 @@
             // 
             // inventarioToolStripMenuItem
             // 
-            inventarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { librosToolStripMenuItem, clientesToolStripMenuItem });
+            inventarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { librosToolStripMenuItem, clientesToolStripMenuItem, librosCToolStripMenuItem });
             inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
             inventarioToolStripMenuItem.Size = new Size(91, 28);
             inventarioToolStripMenuItem.Text = "Maestro";
@@ -218,16 +228,24 @@
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(148, 28);
-            librosToolStripMenuItem.Tag = "Gestionar Productos";
+            librosToolStripMenuItem.Size = new Size(180, 28);
+            librosToolStripMenuItem.Tag = "Gestionar Libros";
             librosToolStripMenuItem.Text = "Libros";
+            librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
             // 
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(148, 28);
+            clientesToolStripMenuItem.Size = new Size(180, 28);
             clientesToolStripMenuItem.Tag = "Gestionar Clientes";
             clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // librosCToolStripMenuItem
+            // 
+            librosCToolStripMenuItem.Name = "librosCToolStripMenuItem";
+            librosCToolStripMenuItem.Size = new Size(180, 28);
+            librosCToolStripMenuItem.Tag = "Gestionar Libros C";
+            librosCToolStripMenuItem.Text = "Libros C";
             // 
             // reportesToolStripMenuItem
             // 
@@ -381,5 +399,7 @@
         private Label label2;
         private ToolStripMenuItem nuevoPréstamoToolStripMenuItem;
         private ToolStripMenuItem historialPréstamosToolStripMenuItem;
+        private ToolStripMenuItem librosCToolStripMenuItem;
+        private ToolStripMenuItem bitácoraCambiosToolStripMenuItem;
     }
 }

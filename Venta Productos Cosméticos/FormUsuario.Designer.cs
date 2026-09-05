@@ -63,16 +63,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 6);
+            label1.BackColor = Color.Sienna;
+            label1.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 13);
             label1.Name = "label1";
-            label1.Size = new Size(113, 32);
+            label1.Size = new Size(106, 30);
             label1.TabIndex = 5;
             label1.Text = "Usuarios";
             // 
             // button1
             // 
-            button1.BackColor = Color.RosyBrown;
+            button1.BackColor = Color.Sienna;
+            button1.Font = new Font("Sitka Text", 9.749999F);
             button1.Location = new Point(972, 6);
             button1.Name = "button1";
             button1.Size = new Size(113, 57);
@@ -83,7 +85,8 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.RosyBrown;
+            button2.BackColor = Color.Sienna;
+            button2.Font = new Font("Sitka Text", 9.749999F);
             button2.Location = new Point(972, 69);
             button2.Name = "button2";
             button2.Size = new Size(113, 57);
@@ -94,7 +97,8 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.RosyBrown;
+            button3.BackColor = Color.Sienna;
+            button3.Font = new Font("Sitka Text", 9.749999F);
             button3.Location = new Point(972, 132);
             button3.Name = "button3";
             button3.Size = new Size(113, 57);
@@ -105,7 +109,8 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.RosyBrown;
+            button4.BackColor = Color.Sienna;
+            button4.Font = new Font("Sitka Text", 9.749999F);
             button4.Location = new Point(972, 198);
             button4.Name = "button4";
             button4.Size = new Size(113, 57);
@@ -116,7 +121,8 @@
             // 
             // button5
             // 
-            button5.BackColor = Color.RosyBrown;
+            button5.BackColor = Color.Sienna;
+            button5.Font = new Font("Sitka Text", 9.749999F);
             button5.Location = new Point(972, 261);
             button5.Name = "button5";
             button5.Size = new Size(113, 57);
@@ -127,7 +133,8 @@
             // 
             // button6
             // 
-            button6.BackColor = Color.RosyBrown;
+            button6.BackColor = Color.Sienna;
+            button6.Font = new Font("Sitka Text", 9.749999F);
             button6.Location = new Point(972, 324);
             button6.Name = "button6";
             button6.Size = new Size(113, 57);
@@ -138,7 +145,8 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.RosyBrown;
+            button7.BackColor = Color.Sienna;
+            button7.Font = new Font("Sitka Text", 9.749999F);
             button7.Location = new Point(972, 387);
             button7.Name = "button7";
             button7.Size = new Size(113, 57);
@@ -183,7 +191,8 @@
             // 
             // button8
             // 
-            button8.BackColor = Color.RosyBrown;
+            button8.BackColor = Color.Sienna;
+            button8.Font = new Font("Sitka Text", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button8.Location = new Point(413, 134);
             button8.Name = "button8";
             button8.Size = new Size(96, 57);
@@ -195,9 +204,10 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
+            radioButton2.Font = new Font("Sitka Text", 9.749999F);
             radioButton2.Location = new Point(413, 76);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(41, 19);
+            radioButton2.Size = new Size(44, 23);
             radioButton2.TabIndex = 14;
             radioButton2.TabStop = true;
             radioButton2.Text = "No";
@@ -206,9 +216,10 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Font = new Font("Sitka Text", 9.749999F);
             radioButton1.Location = new Point(413, 51);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(34, 19);
+            radioButton1.Size = new Size(38, 23);
             radioButton1.TabIndex = 13;
             radioButton1.TabStop = true;
             radioButton1.Text = "Si";
@@ -217,9 +228,10 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.Font = new Font("Sitka Text", 9.749999F);
             label8.Location = new Point(413, 26);
             label8.Name = "label8";
-            label8.Size = new Size(41, 15);
+            label8.Size = new Size(46, 19);
             label8.TabIndex = 12;
             label8.Text = "Activo";
             // 
@@ -234,54 +246,60 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(217, 155);
+            label7.Font = new Font("Sitka Text", 9.749999F);
+            label7.Location = new Point(217, 151);
             label7.Name = "label7";
-            label7.Size = new Size(34, 15);
+            label7.Size = new Size(43, 19);
             label7.TabIndex = 10;
             label7.Text = "Perfil";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(13, 155);
+            label6.Font = new Font("Sitka Text", 9.749999F);
+            label6.Location = new Point(13, 151);
             label6.Name = "label6";
-            label6.Size = new Size(36, 15);
+            label6.Size = new Size(44, 19);
             label6.TabIndex = 9;
             label6.Text = "Email";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(217, 92);
+            label5.Font = new Font("Sitka Text", 9.749999F);
+            label5.Location = new Point(216, 85);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(59, 19);
             label5.TabIndex = 8;
             label5.Text = "Apellido";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 89);
+            label4.Font = new Font("Sitka Text", 9.749999F);
+            label4.Location = new Point(13, 85);
             label4.Name = "label4";
-            label4.Size = new Size(93, 15);
+            label4.Size = new Size(108, 19);
             label4.TabIndex = 7;
             label4.Text = "Nombre usuario";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Sitka Text", 9.749999F);
             label3.Location = new Point(217, 26);
             label3.Name = "label3";
-            label3.Size = new Size(51, 15);
+            label3.Size = new Size(58, 19);
             label3.TabIndex = 6;
             label3.Text = "Nombre";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Sitka Text", 9.749999F);
             label2.Location = new Point(13, 26);
             label2.Name = "label2";
-            label2.Size = new Size(27, 15);
+            label2.Size = new Size(33, 19);
             label2.TabIndex = 5;
             label2.Text = "DNI";
             // 
@@ -325,7 +343,7 @@
             radioButton3.AutoSize = true;
             radioButton3.Location = new Point(826, 211);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(57, 19);
+            radioButton3.Size = new Size(56, 19);
             radioButton3.TabIndex = 15;
             radioButton3.TabStop = true;
             radioButton3.Text = "Todos";
@@ -348,7 +366,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MistyRose;
+            BackColor = Color.Tan;
             ClientSize = new Size(1097, 450);
             Controls.Add(radioButton4);
             Controls.Add(radioButton3);

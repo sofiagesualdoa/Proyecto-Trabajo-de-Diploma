@@ -1,10 +1,10 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Servicios
 {
     public class ServicioUsuario
     {
-        public string DVH { get; set; }
         public int DNI { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -20,7 +20,8 @@ namespace Servicios
         public bool Activo { get; set; }
         public bool Bloqueado { get; set; }
         public int IdIdioma { get; set; }
-        
+        public string DVH { get; set; }
+
         [NoVerificar]
         public ServicioIdioma Idioma { get; set; }
         public void SetPassword(string hash)
