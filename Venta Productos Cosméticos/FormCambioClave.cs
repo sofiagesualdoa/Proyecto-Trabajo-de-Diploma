@@ -1,5 +1,3 @@
-﻿using BLL;
-using DAL;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -15,7 +13,7 @@ namespace Venta_Productos_Cosméticos
 {
     public partial class FormCambioClave : Form, IObserver
     {
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         public FormCambioClave()
         {
@@ -81,7 +79,7 @@ namespace Venta_Productos_Cosméticos
                 {
                     throw new Exception(ServicioSessionManager.GetInstance().Traducir("La nueva contraseña y su confirmación no coinciden."));
                 }
-                BLLUsuario bll = new BLLUsuario();
+                ServicioUsuario bll = new ServicioUsuario();
                 bll.ModificarClave(txtClaveActual.Text, txtClaveNueva.Text);
                 MessageBox.Show(ServicioSessionManager.GetInstance().Traducir("Contraseña modificada exitosamente."), 
                                 ServicioSessionManager.GetInstance().Traducir("Éxito"), 

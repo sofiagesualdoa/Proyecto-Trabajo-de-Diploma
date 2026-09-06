@@ -228,6 +228,12 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -284,6 +290,9 @@
               },
               "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj": {
                 "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj"
+              },
+              "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj"
               },
               "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj": {
                 "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj"

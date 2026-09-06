@@ -536,7 +536,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "BE": "1.0.0"
+          "BE": "1.0.0",
+          "Microsoft.Data.SqlClient": "7.0.2"
         },
         "compile": {
           "bin/placeholder/Servicios.dll": {}
@@ -1341,6 +1342,7 @@
     "net8.0-windows7.0": [
       "BE >= 1.0.0",
       "BLL >= 1.0.0",
+      "DAL >= 1.0.0",
       "Microsoft.Data.SqlClient >= 7.0.2",
       "Servicios >= 1.0.0",
       "iTextSharp >= 5.5.13.6"
@@ -1383,6 +1385,9 @@
             },
             "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj": {
               "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj"
+            },
+            "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj"
             },
             "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj": {
               "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj"

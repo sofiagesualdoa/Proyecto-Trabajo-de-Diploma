@@ -57,10 +57,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.BackColor = Color.Bisque;
+            label1.Font = new Font("Sitka Text", 20.2499981F, FontStyle.Bold | FontStyle.Underline);
             label1.Location = new Point(31, 20);
             label1.Name = "label1";
-            label1.Size = new Size(99, 32);
+            label1.Size = new Size(121, 39);
             label1.TabIndex = 18;
             label1.Text = "Perfiles";
             label1.Click += label1_Click;
@@ -98,11 +99,11 @@
             // 
             // btnCrearPerfil
             // 
-            btnCrearPerfil.BackColor = Color.RosyBrown;
-            btnCrearPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCrearPerfil.BackColor = Color.Sienna;
+            btnCrearPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnCrearPerfil.Location = new Point(584, 70);
             btnCrearPerfil.Name = "btnCrearPerfil";
-            btnCrearPerfil.Size = new Size(155, 48);
+            btnCrearPerfil.Size = new Size(155, 72);
             btnCrearPerfil.TabIndex = 23;
             btnCrearPerfil.Text = "Crear Perfil";
             btnCrearPerfil.UseVisualStyleBackColor = false;
@@ -110,11 +111,11 @@
             // 
             // btnQuitarPerfil
             // 
-            btnQuitarPerfil.BackColor = Color.RosyBrown;
-            btnQuitarPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuitarPerfil.Location = new Point(584, 124);
+            btnQuitarPerfil.BackColor = Color.Sienna;
+            btnQuitarPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
+            btnQuitarPerfil.Location = new Point(584, 148);
             btnQuitarPerfil.Name = "btnQuitarPerfil";
-            btnQuitarPerfil.Size = new Size(155, 96);
+            btnQuitarPerfil.Size = new Size(155, 72);
             btnQuitarPerfil.TabIndex = 24;
             btnQuitarPerfil.Text = "Quitar Perfil";
             btnQuitarPerfil.UseVisualStyleBackColor = false;
@@ -122,11 +123,11 @@
             // 
             // btnCrearFamilia
             // 
-            btnCrearFamilia.BackColor = Color.RosyBrown;
-            btnCrearFamilia.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCrearFamilia.BackColor = Color.Sienna;
+            btnCrearFamilia.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnCrearFamilia.Location = new Point(584, 295);
             btnCrearFamilia.Name = "btnCrearFamilia";
-            btnCrearFamilia.Size = new Size(155, 48);
+            btnCrearFamilia.Size = new Size(155, 72);
             btnCrearFamilia.TabIndex = 25;
             btnCrearFamilia.Text = "Crear Familia";
             btnCrearFamilia.UseVisualStyleBackColor = false;
@@ -134,11 +135,11 @@
             // 
             // btnQuitarFamilia
             // 
-            btnQuitarFamilia.BackColor = Color.RosyBrown;
-            btnQuitarFamilia.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQuitarFamilia.Location = new Point(584, 349);
+            btnQuitarFamilia.BackColor = Color.Sienna;
+            btnQuitarFamilia.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
+            btnQuitarFamilia.Location = new Point(584, 373);
             btnQuitarFamilia.Name = "btnQuitarFamilia";
-            btnQuitarFamilia.Size = new Size(155, 96);
+            btnQuitarFamilia.Size = new Size(155, 72);
             btnQuitarFamilia.TabIndex = 26;
             btnQuitarFamilia.Text = "Quitar Familia";
             btnQuitarFamilia.UseVisualStyleBackColor = false;
@@ -146,8 +147,8 @@
             // 
             // btnAgregarPermPerfil
             // 
-            btnAgregarPermPerfil.BackColor = Color.RosyBrown;
-            btnAgregarPermPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarPermPerfil.BackColor = Color.Sienna;
+            btnAgregarPermPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnAgregarPermPerfil.Location = new Point(584, 548);
             btnAgregarPermPerfil.Name = "btnAgregarPermPerfil";
             btnAgregarPermPerfil.Size = new Size(155, 102);
@@ -158,8 +159,8 @@
             // 
             // btnQuitarPermPerfil
             // 
-            btnQuitarPermPerfil.BackColor = Color.RosyBrown;
-            btnQuitarPermPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuitarPermPerfil.BackColor = Color.Sienna;
+            btnQuitarPermPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnQuitarPermPerfil.Location = new Point(760, 548);
             btnQuitarPermPerfil.Name = "btnQuitarPermPerfil";
             btnQuitarPermPerfil.Size = new Size(155, 102);
@@ -170,8 +171,8 @@
             // 
             // btnAgregarPermFamilia
             // 
-            btnAgregarPermFamilia.BackColor = Color.RosyBrown;
-            btnAgregarPermFamilia.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarPermFamilia.BackColor = Color.Sienna;
+            btnAgregarPermFamilia.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnAgregarPermFamilia.Location = new Point(760, 309);
             btnAgregarPermFamilia.Name = "btnAgregarPermFamilia";
             btnAgregarPermFamilia.Size = new Size(155, 102);
@@ -182,8 +183,8 @@
             // 
             // btnQuitarPermFamilia
             // 
-            btnQuitarPermFamilia.BackColor = Color.RosyBrown;
-            btnQuitarPermFamilia.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuitarPermFamilia.BackColor = Color.Sienna;
+            btnQuitarPermFamilia.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnQuitarPermFamilia.Location = new Point(760, 431);
             btnQuitarPermFamilia.Name = "btnQuitarPermFamilia";
             btnQuitarPermFamilia.Size = new Size(155, 102);
@@ -194,8 +195,8 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.RosyBrown;
-            button7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button7.BackColor = Color.Sienna;
+            button7.Font = new Font("Sitka Text", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button7.Location = new Point(695, 13);
             button7.Name = "button7";
             button7.Size = new Size(113, 39);
@@ -207,37 +208,37 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(394, 42);
+            label2.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
+            label2.Location = new Point(383, 37);
             label2.Name = "label2";
-            label2.Size = new Size(76, 25);
+            label2.Size = new Size(92, 30);
             label2.TabIndex = 34;
             label2.Text = "Perfiles";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(391, 267);
+            label3.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
+            label3.Location = new Point(377, 262);
             label3.Name = "label3";
-            label3.Size = new Size(81, 25);
+            label3.Size = new Size(103, 30);
             label3.TabIndex = 35;
             label3.Text = "Familias";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(381, 496);
+            label4.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
+            label4.Location = new Point(377, 491);
             label4.Name = "label4";
-            label4.Size = new Size(91, 25);
+            label4.Size = new Size(109, 30);
             label4.TabIndex = 36;
             label4.Text = "Permisos";
             // 
             // btnAgregarFamPerfil
             // 
-            btnAgregarFamPerfil.BackColor = Color.RosyBrown;
-            btnAgregarFamPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarFamPerfil.BackColor = Color.Sienna;
+            btnAgregarFamPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnAgregarFamPerfil.Location = new Point(760, 70);
             btnAgregarFamPerfil.Name = "btnAgregarFamPerfil";
             btnAgregarFamPerfil.Size = new Size(155, 102);
@@ -248,8 +249,8 @@
             // 
             // btnQuitarFamPerfil
             // 
-            btnQuitarFamPerfil.BackColor = Color.RosyBrown;
-            btnQuitarFamPerfil.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnQuitarFamPerfil.BackColor = Color.Sienna;
+            btnQuitarFamPerfil.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold);
             btnQuitarFamPerfil.Location = new Point(760, 191);
             btnQuitarFamPerfil.Name = "btnQuitarFamPerfil";
             btnQuitarFamPerfil.Size = new Size(155, 102);
@@ -261,10 +262,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label5.Location = new Point(25, 461);
+            label5.BackColor = Color.Bisque;
+            label5.Font = new Font("Sitka Text", 20.2499981F, FontStyle.Bold | FontStyle.Underline);
+            label5.Location = new Point(31, 452);
             label5.Name = "label5";
-            label5.Size = new Size(105, 32);
+            label5.Size = new Size(131, 39);
             label5.TabIndex = 39;
             label5.Text = "Familias";
             // 
@@ -279,7 +281,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MistyRose;
+            BackColor = Color.Tan;
             ClientSize = new Size(927, 749);
             Controls.Add(treeViewFamilias);
             Controls.Add(label5);
@@ -302,6 +304,7 @@
             Controls.Add(dgvPerfil);
             Controls.Add(treeView1);
             Controls.Add(label1);
+            ForeColor = SystemColors.ControlText;
             Name = "FormPerfil";
             Text = "FormPerfil";
             FormClosing += FormPerfil_FormClosing;

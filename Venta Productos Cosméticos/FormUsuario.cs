@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Servicios;
-using BLL;
 
 namespace Venta_Productos_Cosméticos.Vista
 {
     public partial class FormUsuario : Form, IObserver
     {
         private string modo = "Consulta";
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         public FormUsuario()
         {
@@ -74,7 +73,7 @@ namespace Venta_Productos_Cosméticos.Vista
 
         private void CargarComboPerfiles()
         {
-            BLLPerfil bllPerfil = new BLLPerfil();
+            ServicioPerfil bllPerfil = new ServicioPerfil();
             List<ServicioPerfil> perfiles = bllPerfil.ObtenerPerfiles();
 
             comboBox1.DataSource = perfiles;
@@ -98,10 +97,10 @@ namespace Venta_Productos_Cosméticos.Vista
             LimpiarCampos();
             HabilitarTextBox();
 
-            BLLUsuario bll = new BLLUsuario();
+            ServicioUsuario bll = new ServicioUsuario();
             List<ServicioUsuario> usuarios = bll.ObtenerUsuarios();
             MostrarGrilla(usuarios.Where(u => u.Activo).ToList());
-            radioButton4.Checked = true;
+            radioButton3.Checked = true;
         }
 
         private void HabilitarTextBox()
@@ -233,7 +232,7 @@ namespace Venta_Productos_Cosméticos.Vista
 
         private void button5_Click(object sender, EventArgs e)
         {
-            BLLUsuario bll = new BLLUsuario();
+            ServicioUsuario bll = new ServicioUsuario();
             if (modo == "Añadir")
             {
                 try
@@ -412,13 +411,13 @@ namespace Venta_Productos_Cosméticos.Vista
 
         private void radioButton3_Click(object sender, EventArgs e)
         {
-            BLLUsuario bll = new BLLUsuario();
+            ServicioUsuario bll = new ServicioUsuario();
             MostrarGrilla(bll.ObtenerUsuarios());
         }
 
         private void radioButton4_Click(object sender, EventArgs e)
         {
-            BLLUsuario bll = new BLLUsuario();
+            ServicioUsuario bll = new ServicioUsuario();
             List<ServicioUsuario> usuarios = bll.ObtenerUsuarios();
             MostrarGrilla(usuarios.Where(u => u.Activo).ToList());
         }
@@ -441,7 +440,7 @@ namespace Venta_Productos_Cosméticos.Vista
         private void button8_Click(object sender, EventArgs e)
         {
             ActivarModoEdicion();
-            BLLUsuario bll = new BLLUsuario();
+            ServicioUsuario bll = new ServicioUsuario();
             List<ServicioUsuario> listaFiltrada = bll.ObtenerUsuarios();
             if (!string.IsNullOrWhiteSpace(textBox1.Text))
                 listaFiltrada = listaFiltrada.Where(u => u.DNI.ToString().Contains(textBox1.Text)).ToList();

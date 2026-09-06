@@ -493,7 +493,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "BE": "1.0.0"
+          "BE": "1.0.0",
+          "Microsoft.Data.SqlClient": "7.0.2"
         },
         "compile": {
           "bin/placeholder/Servicios.dll": {}

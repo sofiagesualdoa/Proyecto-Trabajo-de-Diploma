@@ -1,4 +1,3 @@
-﻿using BLL;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,7 @@ namespace Venta_Productos_Cosméticos
             InitializeComponent();
             this.FormClosing += FormErrorIntegridad_FormClosing;
         }
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         private void FormErrorIntegridad_Load(object sender, EventArgs e)
         {
@@ -39,7 +38,7 @@ namespace Venta_Productos_Cosméticos
 
         private void CargarErrores()
         {
-            BLLDVV bllDVV = new BLLDVV();
+            ServicioDVV bllDVV = new ServicioDVV();
             List<ServicioErrorIntegridad> errores = bllDVV.ObtenerErroresIntegridad();
 
             dgvErrores.AutoGenerateColumns = true;
@@ -53,7 +52,7 @@ namespace Venta_Productos_Cosméticos
         {
             try
             {
-                BLLDVV bllDVV = new BLLDVV();
+                ServicioDVV bllDVV = new ServicioDVV();
                 bllDVV.RecalcularDigitosVerificadores();
                 List<ServicioErrorIntegridad> errores = bllDVV.ObtenerErroresIntegridad();
 
@@ -90,7 +89,7 @@ namespace Venta_Productos_Cosméticos
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            new BLLUsuario().CerrarSesion();
+            new ServicioUsuario().CerrarSesion();
 
             FormInicioSesion login = new FormInicioSesion();
             login.Show();
@@ -118,7 +117,7 @@ namespace Venta_Productos_Cosméticos
                     {
                         try
                         {
-                            BLLBackUp bllBackUp = new BLLBackUp();
+                            ServicioBackUp bllBackUp = new ServicioBackUp();
                             bllBackUp.RealizarRestore(dialogoArchivo.FileName);
 
                             MessageBox.Show(
@@ -128,7 +127,7 @@ namespace Venta_Productos_Cosméticos
                                 MessageBoxIcon.Information
                             );
 
-                            BLLUsuario bllUser = new BLLUsuario();
+                            ServicioUsuario bllUser = new ServicioUsuario();
                             bllUser.CerrarSesion();
                             FormInicioSesion frmLogin = new FormInicioSesion();
                             frmLogin.Show();

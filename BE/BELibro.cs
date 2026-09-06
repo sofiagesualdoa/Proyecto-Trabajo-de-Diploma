@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +15,7 @@ namespace BE
         public string Autor_657SGA { get; set; }
         public decimal Precio_657SGA { get; set; }
         public int Existencias_657SGA { get; set; }
+        public bool Activo_657SGA { get; set; }
         public string DVH { get; set; }
     }
 }

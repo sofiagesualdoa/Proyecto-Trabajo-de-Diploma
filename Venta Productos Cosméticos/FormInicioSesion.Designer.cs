@@ -36,13 +36,14 @@
             txtContraseña = new TextBox();
             btnIniciar = new Button();
             btnCambioIdioma = new Button();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.LightGray;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(75, 125);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(312, 276);
@@ -110,12 +111,26 @@
             btnCambioIdioma.UseVisualStyleBackColor = false;
             btnCambioIdioma.Click += btnCambioIdioma_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Gainsboro;
+            pictureBox2.ErrorImage = null;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(75, 125);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(312, 276);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 10;
+            pictureBox2.TabStop = false;
+            // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox2);
             Controls.Add(btnCambioIdioma);
             Controls.Add(btnIniciar);
             Controls.Add(txtContraseña);
@@ -130,6 +145,7 @@
             FormClosed += FormInicioSesion_FormClosed;
             Load += FormInicioSesion_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -143,5 +159,6 @@
         private TextBox txtContraseña;
         private Button btnIniciar;
         private Button btnCambioIdioma;
+        private PictureBox pictureBox2;
     }
 }

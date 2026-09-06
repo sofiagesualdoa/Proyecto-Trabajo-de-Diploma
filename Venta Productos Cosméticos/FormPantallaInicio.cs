@@ -1,4 +1,3 @@
-﻿using BLL;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace Venta_Productos_Cosméticos
 {
     public partial class FormPantallaInicio : Form, IObserver
     {
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         public FormPantallaInicio()
         {

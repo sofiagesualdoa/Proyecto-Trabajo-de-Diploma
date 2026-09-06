@@ -42,7 +42,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Bisque;
             label1.Font = new Font("Sitka Text", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(323, 33);
+            label1.Location = new Point(326, 33);
             label1.Name = "label1";
             label1.Size = new Size(166, 35);
             label1.TabIndex = 1;
@@ -51,8 +51,10 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Gainsboro;
+            pictureBox1.ErrorImage = null;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(240, 79);
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(246, 83);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(327, 277);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -63,7 +65,7 @@
             // 
             btnIniciarSesion.BackColor = Color.Bisque;
             btnIniciarSesion.Font = new Font("Sitka Text", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciarSesion.Location = new Point(323, 372);
+            btnIniciarSesion.Location = new Point(326, 377);
             btnIniciarSesion.Name = "btnIniciarSesion";
             btnIniciarSesion.Size = new Size(166, 45);
             btnIniciarSesion.TabIndex = 3;

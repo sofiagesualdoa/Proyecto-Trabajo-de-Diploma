@@ -10,6 +10,7 @@
         "dependencies": {
           "BE": "1.0.0",
           "BLL": "1.0.0",
+          "DAL": "1.0.0",
           "Microsoft.Data.SqlClient": "7.0.2",
           "Servicios": "1.0.0",
           "iTextSharp": "5.5.13.6"
@@ -389,7 +390,8 @@
       },
       "Servicios/1.0.0": {
         "dependencies": {
-          "BE": "1.0.0"
+          "BE": "1.0.0",
+          "Microsoft.Data.SqlClient": "7.0.2"
         },
         "runtime": {
           "Servicios.dll": {

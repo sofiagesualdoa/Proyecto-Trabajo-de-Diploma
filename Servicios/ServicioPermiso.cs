@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,8 @@ namespace Servicios
 {
     public class ServicioPermiso : ServicioPerfil
     {
+        public ServicioPermiso() : base(0, "", "") { }
+
         public ServicioPermiso(int id, string nombre, string dvh) : base(id, nombre, dvh) { }
 
         public override List<ServicioPerfil> Hijos => null;
@@ -26,6 +28,12 @@ namespace Servicios
         {
             if (Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)) return this;
             return null;
+        }
+
+        public List<ServicioPermiso> ObtenerPermisos()
+        {
+            IDALPermiso dalPermiso = FabricaDAL.Crear<IDALPermiso>("DALPermiso");
+            return dalPermiso.ObtenerTodos();
         }
     }
 }

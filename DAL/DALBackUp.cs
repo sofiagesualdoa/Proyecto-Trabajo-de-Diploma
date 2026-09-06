@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Servicios;
 
 namespace DAL
 {
-    public class DALBackUp
+    public class DALBackUp : IDALBackUp
     {
         public void EjecutarBackup(string connectionString, ServicioBackUp backup)
         {

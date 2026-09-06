@@ -228,7 +228,7 @@
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(180, 28);
+            librosToolStripMenuItem.Size = new Size(149, 28);
             librosToolStripMenuItem.Tag = "Gestionar Libros";
             librosToolStripMenuItem.Text = "Libros";
             librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
@@ -236,14 +236,14 @@
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(180, 28);
+            clientesToolStripMenuItem.Size = new Size(149, 28);
             clientesToolStripMenuItem.Tag = "Gestionar Clientes";
             clientesToolStripMenuItem.Text = "Clientes";
             // 
             // librosCToolStripMenuItem
             // 
             librosCToolStripMenuItem.Name = "librosCToolStripMenuItem";
-            librosCToolStripMenuItem.Size = new Size(180, 28);
+            librosCToolStripMenuItem.Size = new Size(149, 28);
             librosCToolStripMenuItem.Tag = "Gestionar Libros C";
             librosCToolStripMenuItem.Text = "Libros C";
             // 
@@ -320,7 +320,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.LightGray;
+            pictureBox1.ErrorImage = null;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
             pictureBox1.Location = new Point(249, 143);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(319, 276);

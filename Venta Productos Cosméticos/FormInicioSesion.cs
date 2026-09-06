@@ -1,4 +1,3 @@
-﻿using BLL;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace Venta_Productos_Cosméticos
 {
     public partial class FormInicioSesion : Form, IObserver
     {
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         private ServicioIdioma idiomaSeleccionadoLogin = null;
         private bool idiomaLoginCambiado = false;
@@ -46,7 +45,7 @@ namespace Venta_Productos_Cosméticos
                     throw new Exception(ServicioSessionManager.GetInstance().Traducir("Ya existe una sesión activa: ") + servicioSessionManager.ObtenerUsuario().nombreUsuario);
                 }
 
-                BLLUsuario bll = new BLLUsuario();
+                ServicioUsuario bll = new ServicioUsuario();
                 bool loginExitoso = bll.IniciarSesion(txtUsuario.Text, txtContraseña.Text);
 
                 if (loginExitoso)

@@ -84,118 +84,132 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.Font = new Font("Sitka Text", 9F);
             label9.Location = new Point(705, 150);
             label9.Name = "label9";
-            label9.Size = new Size(58, 15);
+            label9.Size = new Size(64, 18);
             label9.TabIndex = 32;
             label9.Text = "Criticidad";
             // 
             // label8
             // 
             label8.AutoSize = true;
+            label8.Font = new Font("Sitka Text", 9F);
             label8.Location = new Point(432, 150);
             label8.Name = "label8";
-            label8.Size = new Size(43, 15);
+            label8.Size = new Size(48, 18);
             label8.TabIndex = 31;
             label8.Text = "Evento";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Sitka Text", 9F);
             label3.Location = new Point(705, 92);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
+            label3.Size = new Size(61, 18);
             label3.TabIndex = 30;
             label3.Text = "Fecha Fin";
             // 
             // dtpFechaFin
             // 
+            dtpFechaFin.Font = new Font("Sitka Text", 9.749999F);
             dtpFechaFin.Location = new Point(626, 110);
             dtpFechaFin.Name = "dtpFechaFin";
-            dtpFechaFin.Size = new Size(214, 23);
+            dtpFechaFin.Size = new Size(214, 24);
             dtpFechaFin.TabIndex = 28;
             // 
             // dtpFechaInicio
             // 
+            dtpFechaInicio.Font = new Font("Sitka Text", 9.749999F);
             dtpFechaInicio.Location = new Point(345, 110);
             dtpFechaInicio.Name = "dtpFechaInicio";
-            dtpFechaInicio.Size = new Size(218, 23);
+            dtpFechaInicio.Size = new Size(218, 24);
             dtpFechaInicio.TabIndex = 29;
             // 
             // cmbLogin
             // 
+            cmbLogin.Font = new Font("Sitka Text", 9.749999F);
             cmbLogin.FormattingEnabled = true;
-            cmbLogin.Location = new Point(81, 110);
+            cmbLogin.Location = new Point(60, 110);
             cmbLogin.Name = "cmbLogin";
-            cmbLogin.Size = new Size(173, 23);
+            cmbLogin.Size = new Size(218, 27);
             cmbLogin.TabIndex = 18;
             // 
             // cmbModulo
             // 
+            cmbModulo.Font = new Font("Sitka Text", 9.749999F);
             cmbModulo.FormattingEnabled = true;
-            cmbModulo.Location = new Point(81, 168);
+            cmbModulo.Location = new Point(60, 168);
             cmbModulo.Name = "cmbModulo";
-            cmbModulo.Size = new Size(173, 23);
+            cmbModulo.Size = new Size(218, 27);
             cmbModulo.TabIndex = 19;
             // 
             // cmbEvento
             // 
+            cmbEvento.Font = new Font("Sitka Text", 9.749999F);
             cmbEvento.FormattingEnabled = true;
-            cmbEvento.Location = new Point(370, 168);
+            cmbEvento.Location = new Point(345, 168);
             cmbEvento.Name = "cmbEvento";
-            cmbEvento.Size = new Size(173, 23);
+            cmbEvento.Size = new Size(218, 27);
             cmbEvento.TabIndex = 20;
             // 
             // cmbCriticidad
             // 
+            cmbCriticidad.Font = new Font("Sitka Text", 9.749999F);
             cmbCriticidad.FormattingEnabled = true;
-            cmbCriticidad.Location = new Point(646, 168);
+            cmbCriticidad.Location = new Point(626, 168);
             cmbCriticidad.Name = "cmbCriticidad";
-            cmbCriticidad.Size = new Size(173, 23);
+            cmbCriticidad.Size = new Size(214, 27);
             cmbCriticidad.TabIndex = 11;
             // 
             // label7
             // 
             label7.AutoSize = true;
+            label7.Font = new Font("Sitka Text", 9F);
             label7.Location = new Point(420, 92);
             label7.Name = "label7";
-            label7.Size = new Size(70, 15);
+            label7.Size = new Size(75, 18);
             label7.TabIndex = 10;
             label7.Text = "Fecha Inicio";
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Sitka Text", 9F);
             label6.Location = new Point(149, 92);
             label6.Name = "label6";
-            label6.Size = new Size(37, 15);
+            label6.Size = new Size(40, 18);
             label6.TabIndex = 9;
             label6.Text = "Login";
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Sitka Text", 9F);
             label5.Location = new Point(524, 15);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(55, 18);
             label5.TabIndex = 8;
             label5.Text = "Apellido";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Sitka Text", 9F);
             label4.Location = new Point(143, 150);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(51, 18);
             label4.TabIndex = 7;
             label4.Text = "Módulo";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Sitka Text", 9F);
             label2.Location = new Point(321, 15);
             label2.Name = "label2";
-            label2.Size = new Size(51, 15);
+            label2.Size = new Size(53, 18);
             label2.TabIndex = 5;
             label2.Text = "Nombre";
             // 
@@ -224,7 +238,8 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.RosyBrown;
+            button7.BackColor = Color.Sienna;
+            button7.Font = new Font("Sitka Text", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.Location = new Point(739, 13);
             button7.Name = "button7";
             button7.Size = new Size(113, 39);
@@ -235,7 +250,8 @@
             // 
             // button5
             // 
-            button5.BackColor = Color.RosyBrown;
+            button5.BackColor = Color.Sienna;
+            button5.Font = new Font("Sitka Text", 12F);
             button5.Location = new Point(407, 445);
             button5.Name = "button5";
             button5.Size = new Size(113, 57);
@@ -246,7 +262,8 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.RosyBrown;
+            button3.BackColor = Color.Sienna;
+            button3.Font = new Font("Sitka Text", 12F);
             button3.Location = new Point(121, 445);
             button3.Name = "button3";
             button3.Size = new Size(113, 57);
@@ -257,7 +274,8 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.RosyBrown;
+            button1.BackColor = Color.Sienna;
+            button1.Font = new Font("Sitka Text", 12F);
             button1.Location = new Point(688, 445);
             button1.Name = "button1";
             button1.Size = new Size(113, 57);
@@ -269,10 +287,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 11);
+            label1.BackColor = Color.Bisque;
+            label1.Font = new Font("Sitka Text", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 15);
             label1.Name = "label1";
-            label1.Size = new Size(239, 32);
+            label1.Size = new Size(252, 35);
             label1.TabIndex = 17;
             label1.Text = "Bitácora de Eventos";
             // 
@@ -280,7 +299,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.MistyRose;
+            BackColor = Color.Tan;
             ClientSize = new Size(960, 514);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);

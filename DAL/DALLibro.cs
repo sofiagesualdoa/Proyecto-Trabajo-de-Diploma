@@ -18,7 +18,7 @@ namespace DAL
         public BELibro BuscarLibroPorISBN_657SGA(string ISBN_657SGA)
         {
             BELibro libroEncontrado = null;
-            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, Editorial_657SGA, Autor_657SGA, DVH 
+            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, Editorial_657SGA, Autor_657SGA, Activo_657SGA, DVH 
                      FROM Libro 
                      WHERE ISBN_657SGA = @ISBN_657SGA;";
             using (SqlConnection conexion = new SqlConnection(cadena))
@@ -38,6 +38,7 @@ namespace DAL
                             libroEncontrado.Autor_657SGA = reader["Autor_657SGA"].ToString();
                             libroEncontrado.Existencias_657SGA = Convert.ToInt32(reader["Existencias_657SGA"]);
                             libroEncontrado.Precio_657SGA = Convert.ToDecimal(reader["Precio_657SGA"]);
+                            libroEncontrado.Activo_657SGA = reader["Activo_657SGA"] != DBNull.Value && Convert.ToBoolean(reader["Activo_657SGA"]);
                             libroEncontrado.DVH = reader["DVH"].ToString();
                         }
                     }
@@ -49,8 +50,8 @@ namespace DAL
         public List<BELibro> ObtenerLibros()
         {
             libros.Clear();
-            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, Editorial_657SGA, Autor_657SGA, DVH 
-                     FROM Libro";
+            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, Editorial_657SGA, Autor_657SGA, Activo_657SGA, DVH 
+                     FROM Libro;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand comando = new SqlCommand(query, conexion))
@@ -67,6 +68,7 @@ namespace DAL
                             libro.Autor_657SGA = reader["Autor_657SGA"].ToString();
                             libro.Existencias_657SGA = Convert.ToInt32(reader["Existencias_657SGA"]);
                             libro.Precio_657SGA = Convert.ToDecimal(reader["Precio_657SGA"]);
+                            libro.Activo_657SGA = reader["Activo_657SGA"] != DBNull.Value && Convert.ToBoolean(reader["Activo_657SGA"]);
                             libro.DVH = reader["DVH"].ToString();
                             libros.Add(libro);
                         }
@@ -78,8 +80,8 @@ namespace DAL
 
         public void GuardarLibro(BELibro libro)
         {
-            string query = @"INSERT INTO Libro (ISBN_657SGA, Título_657SGA, Autor_657SGA, Existencias_657SGA, Precio_657SGA, Editorial_657SGA, DVH) 
-                     VALUES (@ISBN_657SGA, @Título_657SGA, @Autor_657SGA, @Existencias_657SGA, @Precio_657SGA, @Editorial_657SGA, @DVH);";
+            string query = @"INSERT INTO Libro (ISBN_657SGA, Título_657SGA, Autor_657SGA, Existencias_657SGA, Precio_657SGA, Editorial_657SGA, Activo_657SGA, DVH) 
+                     VALUES (@ISBN_657SGA, @Título_657SGA, @Autor_657SGA, @Existencias_657SGA, @Precio_657SGA, @Editorial_657SGA, @Activo_657SGA, @DVH);";
 
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
@@ -91,6 +93,7 @@ namespace DAL
                     comando.Parameters.Add("@Existencias_657SGA", SqlDbType.Int).Value = libro.Existencias_657SGA;
                     comando.Parameters.Add("@Precio_657SGA", SqlDbType.Decimal).Value = libro.Precio_657SGA;
                     comando.Parameters.Add("@Editorial_657SGA", SqlDbType.VarChar, 100).Value = libro.Editorial_657SGA;
+                    comando.Parameters.Add("@Activo_657SGA", SqlDbType.Bit).Value = libro.Activo_657SGA;
                     comando.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = libro.DVH;
                     try
                     {
@@ -139,7 +142,7 @@ namespace DAL
         public List<BELibro> BuscarLibros(string textoBusqueda)
         {
             List<BELibro> lista = new List<BELibro>();
-            string query = @"SELECT ISBN_657SGA, Título_657SGA, Autor_657SGA, Editorial_657SGA, Precio_657SGA, Existencias_657SGA, DVH 
+            string query = @"SELECT ISBN_657SGA, Título_657SGA, Autor_657SGA, Editorial_657SGA, Precio_657SGA, Existencias_657SGA, Activo_657SGA, DVH 
                      FROM Libro
                      WHERE Título_657SGA LIKE @Filtro 
                         OR Autor_657SGA LIKE @Filtro 
@@ -162,6 +165,7 @@ namespace DAL
                             l.Existencias_657SGA = Convert.ToInt32(reader["Existencias_657SGA"]);
                             l.Editorial_657SGA = reader["Editorial_657SGA"].ToString();
                             l.Precio_657SGA = Convert.ToDecimal(reader["Precio_657SGA"]);
+                            l.Activo_657SGA = reader["Activo_657SGA"] != DBNull.Value && Convert.ToBoolean(reader["Activo_657SGA"]);
                             l.DVH = reader["DVH"].ToString();
                             lista.Add(l);
                         }
@@ -169,6 +173,85 @@ namespace DAL
                 }
             }
             return lista;
+        }
+
+
+        public void BajaLogicaLibro(string isbn, string dvh)
+        {
+            ModificarEstadoLibro(isbn, false, dvh);
+        }
+        public void ModificarEstadoLibro(string isbn, bool nuevoEstado, string dvh)
+        {
+            string query = @"UPDATE Libro 
+                     SET Activo_657SGA = @Activo, DVH = @DVH 
+                     WHERE ISBN_657SGA = @ISBN_657SGA;";
+            using (SqlConnection conexion = new SqlConnection(cadena))
+            {
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.Add("@ISBN_657SGA", SqlDbType.VarChar, 13).Value = isbn;
+                    comando.Parameters.Add("@Activo", SqlDbType.Bit).Value = nuevoEstado;
+                    comando.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = dvh;
+                    try
+                    {
+                        conexion.Open();
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        if (filasAfectadas == 0)
+                        {
+                            throw new Exception("No se encontró ningún libro con el ISBN especificado.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ServicioSessionManager.GetInstance().Traducir("Error físico al intentar cambiar el estado del libro: ") + ex.Message);
+                    }
+                }
+            }
+        }
+
+        public void ModificarLibro(BELibro libro, string isbnOriginal)
+        {
+            string query = @"UPDATE Libro 
+                             SET ISBN_657SGA = @NuevoISBN,
+                                 Título_657SGA = @Título, 
+                                 Autor_657SGA = @Autor, 
+                                 Existencias_657SGA = @Existencias, 
+                                 Precio_657SGA = @Precio, 
+                                 Editorial_657SGA = @Editorial, 
+                                 Activo_657SGA = @Activo, 
+                                 DVH = @DVH 
+                             WHERE ISBN_657SGA = @ISBN_Original;";
+
+            using (SqlConnection conexion = new SqlConnection(cadena))
+            {
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.Add("@NuevoISBN", SqlDbType.VarChar, 13).Value = libro.ISBN_657SGA;
+                    comando.Parameters.Add("@Título", SqlDbType.VarChar, 100).Value = libro.Título_657SGA;
+                    comando.Parameters.Add("@Autor", SqlDbType.VarChar).Value = libro.Autor_657SGA;
+                    comando.Parameters.Add("@Existencias", SqlDbType.Int).Value = libro.Existencias_657SGA;
+                    comando.Parameters.Add("@Precio", SqlDbType.Decimal).Value = libro.Precio_657SGA;
+                    comando.Parameters.Add("@Editorial", SqlDbType.VarChar, 100).Value = libro.Editorial_657SGA;
+                    comando.Parameters.Add("@Activo", SqlDbType.Bit).Value = libro.Activo_657SGA;
+                    comando.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = libro.DVH;
+                    comando.Parameters.Add("@ISBN_Original", SqlDbType.VarChar, 13).Value = isbnOriginal;
+
+                    try
+                    {
+                        conexion.Open();
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        if (filasAfectadas == 0)
+                        {
+                            throw new Exception("No se encontró ningún libro con el ISBN especificado.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string errorTraducido = ServicioSessionManager.GetInstance().Traducir(ex.Message);
+                        throw new Exception(ServicioSessionManager.GetInstance().Traducir("Error físico al intentar modificar el libro: ") + errorTraducido);
+                    }
+                }
+            }
         }
     }
 }

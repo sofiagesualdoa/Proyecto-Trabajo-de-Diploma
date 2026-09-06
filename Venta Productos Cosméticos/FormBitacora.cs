@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +11,13 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Servicios;
-using BLL;
-using DALs;
 
 namespace Venta_Productos_Cosméticos
 {
     public partial class FormBitacora : Form, IObserver
     {
 
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         public FormBitacora()
         {
@@ -155,7 +153,7 @@ namespace Venta_Productos_Cosméticos
         {
             try
             {
-                BLLUsuario bll = new BLLUsuario();
+                ServicioUsuario bll = new ServicioUsuario();
                 cmbLogin.Items.Clear();
                 cmbLogin.Items.Add("Todos");
 
@@ -185,7 +183,7 @@ namespace Venta_Productos_Cosméticos
             cmbCriticidad.SelectedIndex = 0;
             dtpFechaInicio.Value = DateTime.Today.AddDays(-3);
             dtpFechaFin.Value = DateTime.Today;
-            BLLEvento bitacora = new BLLEvento();
+            ServicioEvento bitacora = new ServicioEvento();
             MostrarGrilla(bitacora.ConsultarEventosPorDefecto());
             if (dataGridView1.Rows.Count > 0)
             {
@@ -220,8 +218,8 @@ namespace Venta_Productos_Cosméticos
 
                 if (registroSeleccionado != null)
                 {
-                    DALUsuario dalUser = new DALUsuario();
-                    ServicioUsuario operario = dalUser.BuscarUsuarioPorDniOMail(registroSeleccionado.DNI, "x");
+                    ServicioUsuario srvUser = new ServicioUsuario();
+                    ServicioUsuario operario = srvUser.BuscarUsuarioPorDniOMail(registroSeleccionado.DNI, "x");
                     if (operario != null)
                     {
                         txtNombre.Text = operario.Nombre;
@@ -240,8 +238,8 @@ namespace Venta_Productos_Cosméticos
         {
             try
             {
-                DALEvento dal = new DALEvento();
-                List<ServicioEvento> eventosFiltrados = dal.ObtenerEventos(dtpFechaInicio.Value.Date);
+                ServicioEvento srvEvento = new ServicioEvento();
+                List<ServicioEvento> eventosFiltrados = srvEvento.ObtenerEventos(dtpFechaInicio.Value.Date);
                 eventosFiltrados = eventosFiltrados.Where(evt => evt.Fecha.Date <= dtpFechaFin.Value.Date).ToList();
                 if (cmbLogin.Text != "Todos" && cmbLogin.SelectedIndex != -1)
                     eventosFiltrados = eventosFiltrados.Where(evt => evt.Login == cmbLogin.Text).ToList();

@@ -341,9 +341,10 @@
             // radioButton3
             // 
             radioButton3.AutoSize = true;
+            radioButton3.Font = new Font("Sitka Text", 9F);
             radioButton3.Location = new Point(826, 211);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(56, 19);
+            radioButton3.Size = new Size(60, 22);
             radioButton3.TabIndex = 15;
             radioButton3.TabStop = true;
             radioButton3.Text = "Todos";
@@ -353,9 +354,10 @@
             // radioButton4
             // 
             radioButton4.AutoSize = true;
+            radioButton4.Font = new Font("Sitka Text", 9F);
             radioButton4.Location = new Point(902, 211);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(64, 19);
+            radioButton4.Size = new Size(69, 22);
             radioButton4.TabIndex = 16;
             radioButton4.TabStop = true;
             radioButton4.Text = "Activos";

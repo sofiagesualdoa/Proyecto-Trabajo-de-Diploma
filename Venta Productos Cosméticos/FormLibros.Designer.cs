@@ -1,4 +1,4 @@
-﻿namespace Venta_Productos_Cosméticos
+namespace Venta_Productos_Cosméticos
 {
     partial class FormLibros
     {
@@ -37,6 +37,8 @@
             textBox1_657SGA = new TextBox();
             btnConsultar_657SGA = new Button();
             btnLimpiar_657SGA = new Button();
+            rbtnActivos_657SGA = new RadioButton();
+            rbtnTodos_657SGA = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +48,8 @@
             dataGridView1.Location = new Point(12, 56);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(798, 248);
-            dataGridView1.TabIndex = 25;
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
             // btnSalir_657SGA
             // 
@@ -68,8 +71,9 @@
             btnBorrar_657SGA.Name = "btnBorrar_657SGA";
             btnBorrar_657SGA.Size = new Size(113, 57);
             btnBorrar_657SGA.TabIndex = 23;
-            btnBorrar_657SGA.Text = "Borrar";
+            btnBorrar_657SGA.Text = "Act./Desact.";
             btnBorrar_657SGA.UseVisualStyleBackColor = false;
+            btnBorrar_657SGA.Click += btnBorrar_657SGA_Click;
             // 
             // btnModificar_657SGA
             // 
@@ -81,6 +85,7 @@
             btnModificar_657SGA.TabIndex = 20;
             btnModificar_657SGA.Text = "Modificar";
             btnModificar_657SGA.UseVisualStyleBackColor = false;
+            btnModificar_657SGA.Click += btnModificar_657SGA_Click;
             // 
             // btnAgregar_657SGA
             // 
@@ -110,9 +115,8 @@
             textBox1_657SGA.Font = new Font("Sitka Text", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1_657SGA.Location = new Point(272, 326);
             textBox1_657SGA.Name = "textBox1_657SGA";
-            textBox1_657SGA.PlaceholderText = "Buscar por Título_657SGA, Autor_657SGA, ISBN_657SGA...";
             textBox1_657SGA.Size = new Size(248, 24);
-            textBox1_657SGA.TabIndex = 0;
+            textBox1_657SGA.TabIndex = 1;
             // 
             // btnConsultar_657SGA
             // 
@@ -138,12 +142,40 @@
             btnLimpiar_657SGA.UseVisualStyleBackColor = false;
             btnLimpiar_657SGA.Click += btnLimpiar_657SGA_Click;
             // 
+            // rbtnActivos_657SGA
+            // 
+            rbtnActivos_657SGA.AutoSize = true;
+            rbtnActivos_657SGA.Font = new Font("Sitka Text", 9F);
+            rbtnActivos_657SGA.Location = new Point(741, 22);
+            rbtnActivos_657SGA.Name = "rbtnActivos_657SGA";
+            rbtnActivos_657SGA.Size = new Size(69, 22);
+            rbtnActivos_657SGA.TabIndex = 28;
+            rbtnActivos_657SGA.TabStop = true;
+            rbtnActivos_657SGA.Text = "Activos";
+            rbtnActivos_657SGA.UseVisualStyleBackColor = true;
+            rbtnActivos_657SGA.CheckedChanged += rbtnActivos_657SGA_CheckedChanged;
+            // 
+            // rbtnTodos_657SGA
+            // 
+            rbtnTodos_657SGA.AutoSize = true;
+            rbtnTodos_657SGA.Font = new Font("Sitka Text", 9F);
+            rbtnTodos_657SGA.Location = new Point(665, 22);
+            rbtnTodos_657SGA.Name = "rbtnTodos_657SGA";
+            rbtnTodos_657SGA.Size = new Size(60, 22);
+            rbtnTodos_657SGA.TabIndex = 27;
+            rbtnTodos_657SGA.TabStop = true;
+            rbtnTodos_657SGA.Text = "Todos";
+            rbtnTodos_657SGA.UseVisualStyleBackColor = true;
+            rbtnTodos_657SGA.CheckedChanged += rbtnTodos_657SGA_CheckedChanged;
+            // 
             // FormLibros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
             ClientSize = new Size(826, 450);
+            Controls.Add(rbtnActivos_657SGA);
+            Controls.Add(rbtnTodos_657SGA);
             Controls.Add(btnLimpiar_657SGA);
             Controls.Add(btnConsultar_657SGA);
             Controls.Add(dataGridView1);
@@ -171,5 +203,7 @@
         private TextBox textBox1_657SGA;
         private Button btnConsultar_657SGA;
         private Button btnLimpiar_657SGA;
+        private RadioButton rbtnActivos_657SGA;
+        private RadioButton rbtnTodos_657SGA;
     }
 }

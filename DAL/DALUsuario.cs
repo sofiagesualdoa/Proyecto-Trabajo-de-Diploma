@@ -1,10 +1,10 @@
-﻿using System.Data;
+using System.Data;
 using Microsoft.Data.SqlClient;
 using Servicios;
 
-namespace DALs
+namespace DAL
 {
-    public class DALUsuario
+    public class DALUsuario : IDALUsuario
     {
         string cadena = "Data Source=.;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;Initial Catalog=EverGlow;";
         private static List<ServicioUsuario> usuarios = new List<ServicioUsuario>();

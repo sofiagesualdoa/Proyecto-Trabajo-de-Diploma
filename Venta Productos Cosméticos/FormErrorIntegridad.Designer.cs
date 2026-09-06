@@ -38,50 +38,54 @@
             // 
             // btnRecalcular
             // 
-            btnRecalcular.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRecalcular.BackColor = Color.Sienna;
+            btnRecalcular.Font = new Font("Sitka Text", 18F, FontStyle.Bold);
             btnRecalcular.ForeColor = Color.Black;
             btnRecalcular.Location = new Point(528, 100);
             btnRecalcular.Name = "btnRecalcular";
-            btnRecalcular.Size = new Size(199, 80);
+            btnRecalcular.Size = new Size(246, 80);
             btnRecalcular.TabIndex = 0;
             btnRecalcular.Tag = "Administrar Error";
             btnRecalcular.Text = "Recalcular Dígitos Verificadores";
-            btnRecalcular.UseVisualStyleBackColor = true;
+            btnRecalcular.UseVisualStyleBackColor = false;
             btnRecalcular.Click += btnRecalcular_Click;
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCerrarSesion.BackColor = Color.Sienna;
+            btnCerrarSesion.Font = new Font("Sitka Text", 18F, FontStyle.Bold);
             btnCerrarSesion.ForeColor = Color.Black;
             btnCerrarSesion.Location = new Point(528, 335);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(199, 80);
+            btnCerrarSesion.Size = new Size(246, 80);
             btnCerrarSesion.TabIndex = 1;
             btnCerrarSesion.Text = "Cerrar Sesión";
-            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(152, 28);
+            label1.BackColor = Color.Bisque;
+            label1.Font = new Font("Sitka Text", 18F, FontStyle.Bold);
+            label1.Location = new Point(159, 36);
             label1.Name = "label1";
-            label1.Size = new Size(463, 32);
+            label1.Size = new Size(486, 35);
             label1.TabIndex = 2;
             label1.Text = "Error de Integridad en la Base de Datos";
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.BackColor = Color.Sienna;
+            button1.Font = new Font("Sitka Text", 18F, FontStyle.Bold);
             button1.ForeColor = Color.Black;
             button1.Location = new Point(528, 216);
             button1.Name = "button1";
-            button1.Size = new Size(199, 80);
+            button1.Size = new Size(246, 80);
             button1.TabIndex = 3;
             button1.Tag = "Administrar Error";
             button1.Text = "Restaurar con BackUp";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // dgvErrores
@@ -96,7 +100,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.RosyBrown;
+            BackColor = Color.Tan;
             ClientSize = new Size(800, 450);
             Controls.Add(dgvErrores);
             Controls.Add(button1);

@@ -1,4 +1,3 @@
-﻿using BLL;
 using iTextSharp.text;
 using Microsoft.VisualBasic;
 using Servicios;
@@ -21,14 +20,14 @@ namespace Venta_Productos_Cosméticos
             InitializeComponent();
         }
 
-        private BLLPerfil bllPerfil = new BLLPerfil();
-        private BLLFamilia bllFamilia = new BLLFamilia();
-        private BLLPermiso bllPermiso = new BLLPermiso();
-        private BLLEvento bitacora = new BLLEvento();
+        private ServicioPerfil bllPerfil = new ServicioPerfil();
+        private ServicioFamilia bllFamilia = new ServicioFamilia();
+        private ServicioPermiso bllPermiso = new ServicioPermiso();
+        private ServicioEvento bitacora = new ServicioEvento();
         private List<ServicioPermiso> todosLosPermisos = new List<ServicioPermiso>();
         private List<ServicioFamilia> todasLasFamilias = new List<ServicioFamilia>();
         private List<ServicioPerfil> todosLosPerfiles = new List<ServicioPerfil>();
-        private BLLIdioma bllIdioma = new BLLIdioma();
+        private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
 
         private void label1_Click(object sender, EventArgs e)

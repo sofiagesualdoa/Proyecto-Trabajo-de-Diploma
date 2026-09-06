@@ -1,5 +1,3 @@
-using BLL;
-using DAL;
 using Servicios;
 using System.Diagnostics;
 using Venta_Productos_Cosméticos.Vista;
@@ -16,7 +14,7 @@ namespace Venta_Productos_Cosméticos
             InitializeComponent();
         }
 
-        BLLIdioma bllIdioma = new BLLIdioma();
+        ServicioIdioma bllIdioma = new ServicioIdioma();
 
         private void cambiarClaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,7 +39,7 @@ namespace Venta_Productos_Cosméticos
 
             if (resultado == DialogResult.Yes)
             {
-                BLLUsuario bll = new BLLUsuario();
+                ServicioUsuario bll = new ServicioUsuario();
 
                 var usuarioActivo = ServicioSessionManager.GetInstance().ObtenerUsuario();
                 if (usuarioActivo != null)
@@ -77,7 +75,7 @@ namespace Venta_Productos_Cosméticos
         private void FormSistema_Load(object sender, EventArgs e)
         {
             timer1.Start();
-            BLLPerfil bllPerfil = new BLLPerfil();
+            ServicioPerfil bllPerfil = new ServicioPerfil();
             ServicioUsuario usuarioLogueado = ServicioSessionManager.GetInstance().ObtenerUsuario();
 
             if (usuarioLogueado != null)
@@ -163,6 +161,8 @@ namespace Venta_Productos_Cosméticos
                     usuario.Nombre,
                     usuario.Apellido
                 ) + Environment.NewLine + pregunta;
+
+                label1.Left = pictureBox1.Left + (pictureBox1.Width - label1.Width) / 2;
             }
         }
 
@@ -185,7 +185,7 @@ namespace Venta_Productos_Cosméticos
         }
 
 
-        private void ConfigurarPermisosControl(Control.ControlCollection controles, BLLPerfil bllPerfil, ServicioUsuario usuario)
+        private void ConfigurarPermisosControl(Control.ControlCollection controles, ServicioPerfil bllPerfil, ServicioUsuario usuario)
         {
             foreach (Control c in controles)
             {
@@ -208,7 +208,7 @@ namespace Venta_Productos_Cosméticos
             }
         }
 
-        private void ConfigurarPermisosMenu(ToolStripItemCollection items, BLLPerfil bllPerfil, ServicioUsuario usuario)
+        private void ConfigurarPermisosMenu(ToolStripItemCollection items, ServicioPerfil bllPerfil, ServicioUsuario usuario)
         {
             foreach (ToolStripItem item in items)
             {
@@ -305,7 +305,7 @@ namespace Venta_Productos_Cosméticos
 
                     if (dialogoCarpeta.ShowDialog() == DialogResult.OK)
                     {
-                        BLLBackUp bllBackUp = new BLLBackUp();
+                        ServicioBackUp bllBackUp = new ServicioBackUp();
                         bllBackUp.RealizarBackup(dialogoCarpeta.SelectedPath);
 
                         MessageBox.Show(ServicioSessionManager.GetInstance().Traducir("Backup realizado exitosamente en la carpeta seleccionada."),
@@ -340,7 +340,7 @@ namespace Venta_Productos_Cosméticos
                     {
                         try
                         {
-                            BLLBackUp bllBackUp = new BLLBackUp();
+                            ServicioBackUp bllBackUp = new ServicioBackUp();
                             bllBackUp.RealizarRestore(dialogoArchivo.FileName);
 
                             MessageBox.Show(
@@ -350,7 +350,7 @@ namespace Venta_Productos_Cosméticos
                                 MessageBoxIcon.Information
                             );
 
-                            BLLUsuario bllUser = new BLLUsuario();
+                            ServicioUsuario bllUser = new ServicioUsuario();
                             bllUser.CerrarSesion();
                             FormInicioSesion frmLogin = new FormInicioSesion();
                             frmLogin.Show();
