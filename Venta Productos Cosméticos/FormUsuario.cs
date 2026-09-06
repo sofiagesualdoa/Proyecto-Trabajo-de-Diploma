@@ -38,6 +38,7 @@ namespace Venta_Productos_Cosméticos.Vista
             {
                 Actualizar(usuario.Idioma);
             }
+            radioButton3_Click(sender, e);
         }
 
         private void RegistrarTextos(Control.ControlCollection controles)
@@ -93,14 +94,10 @@ namespace Venta_Productos_Cosméticos.Vista
             button3.Enabled = true;
             button4.Enabled = true;
             button8.Enabled = true;
-
             LimpiarCampos();
             HabilitarTextBox();
-
             ServicioUsuario bll = new ServicioUsuario();
-            List<ServicioUsuario> usuarios = bll.ObtenerUsuarios();
-            MostrarGrilla(usuarios.Where(u => u.Activo).ToList());
-            radioButton3.Checked = true;
+            MostrarGrilla(bll.ObtenerUsuarios());
         }
 
         private void HabilitarTextBox()
