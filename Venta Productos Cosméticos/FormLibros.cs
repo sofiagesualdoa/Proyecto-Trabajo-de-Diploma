@@ -143,6 +143,7 @@ namespace Venta_Productos_Cosméticos
         private void btnLimpiar_657SGA_Click(object sender, EventArgs e)
         {
             textBox1_657SGA.Clear();
+            btnConsultar_657SGA_Click(sender, e);
         }
 
         private void btnAgregar_657SGA_Click(object sender, EventArgs e)

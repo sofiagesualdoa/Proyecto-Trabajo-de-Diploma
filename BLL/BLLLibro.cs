@@ -139,5 +139,12 @@ namespace BLL
             new ServicioDVV().RecalcularDVVLibro();
             bitacora.GrabarBitacora("Modificar Libro", "Libro", 2);
         }
+
+        public int VerificarUnidades(BELibro libro)
+        {
+            int existencias = 0;
+            if (libro != null) existencias = libro.Existencias_657SGA;
+            return existencias;
+        }
     }
 }

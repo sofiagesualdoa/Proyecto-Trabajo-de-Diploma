@@ -122,9 +122,9 @@ namespace Venta_Productos_Cosméticos
             // 
             btnConsultar_657SGA.BackColor = Color.Sienna;
             btnConsultar_657SGA.Font = new Font("Sitka Text", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConsultar_657SGA.Location = new Point(581, 310);
+            btnConsultar_657SGA.Location = new Point(581, 318);
             btnConsultar_657SGA.Name = "btnConsultar_657SGA";
-            btnConsultar_657SGA.Size = new Size(96, 57);
+            btnConsultar_657SGA.Size = new Size(96, 40);
             btnConsultar_657SGA.TabIndex = 17;
             btnConsultar_657SGA.Text = "Consultar";
             btnConsultar_657SGA.UseVisualStyleBackColor = false;
