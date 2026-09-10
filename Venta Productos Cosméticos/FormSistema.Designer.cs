@@ -228,7 +228,7 @@
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(149, 28);
+            librosToolStripMenuItem.Size = new Size(180, 28);
             librosToolStripMenuItem.Tag = "Gestionar Libros";
             librosToolStripMenuItem.Text = "Libros";
             librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
@@ -236,14 +236,15 @@
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(149, 28);
+            clientesToolStripMenuItem.Size = new Size(180, 28);
             clientesToolStripMenuItem.Tag = "Gestionar Clientes";
             clientesToolStripMenuItem.Text = "Clientes";
+            clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
             // 
             // librosCToolStripMenuItem
             // 
             librosCToolStripMenuItem.Name = "librosCToolStripMenuItem";
-            librosCToolStripMenuItem.Size = new Size(149, 28);
+            librosCToolStripMenuItem.Size = new Size(180, 28);
             librosCToolStripMenuItem.Tag = "Gestionar Libros C";
             librosCToolStripMenuItem.Text = "Libros C";
             // 

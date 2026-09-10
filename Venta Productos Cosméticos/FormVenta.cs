@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using DAL;
 using Microsoft.VisualBasic;
 using Servicios;
 using System;
@@ -18,7 +19,8 @@ namespace Venta_Productos_Cosméticos
     {
         private ServicioIdioma bllIdioma = new ServicioIdioma();
         private BLLLibro bllLibro = new BLLLibro();
-        private BLLCarrito bllCarrito = new BLLCarrito(); 
+        private BLLCarrito bllCarrito = new BLLCarrito();
+        private BLLCliente bllCliente = new BLLCliente();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
@@ -214,6 +216,78 @@ namespace Venta_Productos_Cosméticos
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
             }
+        }
+
+        private void btnPagar_SGA657_Click(object sender, EventArgs e)
+        {
+            var s = ServicioSessionManager.GetInstance();
+            try
+            {
+                if (dataGridViewCarrito.Rows.Count == 0 || bllCarrito.ObtenerDetalles().Count == 0)
+                {
+                    throw new Exception("No hay libros en el carrito para iniciar la venta");
+                }
+                string prompt = s.Traducir("Ingrese el DNI del cliente:");
+                string titulo = s.Traducir("Identificación del Cliente");
+                string dniStr = Interaction.InputBox(prompt, titulo, "");
+                if (string.IsNullOrWhiteSpace(dniStr) || dniStr.Length > 8 || dniStr.Length < 7)
+                {
+                    throw new Exception("El DNI no es válido");
+                }
+                if (!int.TryParse(dniStr.Trim(), out int dni))
+                {
+                    throw new Exception(s.Traducir("El DNI ingresado no es válido. Debe contener solo números."));
+                }
+                BECliente cliente = bllCliente.BuscarClientePorDNI(dni);
+                if (cliente != null)
+                {
+                    string nombreCompleto = bllCliente.ObtenerNombreCompleto(cliente);
+                    string mensajeRegistrado = $"{s.Traducir("Cliente:")} {nombreCompleto}";
+                    MessageBox.Show(mensajeRegistrado,
+                                    s.Traducir("Cliente Registrado"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    bllCarrito.AsociarDNI(cliente.DNI_657SGA);
+                    ContinuarConPago(cliente);
+                }
+                else
+                {
+                    MessageBox.Show(s.Traducir("El cliente no se encuentra registrado en el sistema. Presione Aceptar para registrarlo."),
+                                    s.Traducir("Cliente No Registrado"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    using (FormClientes frmClientes = new FormClientes(dni, modoVenta: true))
+                    {
+                        if (frmClientes.ShowDialog() == DialogResult.OK && frmClientes.AsociadoAlCarrito)
+                        {
+                            BECliente clienteAsociado = frmClientes.ClienteSeleccionado;
+                            if (clienteAsociado != null)
+                            {
+                                bllCarrito.AsociarDNI(clienteAsociado.DNI_657SGA);
+                                ContinuarConPago(clienteAsociado);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                                s.Traducir("Información"),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
+        }
+
+        private void ContinuarConPago(BECliente cliente)
+        {
+            var s = ServicioSessionManager.GetInstance();
+            decimal total = bllCarrito.CalcularTotal();
+            string nombreCompleto = bllCliente.ObtenerNombreCompleto(cliente);
+            MessageBox.Show(string.Format(s.Traducir("Cliente {0} asociado correctamente al carrito. Total a cobrar: ${1:N2}"), nombreCompleto, total),
+                            s.Traducir("Venta Lista para Cobro"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
     }
 }

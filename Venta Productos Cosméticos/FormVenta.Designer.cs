@@ -176,6 +176,7 @@
             btnPagar_SGA657.TabIndex = 42;
             btnPagar_SGA657.Text = "Pagar";
             btnPagar_SGA657.UseVisualStyleBackColor = false;
+            btnPagar_SGA657.Click += btnPagar_SGA657_Click;
             // 
             // FormVenta
             // 

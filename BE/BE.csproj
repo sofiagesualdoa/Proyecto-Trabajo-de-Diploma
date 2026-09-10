@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BECarrito.cs" />
+    <Compile Include="BECliente.cs" />
     <Compile Include="BEDetalleCarrito.cs" />
     <Compile Include="BELibro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

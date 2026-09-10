@@ -431,5 +431,13 @@ namespace Venta_Productos_Cosméticos
             frmventa.Show();
             this.Close();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormClientes frmC = new FormClientes();
+            frmC.MdiParent = this.MdiParent;
+            frmC.Show();
+            this.Close();
+        }
     }
 }

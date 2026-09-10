@@ -94,3 +94,4 @@ C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Servicios\obj\Debug\net8.0-windows\Servicios.pdb
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Servicios\obj\Debug\net8.0-windows\ref\Servicios.dll
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Servicios\bin\Debug\net8.0-windows\traducciones.json
+C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Servicios\bin\Debug\net8.0-windows\traducciones.json
