@@ -42,7 +42,7 @@ namespace BLL
                 Fecha = DateTime.Today,
                 Hora = DateTime.Now.TimeOfDay
             };
-            bitacora.GrabarBitacora($"Venta cobrada con éxito. Factura: {factura.NumeroFactura}", "Venta", 1);
+            bitacora.GrabarBitacora($"Venta realizada. Factura: {factura.NumeroFactura}", "Venta", 1);
             return factura;
         }
     }
