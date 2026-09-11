@@ -25,7 +25,7 @@ namespace Venta_Productos_Cosméticos
             FormInicioSesion frmLogin = new FormInicioSesion();
             frmLogin.MdiParent = this.MdiParent;
             frmLogin.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

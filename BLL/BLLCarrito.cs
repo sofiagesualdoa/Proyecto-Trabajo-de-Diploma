@@ -12,10 +12,22 @@ namespace BLL
     {
         private BECarrito carritoActual;
         private BLLLibro bllLibro;
+        
         public BLLCarrito()
         {
             carritoActual = new BECarrito();
             bllLibro = new BLLLibro();
+        }
+        public bool TieneClienteAsociado => carritoActual.DNICliente > 0;
+        public int ObtenerDNICliente() => carritoActual.DNICliente;
+        public void AsociarDNI(int dni)
+        {
+            var session = ServicioSessionManager.GetInstance();
+            if (carritoActual.DNICliente > 0 && carritoActual.DNICliente != dni)
+            {
+                throw new InvalidOperationException(session.Traducir("El carrito ya posee un cliente asociado y no se puede modificar."));
+            }
+            carritoActual.DNICliente = dni;
         }
         public BECarrito ObtenerCarrito()
         {
@@ -83,10 +95,6 @@ namespace BLL
                 throw new Exception(session.Traducir("El carrito ya está vacío."));
             }
             carritoActual.Detalles.Clear();
-        }
-        public void AsociarDNI(int dni)
-        {
-            carritoActual.DNICliente = dni;
         }
     }
 }

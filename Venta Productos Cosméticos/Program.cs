@@ -2,16 +2,41 @@ namespace Venta_Productos_Cosméticos
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormPantallaInicio());
+            Application.Run(new ContextoNavegacion());
+        }
+    }
+
+    internal class ContextoNavegacion : ApplicationContext
+    {
+        public ContextoNavegacion()
+        {
+            FormPantallaInicio inicio = new FormPantallaInicio();
+            inicio.Show();
+            Application.Idle += OnIdle;
+        }
+
+        private void OnIdle(object? sender, EventArgs e)
+        {
+            bool hayVisible = false;
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                Form f = Application.OpenForms[i];
+                if (f != null && f.Visible)
+                {
+                    hayVisible = true;
+                    break;
+                }
+            }
+
+            if (!hayVisible)
+            {
+                Application.Idle -= OnIdle;
+                ExitThread();
+            }
         }
     }
 }

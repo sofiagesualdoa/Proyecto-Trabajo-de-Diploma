@@ -225,28 +225,25 @@ namespace Venta_Productos_Cosméticos
             {
                 if (dataGridViewCarrito.Rows.Count == 0 || bllCarrito.ObtenerDetalles().Count == 0)
                 {
-                    throw new Exception("No hay libros en el carrito para iniciar la venta");
+                    throw new Exception(s.Traducir("No hay libros en el carrito para iniciar la venta"));
+                }
+                if (bllCarrito.TieneClienteAsociado)
+                {
+                    BECliente clienteAsociado = bllCliente.BuscarClientePorDNI(bllCarrito.ObtenerDNICliente());
+                    ContinuarConPago(clienteAsociado);
+                    return;
                 }
                 string prompt = s.Traducir("Ingrese el DNI del cliente:");
                 string titulo = s.Traducir("Identificación del Cliente");
                 string dniStr = Interaction.InputBox(prompt, titulo, "");
-                if (string.IsNullOrWhiteSpace(dniStr) || dniStr.Length > 8 || dniStr.Length < 7)
-                {
-                    throw new Exception("El DNI no es válido");
-                }
-                if (!int.TryParse(dniStr.Trim(), out int dni))
+                if (string.IsNullOrWhiteSpace(dniStr)) throw new Exception(s.Traducir("El DNI ingresado no es válido."));
+                if (dniStr.Length > 8 || dniStr.Length < 7 || !int.TryParse(dniStr.Trim(), out int dni))
                 {
                     throw new Exception(s.Traducir("El DNI ingresado no es válido. Debe contener solo números."));
                 }
                 BECliente cliente = bllCliente.BuscarClientePorDNI(dni);
                 if (cliente != null)
                 {
-                    string nombreCompleto = bllCliente.ObtenerNombreCompleto(cliente);
-                    string mensajeRegistrado = $"{s.Traducir("Cliente:")} {nombreCompleto}";
-                    MessageBox.Show(mensajeRegistrado,
-                                    s.Traducir("Cliente Registrado"),
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
                     bllCarrito.AsociarDNI(cliente.DNI_657SGA);
                     ContinuarConPago(cliente);
                 }
@@ -260,11 +257,11 @@ namespace Venta_Productos_Cosméticos
                     {
                         if (frmClientes.ShowDialog() == DialogResult.OK && frmClientes.AsociadoAlCarrito)
                         {
-                            BECliente clienteAsociado = frmClientes.ClienteSeleccionado;
-                            if (clienteAsociado != null)
+                            BECliente clienteNuevo = frmClientes.ClienteSeleccionado;
+                            if (clienteNuevo != null)
                             {
-                                bllCarrito.AsociarDNI(clienteAsociado.DNI_657SGA);
-                                ContinuarConPago(clienteAsociado);
+                                bllCarrito.AsociarDNI(clienteNuevo.DNI_657SGA);
+                                ContinuarConPago(clienteNuevo);
                             }
                         }
                     }
@@ -272,22 +269,21 @@ namespace Venta_Productos_Cosméticos
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                                s.Traducir("Información"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, s.Traducir("Información"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void ContinuarConPago(BECliente cliente)
         {
-            var s = ServicioSessionManager.GetInstance();
-            decimal total = bllCarrito.CalcularTotal();
-            string nombreCompleto = bllCliente.ObtenerNombreCompleto(cliente);
-            MessageBox.Show(string.Format(s.Traducir("Cliente {0} asociado correctamente al carrito. Total a cobrar: ${1:N2}"), nombreCompleto, total),
-                            s.Traducir("Venta Lista para Cobro"),
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+            using (FormCobroVenta frmCobro = new FormCobroVenta(bllCarrito.ObtenerCarrito(), cliente))
+            {
+                if (frmCobro.ShowDialog() == DialogResult.OK)
+                {
+                    bllCarrito = new BLLCarrito();
+                    ActualizarCarrito();
+                    MostrarGrilla(bllLibro.ObtenerLibros());
+                }
+            }
         }
     }
 }

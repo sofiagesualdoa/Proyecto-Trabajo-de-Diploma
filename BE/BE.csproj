@@ -44,7 +44,11 @@
     <Compile Include="BECarrito.cs" />
     <Compile Include="BECliente.cs" />
     <Compile Include="BEDetalleCarrito.cs" />
+    <Compile Include="BEFactura.cs" />
     <Compile Include="BELibro.cs" />
+    <Compile Include="BEPago.cs" />
+    <Compile Include="BETarjeta.cs" />
+    <Compile Include="BEVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
