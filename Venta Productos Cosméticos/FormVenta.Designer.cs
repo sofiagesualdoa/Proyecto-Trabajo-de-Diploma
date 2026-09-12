@@ -151,7 +151,7 @@
             button1.Name = "button1";
             button1.Size = new Size(113, 47);
             button1.TabIndex = 40;
-            button1.Text = "Vaciar Carrito";
+            button1.Text = "Quitar Libro";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 

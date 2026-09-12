@@ -1,10 +1,11 @@
-﻿using BE;
+using BE;
 using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -33,7 +34,7 @@ namespace BLL
         {
             return carritoActual;
         }
-        public List<BEDetalleCarrito> ObtenerDetalles()
+        public List<BEDetalleVenta> ObtenerDetalles()
         {
             return carritoActual.Detalles;
         }
@@ -79,7 +80,7 @@ namespace BLL
 
         public void RegistrarLibro(BELibro libro, int cantidad)
         {
-            carritoActual.Detalles.Add(new BEDetalleCarrito
+            carritoActual.Detalles.Add(new BEDetalleVenta
             {
                 IdCarrito = carritoActual.IdCarrito,
                 ISBN = libro.ISBN_657SGA,
@@ -87,14 +88,25 @@ namespace BLL
                 Libro = libro
             });
         }
-        public void VaciarCarrito()
+        public void EliminarLibro(BEDetalleVenta x)
         {
             var session = ServicioSessionManager.GetInstance();
-            if (carritoActual.Detalles.Count == 0)
+            try
             {
-                throw new Exception(session.Traducir("El carrito ya está vacío."));
+                if (carritoActual.Detalles.Count == 0)
+                {
+                    throw new Exception(session.Traducir("El carrito ya está vacío."));
+                }
+                DialogResult res = MessageBox.Show(session.Traducir("¿Está seguro que desea remover el libro?"), session.Traducir("Información"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    carritoActual.Detalles.Remove(x);
+                }
             }
-            carritoActual.Detalles.Clear();
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, session.Traducir("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

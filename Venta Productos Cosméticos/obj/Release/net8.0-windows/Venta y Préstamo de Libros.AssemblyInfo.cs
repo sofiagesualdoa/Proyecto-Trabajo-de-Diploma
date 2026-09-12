@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Venta y Préstamo de Libros")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+251bee573a77c9b983cc7641d0e5b451e77f86b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc54dc151a3baa308c5721daa1abc9ec94beb4ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("Venta y Préstamo de Libros")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Venta y Préstamo de Libros")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

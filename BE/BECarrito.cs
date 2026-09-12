@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +10,12 @@ namespace BE
     {
         public int IdCarrito { get; set; }
         public int DNICliente { get; set; }
-        public List<BEDetalleCarrito> Detalles { get; set; }
+        public List<BEDetalleVenta> Detalles { get; set; }
         public string DVH { get; set; }
         public decimal Total => Detalles != null ? Detalles.Sum(d => d.Subtotal) : 0m;
         public BECarrito()
         {
-            Detalles = new List<BEDetalleCarrito>();
+            Detalles = new List<BEDetalleVenta>();
         }
     }
 }

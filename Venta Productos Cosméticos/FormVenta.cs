@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using BLL;
 using DAL;
 using Microsoft.VisualBasic;
@@ -173,6 +173,10 @@ namespace Venta_Productos_Cosméticos
         {
             dataGridViewCarrito.DataSource = null;
             dataGridViewCarrito.DataSource = bllCarrito.ObtenerDetalles().ToList();
+            if (dataGridViewCarrito.Columns["IdDetalleVenta"] != null)
+                dataGridViewCarrito.Columns["IdDetalleVenta"].Visible = false;
+            if (dataGridViewCarrito.Columns["IdVenta"] != null)
+                dataGridViewCarrito.Columns["IdVenta"].Visible = false;
             if (dataGridViewCarrito.Columns["IdCarrito"] != null)
                 dataGridViewCarrito.Columns["IdCarrito"].Visible = false;
             if (dataGridViewCarrito.Columns["ISBN"] != null)
@@ -206,7 +210,15 @@ namespace Venta_Productos_Cosméticos
             var s = ServicioSessionManager.GetInstance();
             try
             {
-                bllCarrito.VaciarCarrito();
+                if (dataGridViewCarrito.Rows.Count == 0 || bllCarrito.ObtenerDetalles().Count == 0)
+                {
+                    throw new Exception(s.Traducir("No hay libros en el carrito para quitar."));
+                }
+                if (dataGridViewCarrito.SelectedRows.Count == 0)
+                {
+                    throw new Exception(s.Traducir("Debe seleccionar un libro del carrito para eliminarlo."));
+                }
+                bllCarrito.EliminarLibro((BEDetalleVenta)dataGridViewCarrito.SelectedRows[0].DataBoundItem);
                 ActualizarCarrito();
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using BE;
+using BE;
+using DAL;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace BLL
     public class BLLVenta
     {
         private BLLLibro bllLibro = new BLLLibro();
+        private DALVenta dalVenta = new DALVenta();
         private ServicioEvento bitacora = new ServicioEvento();
         public BEFactura ConcretarVenta(BECarrito carrito, BECliente cliente, BEPago pago)
         {
@@ -22,7 +24,9 @@ namespace BLL
                 DNICliente = cliente.DNI_657SGA,
                 Total = carrito.Total,
                 Carrito = carrito,
-                Cliente = cliente
+                Cliente = cliente,
+                Fecha = DateTime.Today,
+                Hora = DateTime.Now.TimeOfDay
             };
             foreach (var item in carrito.Detalles)
             {
@@ -42,8 +46,24 @@ namespace BLL
                 Fecha = DateTime.Today,
                 Hora = DateTime.Now.TimeOfDay
             };
+            dalVenta.GuardarVenta(venta, factura, carrito.Detalles);
             bitacora.GrabarBitacora($"Venta realizada. Factura: {factura.NumeroFactura}", "Venta", 1);
             return factura;
+        }
+
+        public List<BEVenta> ObtenerVentas()
+        {
+            return dalVenta.ObtenerVentas();
+        }
+
+        public List<BEDetalleVenta> ObtenerDetallesPorVenta(int idVenta)
+        {
+            return dalVenta.ObtenerDetallesPorVenta(idVenta);
+        }
+
+        public BEFactura BuscarFacturaPorVenta(int idVenta)
+        {
+            return dalVenta.BuscarFacturaPorVenta(idVenta);
         }
     }
 }
