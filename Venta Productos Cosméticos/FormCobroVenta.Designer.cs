@@ -104,9 +104,10 @@
             // rbtnDebito
             // 
             rbtnDebito.AutoSize = true;
-            rbtnDebito.Location = new Point(326, 107);
+            rbtnDebito.Font = new Font("Sitka Text", 9F);
+            rbtnDebito.Location = new Point(324, 103);
             rbtnDebito.Name = "rbtnDebito";
-            rbtnDebito.Size = new Size(113, 19);
+            rbtnDebito.Size = new Size(121, 22);
             rbtnDebito.TabIndex = 38;
             rbtnDebito.TabStop = true;
             rbtnDebito.Text = "Tarjeta de Débito";
@@ -115,9 +116,10 @@
             // rbtnCredito
             // 
             rbtnCredito.AutoSize = true;
-            rbtnCredito.Location = new Point(470, 107);
+            rbtnCredito.Font = new Font("Sitka Text", 9F);
+            rbtnCredito.Location = new Point(468, 103);
             rbtnCredito.Name = "rbtnCredito";
-            rbtnCredito.Size = new Size(117, 19);
+            rbtnCredito.Size = new Size(126, 22);
             rbtnCredito.TabIndex = 39;
             rbtnCredito.TabStop = true;
             rbtnCredito.Text = "Tarjeta de Crédito";
@@ -135,6 +137,7 @@
             // 
             // txtCVV
             // 
+            txtCVV.Font = new Font("Sitka Text", 9F);
             txtCVV.Location = new Point(442, 278);
             txtCVV.Name = "txtCVV";
             txtCVV.Size = new Size(173, 23);
@@ -142,6 +145,7 @@
             // 
             // txtVencimiento
             // 
+            txtVencimiento.Font = new Font("Sitka Text", 9F);
             txtVencimiento.Location = new Point(553, 225);
             txtVencimiento.Name = "txtVencimiento";
             txtVencimiento.Size = new Size(173, 23);
@@ -149,6 +153,7 @@
             // 
             // txtTitular
             // 
+            txtTitular.Font = new Font("Sitka Text", 9F);
             txtTitular.Location = new Point(326, 225);
             txtTitular.Name = "txtTitular";
             txtTitular.Size = new Size(173, 23);
@@ -156,6 +161,7 @@
             // 
             // txtNumeroTarjeta
             // 
+            txtNumeroTarjeta.Font = new Font("Sitka Text", 9F);
             txtNumeroTarjeta.Location = new Point(553, 162);
             txtNumeroTarjeta.Name = "txtNumeroTarjeta";
             txtNumeroTarjeta.Size = new Size(173, 23);
@@ -163,6 +169,7 @@
             // 
             // txtBanco
             // 
+            txtBanco.Font = new Font("Sitka Text", 9F);
             txtBanco.Location = new Point(326, 162);
             txtBanco.Name = "txtBanco";
             txtBanco.Size = new Size(173, 23);

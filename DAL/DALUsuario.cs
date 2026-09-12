@@ -289,7 +289,7 @@ namespace DAL
                 usuarioMemoria.Email = usuarioModificado.Email;
                 usuarioMemoria.nombreUsuario = usuarioModificado.nombreUsuario;
                 usuarioMemoria.IdPerfil = usuarioModificado.IdPerfil;
-                usuarioMemoria.IdIdioma = usuarioModificado.IdIdioma;
+                usuarioMemoria.IdIdioma = idiomaAGuardar;
                 usuarioMemoria.PerfilUsuario = usuarioModificado.PerfilUsuario;
                 usuarioMemoria.Activo = usuarioModificado.Activo;
                 usuarioMemoria.DVH = usuarioModificado.DVH;

@@ -1,4 +1,4 @@
-﻿namespace Venta_Productos_Cosméticos
+namespace Venta_Productos_Cosméticos
 {
     partial class FormSistema
     {
@@ -210,6 +210,7 @@
             historialVentasToolStripMenuItem.Size = new Size(250, 28);
             historialVentasToolStripMenuItem.Tag = "Ver Historial Ventas";
             historialVentasToolStripMenuItem.Text = "Historial Ventas";
+            historialVentasToolStripMenuItem.Click += historialVentasToolStripMenuItem_Click;
             // 
             // historialPréstamosToolStripMenuItem
             // 

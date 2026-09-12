@@ -201,6 +201,10 @@ namespace Servicios
             usuario.SetPassword(hashClave);
             usuario.Bloqueado = false;
             usuario.IntentosInicio = 0;
+            if (usuario.IdIdioma <= 0)
+            {
+                usuario.IdIdioma = 1;
+            }
             GeneradorDigVerificador generador = new GeneradorDigVerificador();
             usuario.DVH = generador.GenerarDVH(usuario);
             dal.GuardarUsuario(usuario);
@@ -257,12 +261,41 @@ namespace Servicios
             {
                 throw new Exception(ServicioSessionManager.GetInstance().Traducir("El usuario no existe."));
             }
+
+            usuarioExistente.Nombre = usuarioModificado.Nombre;
+            usuarioExistente.Apellido = usuarioModificado.Apellido;
+            usuarioExistente.Email = usuarioModificado.Email;
+            usuarioExistente.nombreUsuario = usuarioModificado.nombreUsuario;
+            usuarioExistente.IdPerfil = usuarioModificado.IdPerfil;
+            usuarioExistente.Activo = usuarioModificado.Activo;
+            if (usuarioModificado.IdIdioma > 0)
+            {
+                usuarioExistente.IdIdioma = usuarioModificado.IdIdioma;
+            }
+            if (usuarioExistente.IdIdioma <= 0)
+            {
+                usuarioExistente.IdIdioma = 1;
+            }
+
             GeneradorDigVerificador generador = new GeneradorDigVerificador();
-            usuarioModificado.DVH = generador.GenerarDVH(usuarioModificado);
-            dal.ModificarUsuario(usuarioModificado);
+            usuarioExistente.DVH = generador.GenerarDVH(usuarioExistente);
+            dal.ModificarUsuario(usuarioExistente);
             new ServicioDVV().RecalcularDVVUsuario();
+
+            ServicioUsuario usuarioLogueado = ServicioSessionManager.GetInstance().ObtenerUsuario();
+            if (usuarioLogueado != null && usuarioLogueado.DNI == usuarioExistente.DNI)
+            {
+                usuarioLogueado.Nombre = usuarioExistente.Nombre;
+                usuarioLogueado.Apellido = usuarioExistente.Apellido;
+                usuarioLogueado.Email = usuarioExistente.Email;
+                usuarioLogueado.nombreUsuario = usuarioExistente.nombreUsuario;
+                usuarioLogueado.IdPerfil = usuarioExistente.IdPerfil;
+                usuarioLogueado.Activo = usuarioExistente.Activo;
+                usuarioLogueado.DVH = usuarioExistente.DVH;
+            }
+
             ServicioEvento bitacora = new ServicioEvento();
-            bitacora.GrabarBitacora($"Modificar Usuario: {usuarioModificado.nombreUsuario}", "Usuario", 1);
+            bitacora.GrabarBitacora($"Modificar Usuario: {usuarioExistente.nombreUsuario}", "Usuario", 1);
         }
 
         public bool ModificarEstado(int DNIUsuarioSeleccionado)

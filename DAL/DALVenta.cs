@@ -151,7 +151,10 @@ namespace DAL
         public List<BEVenta> ObtenerVentas()
         {
             List<BEVenta> lista = new List<BEVenta>();
-            string query = "SELECT IdVenta, DNICliente, Fecha, Hora, Total, DVH FROM Venta ORDER BY IdVenta DESC;";
+            string query = @"SELECT v.IdVenta, v.DNICliente, v.Fecha, v.Hora, v.Total, v.DVH, f.NumeroFactura 
+                             FROM Venta v 
+                             LEFT JOIN Factura f ON v.IdVenta = f.IdVenta 
+                             ORDER BY v.IdVenta DESC;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -168,7 +171,8 @@ namespace DAL
                                 Fecha = Convert.ToDateTime(reader["Fecha"]),
                                 Hora = (TimeSpan)reader["Hora"],
                                 Total = Convert.ToDecimal(reader["Total"]),
-                                DVH = reader["DVH"]?.ToString()
+                                DVH = reader["DVH"]?.ToString(),
+                                NumeroFactura = reader["NumeroFactura"] != DBNull.Value ? reader["NumeroFactura"].ToString() : string.Empty
                             });
                         }
                     }
@@ -180,7 +184,11 @@ namespace DAL
         public List<BEDetalleVenta> ObtenerDetallesPorVenta(int idVenta)
         {
             List<BEDetalleVenta> lista = new List<BEDetalleVenta>();
-            string query = "SELECT IdDetalleVenta, IdVenta, ISBN_657SGA, Cantidad, PrecioUnitario, Subtotal, DVH FROM DetalleVenta WHERE IdVenta = @IdVenta;";
+            string query = @"SELECT d.IdDetalleVenta, d.IdVenta, d.ISBN_657SGA, d.Cantidad, d.PrecioUnitario, d.Subtotal, d.DVH,
+                                    l.Título_657SGA, l.Autor_657SGA, l.Editorial_657SGA
+                             FROM DetalleVenta d 
+                             LEFT JOIN Libro l ON d.ISBN_657SGA = l.ISBN_657SGA 
+                             WHERE d.IdVenta = @IdVenta;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -200,7 +208,14 @@ namespace DAL
                                 Cantidad = Convert.ToInt32(reader["Cantidad"]),
                                 PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
                                 Subtotal = Convert.ToDecimal(reader["Subtotal"]),
-                                DVH = reader["DVH"]?.ToString()
+                                DVH = reader["DVH"]?.ToString(),
+                                Libro = new BELibro
+                                {
+                                    ISBN_657SGA = reader["ISBN_657SGA"].ToString(),
+                                    Título_657SGA = reader["Título_657SGA"] != DBNull.Value ? reader["Título_657SGA"].ToString() : string.Empty,
+                                    Autor_657SGA = reader["Autor_657SGA"] != DBNull.Value ? reader["Autor_657SGA"].ToString() : string.Empty,
+                                    Editorial_657SGA = reader["Editorial_657SGA"] != DBNull.Value ? reader["Editorial_657SGA"].ToString() : string.Empty
+                                }
                             });
                         }
                     }

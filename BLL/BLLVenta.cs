@@ -65,5 +65,23 @@ namespace BLL
         {
             return dalVenta.BuscarFacturaPorVenta(idVenta);
         }
+
+        public List<BEVenta> FiltrarVentas(DateTime? fechaDesde, DateTime? fechaHasta, int? dniCliente)
+        {
+            var ventas = ObtenerVentas();
+            if (fechaDesde.HasValue)
+            {
+                ventas = ventas.Where(v => v.Fecha.Date >= fechaDesde.Value.Date).ToList();
+            }
+            if (fechaHasta.HasValue)
+            {
+                ventas = ventas.Where(v => v.Fecha.Date <= fechaHasta.Value.Date).ToList();
+            }
+            if (dniCliente.HasValue && dniCliente.Value > 0)
+            {
+                ventas = ventas.Where(v => v.DNICliente.ToString().Contains(dniCliente.Value.ToString())).ToList();
+            }
+            return ventas;
+        }
     }
 }

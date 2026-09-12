@@ -439,5 +439,13 @@ namespace Venta_Productos_Cosméticos
             frmC.Show();
             this.Close();
         }
+
+        private void historialVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHistorialVentas frmHistorial = new FormHistorialVentas();
+            frmHistorial.MdiParent = this.MdiParent;
+            frmHistorial.Show();
+            this.Close();
+        }
     }
 }

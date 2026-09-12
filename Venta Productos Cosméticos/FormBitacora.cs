@@ -302,7 +302,7 @@ namespace Venta_Productos_Cosméticos
                         iTextSharp.text.Font fuenteCabeceraTabla = FontFactory.GetFont("Segoe UI", 9, iTextSharp.text.Font.BOLD, BaseColor.WHITE);
                         iTextSharp.text.Font fuenteCuerpoTabla = FontFactory.GetFont("Segoe UI", 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-                        Paragraph titulo = new Paragraph("EVERGLOW COSMÉTICOS", fuenteTitulo);
+                        Paragraph titulo = new Paragraph("BOOKLY LIBROS", fuenteTitulo);
                         titulo.Alignment = Element.ALIGN_LEFT;
                         documentoPdf.Add(titulo);
 

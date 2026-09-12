@@ -362,6 +362,7 @@ namespace Venta_Productos_Cosméticos
             txtDireccion_SGA657.Clear();
             txtTelefono_SGA657.Clear();
             txtEmail_SGA657.Clear();
+            CargarGrilla();
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +16,6 @@ namespace BE
         public BECarrito Carrito { get; set; }
         public BECliente Cliente { get; set; }
         public string DVH { get; set; }
+        public string NumeroFactura { get; set; }
     }
 }

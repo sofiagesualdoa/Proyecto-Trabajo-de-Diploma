@@ -19,6 +19,9 @@
     <Compile Update="FormErrorIntegridad.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormHistorialVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormLibros.cs">
       <SubType>Form</SubType>
     </Compile>

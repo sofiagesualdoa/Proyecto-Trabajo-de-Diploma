@@ -103,6 +103,7 @@
             // 
             // txtTelefono_SGA657
             // 
+            txtTelefono_SGA657.Font = new Font("Sitka Text", 9F);
             txtTelefono_SGA657.Location = new Point(217, 173);
             txtTelefono_SGA657.Name = "txtTelefono_SGA657";
             txtTelefono_SGA657.Size = new Size(173, 23);
@@ -170,6 +171,7 @@
             // 
             // txtEmail_SGA657
             // 
+            txtEmail_SGA657.Font = new Font("Sitka Text", 9F);
             txtEmail_SGA657.Location = new Point(13, 173);
             txtEmail_SGA657.Name = "txtEmail_SGA657";
             txtEmail_SGA657.Size = new Size(173, 23);
@@ -177,6 +179,7 @@
             // 
             // txtDireccion_SGA657
             // 
+            txtDireccion_SGA657.Font = new Font("Sitka Text", 9F);
             txtDireccion_SGA657.Location = new Point(217, 110);
             txtDireccion_SGA657.Name = "txtDireccion_SGA657";
             txtDireccion_SGA657.Size = new Size(173, 23);
@@ -184,6 +187,7 @@
             // 
             // txtApellido_SGA657
             // 
+            txtApellido_SGA657.Font = new Font("Sitka Text", 9F);
             txtApellido_SGA657.Location = new Point(13, 107);
             txtApellido_SGA657.Name = "txtApellido_SGA657";
             txtApellido_SGA657.Size = new Size(173, 23);
@@ -191,6 +195,7 @@
             // 
             // txtNombre_SGA657
             // 
+            txtNombre_SGA657.Font = new Font("Sitka Text", 9F);
             txtNombre_SGA657.Location = new Point(217, 47);
             txtNombre_SGA657.Name = "txtNombre_SGA657";
             txtNombre_SGA657.Size = new Size(173, 23);
@@ -198,6 +203,7 @@
             // 
             // txtDNI_SGA657
             // 
+            txtDNI_SGA657.Font = new Font("Sitka Text", 9F);
             txtDNI_SGA657.Location = new Point(13, 47);
             txtDNI_SGA657.Name = "txtDNI_SGA657";
             txtDNI_SGA657.Size = new Size(173, 23);
