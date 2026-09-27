@@ -3,19 +3,25 @@
   "WorkspaceRootPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formcobroventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C076BD35-A240-4FF9-92C9-803CF952EB17}|..\\Servicios\\Servicios.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\servicios\\basedatos\\idaldvv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DEB3DC7C-5059-F4AD-2883-65AE6414B1AF}|..\\DAL\\DAL.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\dal\\daldvv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formcobroventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formcobroventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formlibros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formlibros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formlibros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -23,7 +29,7 @@
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formhistorialventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -31,7 +37,7 @@
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formbitacora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formbitacora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formbitacora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formbitacora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -51,42 +57,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IDALDVV.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\BaseDatos\\IDALDVV.cs",
+              "RelativeDocumentMoniker": "..\\Servicios\\BaseDatos\\IDALDVV.cs",
+              "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\BaseDatos\\IDALDVV.cs",
+              "RelativeToolTip": "..\\Servicios\\BaseDatos\\IDALDVV.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T15:10:21.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DALDVV.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DALDVV.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\DALDVV.cs",
+              "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DALDVV.cs",
+              "RelativeToolTip": "..\\DAL\\DALDVV.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T15:10:14.202Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FormCobroVenta.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormCobroVenta.cs",
               "RelativeDocumentMoniker": "FormCobroVenta.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormCobroVenta.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormCobroVenta.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T19:30:49.427Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T19:30:49.427Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FormVenta.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormVenta.cs",
               "RelativeDocumentMoniker": "FormVenta.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormVenta.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormVenta.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T19:30:37.923Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T19:30:37.923Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "FormLibros.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormLibros.cs",
               "RelativeDocumentMoniker": "FormLibros.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormLibros.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormLibros.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T19:30:27.127Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T19:30:27.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "FormHistorialVentas.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormHistorialVentas.cs",
               "RelativeDocumentMoniker": "FormHistorialVentas.cs",
@@ -99,19 +127,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "FormHistorialVentas.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormHistorialVentas.cs",
               "RelativeDocumentMoniker": "FormHistorialVentas.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormHistorialVentas.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormHistorialVentas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T19:24:32.623Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T19:24:32.623Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "FormBitacora.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormBitacora.cs",
               "RelativeDocumentMoniker": "FormBitacora.cs",
@@ -124,19 +151,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "FormBitacora.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormBitacora.cs",
               "RelativeDocumentMoniker": "FormBitacora.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormBitacora.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormBitacora.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T18:45:55.882Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T18:45:55.882Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "FormClientes.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormClientes.cs",
               "RelativeDocumentMoniker": "FormClientes.cs",
@@ -149,15 +175,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "FormClientes.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormClientes.cs",
               "RelativeDocumentMoniker": "FormClientes.cs",
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormClientes.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormClientes.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-12T18:44:14.925Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-09-12T18:44:14.925Z"
             }
           ]
         }

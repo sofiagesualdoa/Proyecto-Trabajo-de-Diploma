@@ -122,7 +122,7 @@ namespace Venta_Productos_Cosméticos
 
         private void btnConsultar_657SGA_Click(object sender, EventArgs e)
         {
-            var listaFiltrada = bllLibro.FiltrarLibros(textBox1_657SGA.Text);
+            var listaFiltrada = bllLibro.BuscarLibros(textBox1_657SGA.Text);
             if (rbtnActivos_657SGA.Checked)
             {
                 MostrarGrilla(listaFiltrada.Where(l => l.Activo_657SGA).ToList());

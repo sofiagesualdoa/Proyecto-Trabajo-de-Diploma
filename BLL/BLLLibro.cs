@@ -50,7 +50,7 @@ namespace BLL
             return dal.ObtenerLibros().Where(l => l.Activo_657SGA).ToList();
         }
 
-        public List<BELibro> FiltrarLibros(string criterio)
+        public List<BELibro> BuscarLibros(string criterio)
         {
             return dal.BuscarLibros(criterio);
         }

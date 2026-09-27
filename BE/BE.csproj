@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BECarrito.cs" />
     <Compile Include="BECliente.cs" />
+    <Compile Include="BEDetalleFactura.cs" />
     <Compile Include="BEDetalleVenta.cs" />
     <Compile Include="BEFactura.cs" />
     <Compile Include="BELibro.cs" />

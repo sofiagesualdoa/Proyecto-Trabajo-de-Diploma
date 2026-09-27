@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -24,6 +24,8 @@ namespace Servicios
             .Where(p => p.CanRead)
             .Where(p => p.Name != "DVH")
             .Where(p => !Attribute.IsDefined(p, typeof(NoVerificarAttribute)))
+            .Where(p => !(nombreClase == "BEDetalleVenta" && (p.Name == "IdCarrito" || p.Name == "Libro" || p.Name == "Título" || p.Name == "Autor" || p.Name == "PrecioUnitario" || p.Name == "Subtotal")))
+            .Where(p => !(nombreClase == "BEVenta" && (p.Name == "Carrito" || p.Name == "Cliente" || p.Name == "NumeroFactura")))
             .OrderBy(p => p.MetadataToken)
             .ToArray();
 

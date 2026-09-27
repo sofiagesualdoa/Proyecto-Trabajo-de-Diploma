@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -76,7 +76,7 @@ namespace DAL
             }
             return lista;
         }
-        public void GuardarCliente(BECliente cliente)
+        public void CrearCliente(BECliente cliente)
         {
             string query = @"INSERT INTO Cliente (DNI_657SGA, Nombre_657SGA, Apellido_657SGA, Email_657SGA, Teléfono_657SGA, Dirección_657SGA, Activo_657SGA, DVH) 
                              VALUES (@DNI, @Nombre, @Apellido, @Email, @Telefono, @Direccion, @Activo, @DVH);";

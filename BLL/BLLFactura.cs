@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BLLPago
+    public class BLLFactura
     {
         private BLLEntidadBancaria entidadBancaria = new BLLEntidadBancaria();
+
         public BEPago RealizarPago(BETarjeta tarjeta, decimal importe)
         {
             var s = ServicioSessionManager.GetInstance();

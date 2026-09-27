@@ -1,4 +1,4 @@
-﻿using BE;
+using BE;
 using DAL;
 using Servicios;
 using System;
@@ -46,7 +46,7 @@ namespace BLL
             }
             cliente.Activo_657SGA = true;
             cliente.DVH = generador.GenerarDVH(cliente);
-            dal.GuardarCliente(cliente);
+            dal.CrearCliente(cliente);
             bitacora.GrabarBitacora("Alta de Cliente", "Cliente", 3);
         }
         public void ModificarCliente(BECliente clienteModificado, int dniOriginal)

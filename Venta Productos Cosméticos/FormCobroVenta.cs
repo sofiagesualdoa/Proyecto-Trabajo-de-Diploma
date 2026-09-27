@@ -17,7 +17,7 @@ namespace Venta_Productos_Cosméticos
     {
         private readonly BECarrito carrito;
         private readonly BECliente cliente;
-        private readonly BLLPago bllPago = new BLLPago();
+        private readonly BLLFactura bllFactura = new BLLFactura();
         private readonly BLLVenta bllVenta = new BLLVenta();
         private readonly ServicioIdioma bllIdioma = new ServicioIdioma();
         private readonly Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
@@ -91,7 +91,7 @@ namespace Venta_Productos_Cosméticos
                     Vencimiento = txtVencimiento.Text.Trim(),
                     CVV = txtCVV.Text.Trim()
                 };
-                BEPago pago = bllPago.RealizarPago(tarjeta, carrito.Total);
+                BEPago pago = bllFactura.RealizarPago(tarjeta, carrito.Total);
                 BEFactura factura = bllVenta.ConcretarVenta(carrito, cliente, pago);
                 MessageBox.Show(string.Format(s.Traducir("¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}"),
                                               factura.NumeroFactura, factura.Total),
