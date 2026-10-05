@@ -49,8 +49,12 @@ namespace Servicios
 
         public List<ServicioEvento> ConsultarEventosPorDefecto()
         {
-            DateTime fechaFiltro = DateTime.Today.AddDays(-3);
-            return dalEvento.ObtenerEventos(fechaFiltro);
+            return dalEvento.ObtenerTodosLosEventos();
+        }
+
+        public List<ServicioEvento> ObtenerTodosLosEventos()
+        {
+            return dalEvento.ObtenerTodosLosEventos();
         }
 
         public List<ServicioEvento> ObtenerEventos(DateTime fechaDesde)

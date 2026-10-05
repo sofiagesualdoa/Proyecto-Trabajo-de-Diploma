@@ -92,7 +92,9 @@ namespace DAL
         public List<ServicioEvento> ObtenerTodosLosEventos()
         {
             List<ServicioEvento> lista = new List<ServicioEvento>();
-            string query = @"SELECT IdEvento, Login, Criticidad, Fecha, Hora, NombreEvento, Modulo, DNI, DVH FROM Evento";
+            string query = @"SELECT IdEvento, Login, Criticidad, Fecha, Hora, NombreEvento, Modulo, DNI, DVH 
+                             FROM Evento 
+                             ORDER BY Fecha DESC, Hora DESC;";
 
             using (SqlConnection conexion = new SqlConnection(cadena))
             using (SqlCommand comando = new SqlCommand(query, conexion))

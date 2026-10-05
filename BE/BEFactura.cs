@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,7 @@ namespace BE
     public class BEFactura
     {
         public int IdFactura { get; set; }
-        public int IdVenta { get; set; }
+        public int IdVenta { get => IdFactura; set { } }
         public int DNICliente { get; set; }
         public DateTime Fecha { get; set; } = DateTime.Today;
         public TimeSpan Hora { get; set; } = DateTime.Now.TimeOfDay;

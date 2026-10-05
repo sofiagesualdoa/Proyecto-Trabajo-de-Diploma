@@ -217,6 +217,7 @@
             // 
             txtApellido.Location = new Point(465, 33);
             txtApellido.Name = "txtApellido";
+            txtApellido.ReadOnly = true;
             txtApellido.Size = new Size(173, 23);
             txtApellido.TabIndex = 2;
             // 
@@ -224,6 +225,7 @@
             // 
             txtNombre.Location = new Point(261, 33);
             txtNombre.Name = "txtNombre";
+            txtNombre.ReadOnly = true;
             txtNombre.Size = new Size(173, 23);
             txtNombre.TabIndex = 0;
             // 
@@ -232,6 +234,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 67);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.Size = new Size(909, 150);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellClick += dataGridView1_CellClick;

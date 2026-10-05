@@ -19,6 +19,28 @@ namespace Venta_Productos_Cosméticos
 
         private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
+
+        private readonly string[] modulosOriginales = new string[] { "Todos", "Usuario", "Ventas", "Compras", "Maestro", "Perfil" };
+        private readonly string[] eventosOriginales = new string[] {
+            "Todos",
+            "Login",
+            "Logout",
+            "Crear Usuario",
+            "Modificar Usuario",
+            "Activar / Desactivar Usuario",
+            "Desbloquear Usuario",
+            "Bloquear Usuario",
+            "Cambiar Clave",
+            "Cambio de Idioma",
+            "Creación de nueva Familia",
+            "Eliminación de Familia",
+            "Modificación Familia",
+            "Creación de nuevo Perfil",
+            "Eliminación de Perfil",
+            "Modificación Perfil"
+        };
+        private readonly string[] criticidadesOriginales = new string[] { "Todos", "1 (Alta)", "2 (Media)", "3 (Baja)" };
+
         public FormBitacora()
         {
             InitializeComponent();
@@ -87,9 +109,9 @@ namespace Venta_Productos_Cosméticos
                 }
             }
 
-            TraducirCombo(cmbModulo, leyendas);
-            TraducirCombo(cmbEvento, leyendas);
-            TraducirCombo(cmbCriticidad, leyendas);
+            TraducirCombo(cmbModulo, leyendas, modulosOriginales);
+            TraducirCombo(cmbEvento, leyendas, eventosOriginales);
+            TraducirCombo(cmbCriticidad, leyendas, criticidadesOriginales);
             TraducirCombo(cmbLogin, leyendas);
         }
 
@@ -105,43 +127,45 @@ namespace Venta_Productos_Cosméticos
             }
         }
 
-        private void TraducirCombo(ComboBox combo, Dictionary<string, string> leyendas)
+        private void TraducirCombo(ComboBox combo, Dictionary<string, string> leyendas, string[]? itemsOriginales = null)
         {
-
+            int selectedIndex = combo.SelectedIndex;
             for (int i = 0; i < combo.Items.Count; i++)
             {
-                string itemOriginal = combo.Items[i].ToString();
+                string itemOriginal;
+                if (itemsOriginales != null && i < itemsOriginales.Length)
+                {
+                    itemOriginal = itemsOriginales[i];
+                }
+                else if (i == 0)
+                {
+                    itemOriginal = "Todos";
+                }
+                else
+                {
+                    itemOriginal = combo.Items[i]?.ToString() ?? "";
+                }
+
                 if (leyendas != null && leyendas.ContainsKey(itemOriginal))
                     combo.Items[i] = leyendas[itemOriginal];
                 else
                     combo.Items[i] = itemOriginal;
             }
+
+            if (selectedIndex >= 0 && selectedIndex < combo.Items.Count)
+                combo.SelectedIndex = selectedIndex;
         }
 
         private void CargarComboBox()
         {
-            cmbModulo.Items.AddRange(new string[] { "Todos", "Usuario", "Ventas", "Compras", "Maestro", "Perfil" });
+            cmbModulo.Items.Clear();
+            cmbModulo.Items.AddRange(modulosOriginales);
 
-            cmbEvento.Items.AddRange(new string[] {
-                                                        "Todos",
-                                                        "Login",
-                                                        "Logout",
-                                                        "Crear Usuario",
-                                                        "Modificar Usuario",
-                                                        "Activar / Desactivar Usuario",
-                                                        "Desbloquear Usuario",
-                                                        "Bloquear Usuario",
-                                                        "Cambiar Clave",
-                                                        "Cambio de Idioma",
-                                                        "Creación de nueva Familia",
-                                                        "Eliminación de Familia",
-                                                        "Modificación Familia",
-                                                        "Creación de nuevo Perfil",
-                                                        "Eliminación de Perfil",
-                                                        "Modificación Perfil"
-                                                    });
+            cmbEvento.Items.Clear();
+            cmbEvento.Items.AddRange(eventosOriginales);
 
-            cmbCriticidad.Items.AddRange(new string[] { "Todos", "1 (Alta)", "2 (Media)", "3 (Baja)" });
+            cmbCriticidad.Items.Clear();
+            cmbCriticidad.Items.AddRange(criticidadesOriginales);
 
             cmbModulo.SelectedIndex = 0;
             cmbEvento.SelectedIndex = 0;
@@ -181,7 +205,7 @@ namespace Venta_Productos_Cosméticos
             cmbModulo.SelectedIndex = 0;
             cmbEvento.SelectedIndex = 0;
             cmbCriticidad.SelectedIndex = 0;
-            dtpFechaInicio.Value = DateTime.Today.AddDays(-3);
+            dtpFechaInicio.Value = new DateTime(2020, 1, 1);
             dtpFechaFin.Value = DateTime.Today;
             ServicioEvento bitacora = new ServicioEvento();
             MostrarGrilla(bitacora.ConsultarEventosPorDefecto());
@@ -196,6 +220,10 @@ namespace Venta_Productos_Cosméticos
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = lista;
+            if (dataGridView1.Columns["DVH"] != null)
+            {
+                dataGridView1.Columns["DVH"].Visible = false;
+            }
             var usuarioActivo = ServicioSessionManager.GetInstance().ObtenerUsuario();
             if (usuarioActivo?.Idioma?.DiccionarioLeyendas != null)
             {
@@ -241,17 +269,45 @@ namespace Venta_Productos_Cosméticos
                 ServicioEvento srvEvento = new ServicioEvento();
                 List<ServicioEvento> eventosFiltrados = srvEvento.ObtenerEventos(dtpFechaInicio.Value.Date);
                 eventosFiltrados = eventosFiltrados.Where(evt => evt.Fecha.Date <= dtpFechaFin.Value.Date).ToList();
-                if (cmbLogin.Text != "Todos" && cmbLogin.SelectedIndex != -1)
-                    eventosFiltrados = eventosFiltrados.Where(evt => evt.Login == cmbLogin.Text).ToList();
-                if (cmbModulo.Text != "Todos" && cmbModulo.SelectedIndex != -1)
-                    eventosFiltrados = eventosFiltrados.Where(evt => evt.Modulo == cmbModulo.Text).ToList();
-                if (cmbEvento.Text != "Todos" && cmbEvento.SelectedIndex != -1)
-                    eventosFiltrados = eventosFiltrados.Where(evt => evt.NombreEvento.StartsWith(cmbEvento.Text)).ToList();
-                if (cmbCriticidad.Text != "Todos" && cmbCriticidad.SelectedIndex != -1)
+
+                if (cmbLogin.SelectedIndex > 0)
                 {
-                    int nivelBuscar = int.Parse(cmbCriticidad.Text.Substring(0, 1));
+                    string? loginSeleccionado = cmbLogin.SelectedItem?.ToString();
+                    eventosFiltrados = eventosFiltrados.Where(evt => evt.Login == loginSeleccionado).ToList();
+                }
+
+                if (cmbModulo.SelectedIndex > 0)
+                {
+                    string moduloSeleccionado = cmbModulo.SelectedItem?.ToString() ?? "";
+                    string moduloOriginal = (cmbModulo.SelectedIndex < modulosOriginales.Length) ? modulosOriginales[cmbModulo.SelectedIndex] : "";
+                    eventosFiltrados = eventosFiltrados.Where(evt =>
+                        !string.IsNullOrEmpty(evt.Modulo) && (
+                            evt.Modulo.Equals(moduloSeleccionado, StringComparison.OrdinalIgnoreCase) ||
+                            evt.Modulo.Equals(moduloOriginal, StringComparison.OrdinalIgnoreCase) ||
+                            evt.Modulo.IndexOf(moduloOriginal, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                            moduloOriginal.IndexOf(evt.Modulo, StringComparison.OrdinalIgnoreCase) >= 0
+                        )
+                    ).ToList();
+                }
+
+                if (cmbEvento.SelectedIndex > 0)
+                {
+                    string eventoSeleccionado = cmbEvento.SelectedItem?.ToString() ?? "";
+                    string eventoOriginal = (cmbEvento.SelectedIndex < eventosOriginales.Length) ? eventosOriginales[cmbEvento.SelectedIndex] : "";
+                    eventosFiltrados = eventosFiltrados.Where(evt =>
+                        !string.IsNullOrEmpty(evt.NombreEvento) && (
+                            evt.NombreEvento.StartsWith(eventoSeleccionado, StringComparison.OrdinalIgnoreCase) ||
+                            evt.NombreEvento.StartsWith(eventoOriginal, StringComparison.OrdinalIgnoreCase)
+                        )
+                    ).ToList();
+                }
+
+                if (cmbCriticidad.SelectedIndex > 0)
+                {
+                    int nivelBuscar = cmbCriticidad.SelectedIndex;
                     eventosFiltrados = eventosFiltrados.Where(evt => evt.Criticidad == nivelBuscar).ToList();
                 }
+
                 MostrarGrilla(eventosFiltrados);
             }
             catch (Exception ex)

@@ -26,6 +26,7 @@ namespace Servicios
             .Where(p => !Attribute.IsDefined(p, typeof(NoVerificarAttribute)))
             .Where(p => !(nombreClase == "BEDetalleVenta" && (p.Name == "IdCarrito" || p.Name == "Libro" || p.Name == "Título" || p.Name == "Autor" || p.Name == "PrecioUnitario" || p.Name == "Subtotal")))
             .Where(p => !(nombreClase == "BEVenta" && (p.Name == "Carrito" || p.Name == "Cliente" || p.Name == "NumeroFactura")))
+            .Where(p => !(nombreClase == "BEFactura" && p.Name == "IdVenta"))
             .OrderBy(p => p.MetadataToken)
             .ToArray();
 

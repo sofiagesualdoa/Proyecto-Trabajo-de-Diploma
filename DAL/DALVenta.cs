@@ -21,88 +21,14 @@ namespace DAL
                 {
                     try
                     {
-                        string queryVenta = @"INSERT INTO Venta (DNICliente, Fecha, Hora, Total, DVH) 
-                                              VALUES (@DNICliente, @Fecha, @Hora, @Total, @DVH);
-                                              SELECT CAST(SCOPE_IDENTITY() AS INT);";
-
-                        int idVenta;
-                        using (SqlCommand cmdVenta = new SqlCommand(queryVenta, conexion, transaccion))
-                        {
-                            cmdVenta.Parameters.Add("@DNICliente", SqlDbType.Int).Value = venta.DNICliente;
-                            cmdVenta.Parameters.Add("@Fecha", SqlDbType.Date).Value = venta.Fecha;
-                            cmdVenta.Parameters.Add("@Hora", SqlDbType.Time).Value = venta.Hora;
-                            cmdVenta.Parameters.Add("@Total", SqlDbType.Decimal).Value = venta.Total;
-                            cmdVenta.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = DBNull.Value;
-                            idVenta = Convert.ToInt32(cmdVenta.ExecuteScalar());
-                        }
-
-                        venta.IdVenta = idVenta;
-
-                        BEVenta ventaParaDVH = new BEVenta
-                        {
-                            IdVenta = idVenta,
-                            DNICliente = venta.DNICliente,
-                            Fecha = venta.Fecha,
-                            Hora = venta.Hora,
-                            Total = venta.Total
-                        };
-                        venta.DVH = generador.GenerarDVH(ventaParaDVH);
-
-                        string queryUpdateDVHVenta = "UPDATE Venta SET DVH = @DVH WHERE IdVenta = @IdVenta;";
-                        using (SqlCommand cmdDVHVenta = new SqlCommand(queryUpdateDVHVenta, conexion, transaccion))
-                        {
-                            cmdDVHVenta.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = venta.DVH;
-                            cmdDVHVenta.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                            cmdDVHVenta.ExecuteNonQuery();
-                        }
-
-                        string queryDetalle = @"INSERT INTO DetalleVenta (IdVenta, ISBN_657SGA, Cantidad, DVH) 
-                                                VALUES (@IdVenta, @ISBN, @Cantidad, @DVH);
-                                                SELECT CAST(SCOPE_IDENTITY() AS INT);";
-
-                        string queryUpdateDVHDetalle = "UPDATE DetalleVenta SET DVH = @DVH WHERE IdDetalleVenta = @IdDetalleVenta;";
-
-                        foreach (var item in detalles)
-                        {
-                            int idDetalle;
-                            using (SqlCommand cmdDetalle = new SqlCommand(queryDetalle, conexion, transaccion))
-                            {
-                                cmdDetalle.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
-                                cmdDetalle.Parameters.Add("@ISBN", SqlDbType.VarChar, 13).Value = item.ISBN;
-                                cmdDetalle.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.Cantidad;
-                                cmdDetalle.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = DBNull.Value;
-                                idDetalle = Convert.ToInt32(cmdDetalle.ExecuteScalar());
-                            }
-
-                            item.IdDetalleVenta = idDetalle;
-                            item.IdVenta = idVenta;
-
-                            BEDetalleVenta detalleParaDVH = new BEDetalleVenta
-                            {
-                                IdDetalleVenta = idDetalle,
-                                IdVenta = idVenta,
-                                ISBN = item.ISBN,
-                                Cantidad = item.Cantidad
-                            };
-                            item.DVH = generador.GenerarDVH(detalleParaDVH);
-
-                            using (SqlCommand cmdDVHDetalle = new SqlCommand(queryUpdateDVHDetalle, conexion, transaccion))
-                            {
-                                cmdDVHDetalle.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = item.DVH;
-                                cmdDVHDetalle.Parameters.Add("@IdDetalleVenta", SqlDbType.Int).Value = idDetalle;
-                                cmdDVHDetalle.ExecuteNonQuery();
-                            }
-                        }
-
-                        factura.IdVenta = idVenta;
-                        string queryFactura = @"INSERT INTO Factura (IdVenta, NumeroFactura, Fecha, Hora, Total, DNICliente, DVH) 
-                                                VALUES (@IdVenta, @NumeroFactura, @Fecha, @Hora, @Total, @DNICliente, @DVH);
+                        // 1. INSERT EN FACTURA
+                        string queryFactura = @"INSERT INTO Factura (NumeroFactura, Fecha, Hora, Total, DNICliente, DVH) 
+                                                VALUES (@NumeroFactura, @Fecha, @Hora, @Total, @DNICliente, @DVH);
                                                 SELECT CAST(SCOPE_IDENTITY() AS INT);";
 
                         int idFactura;
                         using (SqlCommand cmdFactura = new SqlCommand(queryFactura, conexion, transaccion))
                         {
-                            cmdFactura.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
                             cmdFactura.Parameters.Add("@NumeroFactura", SqlDbType.VarChar, 50).Value = factura.NumeroFactura;
                             cmdFactura.Parameters.Add("@Fecha", SqlDbType.Date).Value = factura.Fecha;
                             cmdFactura.Parameters.Add("@Hora", SqlDbType.Time).Value = factura.Hora;
@@ -113,10 +39,11 @@ namespace DAL
                         }
 
                         factura.IdFactura = idFactura;
+                        venta.IdVenta = idFactura;
+
                         BEFactura facturaParaDVH = new BEFactura
                         {
                             IdFactura = idFactura,
-                            IdVenta = idVenta,
                             NumeroFactura = factura.NumeroFactura,
                             Fecha = factura.Fecha,
                             Hora = factura.Hora,
@@ -124,6 +51,7 @@ namespace DAL
                             DNICliente = factura.DNICliente
                         };
                         factura.DVH = generador.GenerarDVH(facturaParaDVH);
+                        venta.DVH = factura.DVH;
 
                         string queryUpdateDVHFactura = "UPDATE Factura SET DVH = @DVH WHERE IdFactura = @IdFactura;";
                         using (SqlCommand cmdDVHFactura = new SqlCommand(queryUpdateDVHFactura, conexion, transaccion))
@@ -133,6 +61,7 @@ namespace DAL
                             cmdDVHFactura.ExecuteNonQuery();
                         }
 
+                        // 2. INSERT EN DETALLE FACTURA
                         string queryDetalleFactura = @"INSERT INTO DetalleFactura (IdFactura, ISBN_657SGA, Cantidad, Precio, DVH) 
                                                        VALUES (@IdFactura, @ISBN, @Cantidad, @Precio, @DVH);
                                                        SELECT CAST(SCOPE_IDENTITY() AS INT);";
@@ -152,6 +81,9 @@ namespace DAL
                                 idDetalleFactura = Convert.ToInt32(cmdDetalleFactura.ExecuteScalar());
                             }
 
+                            item.IdDetalleVenta = idDetalleFactura;
+                            item.IdVenta = idFactura;
+
                             BEDetalleFactura detalleFacturaParaDVH = new BEDetalleFactura
                             {
                                 IdDetalleFactura = idDetalleFactura,
@@ -161,6 +93,7 @@ namespace DAL
                                 Precio = item.PrecioUnitario
                             };
                             string dvhDetalleFactura = generador.GenerarDVH(detalleFacturaParaDVH);
+                            item.DVH = dvhDetalleFactura;
 
                             using (SqlCommand cmdDVHDetalleFactura = new SqlCommand(queryUpdateDVHDetalleFactura, conexion, transaccion))
                             {
@@ -184,10 +117,9 @@ namespace DAL
         public List<BEVenta> ObtenerVentas()
         {
             List<BEVenta> lista = new List<BEVenta>();
-            string query = @"SELECT v.IdVenta, v.DNICliente, v.Fecha, v.Hora, v.Total, v.DVH, f.NumeroFactura 
-                             FROM Venta v 
-                             LEFT JOIN Factura f ON v.IdVenta = f.IdVenta 
-                             ORDER BY v.IdVenta DESC;";
+            string query = @"SELECT f.IdFactura AS IdVenta, f.DNICliente, f.Fecha, f.Hora, f.Total, f.DVH, f.NumeroFactura 
+                             FROM Factura f 
+                             ORDER BY f.IdFactura DESC;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -217,20 +149,18 @@ namespace DAL
         public List<BEDetalleVenta> ObtenerDetallesPorVenta(int idVenta)
         {
             List<BEDetalleVenta> lista = new List<BEDetalleVenta>();
-            string query = @"SELECT d.IdDetalleVenta, d.IdVenta, d.ISBN_657SGA, d.Cantidad, d.DVH,
-                                    ISNULL(df.Precio, ISNULL(l.Precio_657SGA, 0)) AS PrecioUnitario,
-                                    (d.Cantidad * ISNULL(df.Precio, ISNULL(l.Precio_657SGA, 0))) AS Subtotal,
+            string query = @"SELECT df.IdDetalleFactura, df.IdFactura, df.ISBN_657SGA, df.Cantidad, df.DVH,
+                                    df.Precio AS PrecioUnitario,
+                                    (df.Cantidad * df.Precio) AS Subtotal,
                                     l.Título_657SGA, l.Autor_657SGA, l.Editorial_657SGA
-                             FROM DetalleVenta d 
-                             LEFT JOIN Libro l ON d.ISBN_657SGA = l.ISBN_657SGA 
-                             LEFT JOIN Factura f ON d.IdVenta = f.IdVenta
-                             LEFT JOIN DetalleFactura df ON f.IdFactura = df.IdFactura AND d.ISBN_657SGA = df.ISBN_657SGA
-                             WHERE d.IdVenta = @IdVenta;";
+                             FROM DetalleFactura df 
+                             LEFT JOIN Libro l ON df.ISBN_657SGA = l.ISBN_657SGA 
+                             WHERE df.IdFactura = @IdFactura;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
-                    cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
+                    cmd.Parameters.Add("@IdFactura", SqlDbType.Int).Value = idVenta;
                     conexion.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -238,9 +168,9 @@ namespace DAL
                         {
                             lista.Add(new BEDetalleVenta
                             {
-                                IdDetalleVenta = Convert.ToInt32(reader["IdDetalleVenta"]),
-                                IdVenta = Convert.ToInt32(reader["IdVenta"]),
-                                IdCarrito = Convert.ToInt32(reader["IdVenta"]),
+                                IdDetalleVenta = Convert.ToInt32(reader["IdDetalleFactura"]),
+                                IdVenta = Convert.ToInt32(reader["IdFactura"]),
+                                IdCarrito = Convert.ToInt32(reader["IdFactura"]),
                                 ISBN = reader["ISBN_657SGA"].ToString(),
                                 Cantidad = Convert.ToInt32(reader["Cantidad"]),
                                 PrecioUnitario = Convert.ToDecimal(reader["PrecioUnitario"]),
@@ -264,12 +194,12 @@ namespace DAL
         public BEFactura BuscarFacturaPorVenta(int idVenta)
         {
             BEFactura factura = null;
-            string query = "SELECT IdFactura, IdVenta, NumeroFactura, Fecha, Hora, Total, DNICliente, DVH FROM Factura WHERE IdVenta = @IdVenta;";
+            string query = "SELECT IdFactura, NumeroFactura, Fecha, Hora, Total, DNICliente, DVH FROM Factura WHERE IdFactura = @IdFactura;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
-                    cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = idVenta;
+                    cmd.Parameters.Add("@IdFactura", SqlDbType.Int).Value = idVenta;
                     conexion.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -278,7 +208,6 @@ namespace DAL
                             factura = new BEFactura
                             {
                                 IdFactura = Convert.ToInt32(reader["IdFactura"]),
-                                IdVenta = Convert.ToInt32(reader["IdVenta"]),
                                 NumeroFactura = reader["NumeroFactura"].ToString(),
                                 Fecha = Convert.ToDateTime(reader["Fecha"]),
                                 Hora = (TimeSpan)reader["Hora"],
