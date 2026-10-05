@@ -1,6 +1,6 @@
-# 🌟 Guía de Instalación - Sistema de Ventas EverGlow v1.0
+# 🌟 Guía de Instalación - Sistema de Ventas Bookly v1.0
 
-¡Bienvenido a la guía oficial de instalación de **Sistema de Ventas EverGlow**! Sigue atentamente los pasos detallados a continuación para configurar la base de datos e instalar el sistema correctamente en tu equipo.
+¡Bienvenido a la guía oficial de instalación de **Sistema de Ventas Bookly**! Sigue atentamente los pasos detallados a continuación para configurar la base de datos e instalar el sistema correctamente en tu equipo.
 
 ---
 
@@ -17,7 +17,7 @@ Antes de comenzar, asegúrate de cumplir con los siguientes requisitos:
 ### Paso 1: Restaurar la Base de Datos (Restore Database)
 Antes de ejecutar el instalador del software, es obligatorio montar la estructura de datos en tu servidor local de SQL Server:
 
-1. Ingresa al repositorio de GitHub del proyecto y descarga el archivo de respaldo de la base de datos: `EverGlow.bak` (o el nombre correspondiente de tu backup).
+1. Ingresa al repositorio de GitHub del proyecto y descarga el archivo de respaldo de la base de datos: `Bookly.bak` (o el nombre correspondiente de tu backup).
 2. Abre **SQL Server Management Studio (SSMS)** y conéctate a tu instancia local.
 3. Haz clic derecho sobre la carpeta **Databases (Bases de datos)** y selecciona **Restore Database... (Restaurar base de datos...)**.
 4. En la ventana emergente, selecciona la opción **Device (Dispositivo)**, haz clic en los tres puntos (`...`) y busca el archivo `.bak` que descargaste desde GitHub.
@@ -26,7 +26,7 @@ Antes de ejecutar el instalador del software, es obligatorio montar la estructur
 ---
 
 ### Paso 2: Seleccione la Carpeta de Destino
-Una vez restaurada la base de datos, ejecuta nuestro instalador interactivo. La primera pantalla te solicitará elegir dónde debe instalarse el programa. Por defecto, se sugiere la ruta `E:\Program Files (x86)\Sistema de Ventas EverGlow`. Puedes usar el botón **Examinar...** para cambiarla o hacer clic en **Siguiente**.
+Una vez restaurada la base de datos, ejecuta nuestro instalador interactivo. La primera pantalla te solicitará elegir dónde debe instalarse el programa. Por defecto, se sugiere la ruta `E:\Program Files (x86)\Sistema de Ventas Bookly`. Puedes usar el botón **Examinar...** para cambiarla o hacer clic en **Siguiente**.
 
 ![Paso 2 - Seleccione la Carpeta de Destino](image_45c21c.png)
 
@@ -42,7 +42,7 @@ El asistente mostrará un resumen de la configuración elegida (Carpeta de desti
 ![Paso 4 - Listo para Instalar](image_45c23b.png)
 
 ### Paso 5: Completando la instalación (Finalizar)
-¡Felicidades! El programa ha completado la instalación con éxito en tu sistema. Puedes dejar marcada la casilla **Ejecutar Sistema de Ventas EverGlow** si deseas abrir la aplicación de inmediato y presionar el botón **Finalizar** para salir del asistente.
+¡Felicidades! El programa ha completado la instalación con éxito en tu sistema. Puedes dejar marcada la casilla **Ejecutar Sistema de Ventas Bookly** si deseas abrir la aplicación de inmediato y presionar el botón **Finalizar** para salir del asistente.
 
 ![Paso 5 - Finalizar](image_45c242.png)
 
