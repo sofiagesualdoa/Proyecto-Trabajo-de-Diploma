@@ -21,18 +21,54 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(libro.Título_657SGA) ||
                 string.IsNullOrWhiteSpace(libro.Editorial_657SGA) ||
                 string.IsNullOrWhiteSpace(libro.Autor_657SGA) ||
-                string.IsNullOrWhiteSpace(libro.ISBN_657SGA) ||
-                string.IsNullOrWhiteSpace(libro.Precio_657SGA.ToString()) ||
-                string.IsNullOrWhiteSpace(libro.Existencias_657SGA.ToString()))
+                string.IsNullOrWhiteSpace(libro.ISBN_657SGA))
             {
                 throw new Exception(ServicioSessionManager.GetInstance().Traducir("Debe completar todos los campos."));
+            }
+
+            if (!libro.EsParaPrestamo && libro.Precio_657SGA <= 0)
+            {
+                throw new Exception(ServicioSessionManager.GetInstance().Traducir("El precio debe ser mayor a cero."));
+            }
+
+            if (libro.Existencias_657SGA < 0 || libro.ExistenciasPrestamo < 0)
+            {
+                throw new Exception(ServicioSessionManager.GetInstance().Traducir("La cantidad de existencias no puede ser negativa."));
             }
 
             BELibro existente = dal.BuscarLibroPorISBN_657SGA(libro.ISBN_657SGA);
             if (existente != null)
             {
-                throw new Exception(ServicioSessionManager.GetInstance().Traducir("Ya existe un libro con ese ISBN_657SGA."));
+                if (libro.EsParaPrestamo)
+                {
+                    if (!existente.EsParaPrestamo)
+                    {
+                        existente.EsParaPrestamo = true;
+                        existente.ExistenciasPrestamo = 1;
+                        existente.DVH = generador.GenerarDVH(existente);
+                        dal.ModificarLibro(existente, existente.ISBN_657SGA);
+                        new ServicioDVV().RecalcularDVVLibro();
+                        bitacora.GrabarBitacora("Habilitar Préstamo de Libro", "Libro", 2);
+                        return;
+                    }
+                    throw new Exception(ServicioSessionManager.GetInstance().Traducir("El libro ya se encuentra habilitado para préstamo (máximo 1 ejemplar)."));
+                }
+                else
+                {
+                    if (existente.Existencias_657SGA == 0)
+                    {
+                        existente.Precio_657SGA = libro.Precio_657SGA;
+                        existente.Existencias_657SGA = libro.Existencias_657SGA;
+                        existente.DVH = generador.GenerarDVH(existente);
+                        dal.ModificarLibro(existente, existente.ISBN_657SGA);
+                        new ServicioDVV().RecalcularDVVLibro();
+                        bitacora.GrabarBitacora("Habilitar Venta de Libro", "Libro", 2);
+                        return;
+                    }
+                    throw new Exception(ServicioSessionManager.GetInstance().Traducir("Ya existe un libro con ese ISBN para venta."));
+                }
             }
+
             libro.Activo_657SGA = true;
             libro.DVH = generador.GenerarDVH(libro);
             dal.GuardarLibro(libro);
@@ -108,12 +144,12 @@ namespace BLL
                 throw new Exception(ServicioSessionManager.GetInstance().Traducir("Debe completar todos los campos."));
             }
 
-            if (libroModificado.Precio_657SGA <= 0)
+            if (!libroModificado.EsParaPrestamo && libroModificado.Precio_657SGA <= 0)
             {
                 throw new Exception(ServicioSessionManager.GetInstance().Traducir("El precio debe ser mayor a cero."));
             }
 
-            if (libroModificado.Existencias_657SGA < 0)
+            if (libroModificado.Existencias_657SGA < 0 || libroModificado.ExistenciasPrestamo < 0)
             {
                 throw new Exception(ServicioSessionManager.GetInstance().Traducir("La cantidad de existencias no puede ser negativa."));
             }

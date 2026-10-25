@@ -27,6 +27,7 @@ namespace Servicios
             .Where(p => !(nombreClase == "BEDetalleVenta" && (p.Name == "IdCarrito" || p.Name == "Libro" || p.Name == "Título" || p.Name == "Autor" || p.Name == "PrecioUnitario" || p.Name == "Subtotal")))
             .Where(p => !(nombreClase == "BEVenta" && (p.Name == "Carrito" || p.Name == "Cliente" || p.Name == "NumeroFactura")))
             .Where(p => !(nombreClase == "BEFactura" && p.Name == "IdVenta"))
+            .Where(p => !(nombreClase == "BEPrestamo" && p.Name == "NumeroFactura"))
             .OrderBy(p => p.MetadataToken)
             .ToArray();
 

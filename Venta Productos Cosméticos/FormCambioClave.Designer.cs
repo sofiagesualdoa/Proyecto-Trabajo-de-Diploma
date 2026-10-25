@@ -156,6 +156,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "FormCambioClave";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCambioClave";
             FormClosing += FormCambioClave_FormClosing;
             FormClosed += FormCambioClave_FormClosed;

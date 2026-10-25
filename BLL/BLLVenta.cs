@@ -42,7 +42,7 @@ namespace BLL
             {
                 DNICliente = cliente.DNI_657SGA,
                 Total = venta.Total,
-                NumeroFactura = $"FC-B-{DateTime.Now.Year}-{rnd.Next(1000, 9999)}",
+                NumeroFactura = $"FC-V-{DateTime.Now.Year}-{rnd.Next(1000, 9999)}",
                 Fecha = DateTime.Today,
                 Hora = DateTime.Now.TimeOfDay
             };

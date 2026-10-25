@@ -62,7 +62,7 @@ namespace DAL
         public List<BELibro> ObtenerLibros()
         {
             List<BELibro> libros = new List<BELibro>();
-            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, Editorial_657SGA, Autor_657SGA, Activo_657SGA, DVH FROM Libro";
+            string query = @"SELECT Título_657SGA, ISBN_657SGA, Precio_657SGA, Existencias_657SGA, ExistenciasPrestamo, Editorial_657SGA, Autor_657SGA, Activo_657SGA, EsParaPrestamo, DVH FROM Libro";
             using (SqlConnection conexion = new SqlConnection(cadena))
             using (SqlCommand comando = new SqlCommand(query, conexion))
             {
@@ -78,8 +78,10 @@ namespace DAL
                             Editorial_657SGA = reader["Editorial_657SGA"].ToString(),
                             Autor_657SGA = reader["Autor_657SGA"].ToString(),
                             Existencias_657SGA = Convert.ToInt32(reader["Existencias_657SGA"]),
+                            ExistenciasPrestamo = reader["ExistenciasPrestamo"] != DBNull.Value ? Convert.ToInt32(reader["ExistenciasPrestamo"]) : 0,
                             Precio_657SGA = Convert.ToDecimal(reader["Precio_657SGA"]),
                             Activo_657SGA = reader["Activo_657SGA"] != DBNull.Value && Convert.ToBoolean(reader["Activo_657SGA"]),
+                            EsParaPrestamo = reader["EsParaPrestamo"] != DBNull.Value && Convert.ToBoolean(reader["EsParaPrestamo"]),
                             DVH = reader["DVH"].ToString()
                         });
                     }

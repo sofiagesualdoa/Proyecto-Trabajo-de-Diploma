@@ -312,6 +312,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Name = "FormBitacora";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormBitacora";
             FormClosing += FormBitacora_FormClosing;
             FormClosed += FormBitacora_FormClosed;

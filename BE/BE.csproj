@@ -44,10 +44,12 @@
     <Compile Include="BECarrito.cs" />
     <Compile Include="BECliente.cs" />
     <Compile Include="BEDetalleFactura.cs" />
+    <Compile Include="BEDetallePrestamo.cs" />
     <Compile Include="BEDetalleVenta.cs" />
     <Compile Include="BEFactura.cs" />
     <Compile Include="BELibro.cs" />
     <Compile Include="BEPago.cs" />
+    <Compile Include="BEPrestamo.cs" />
     <Compile Include="BETarjeta.cs" />
     <Compile Include="BEVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

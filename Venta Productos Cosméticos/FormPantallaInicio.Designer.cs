@@ -94,6 +94,7 @@
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "FormPantallaInicio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Bookly";
             FormClosing += FormPantallaInicio_FormClosing;
             Load += FormPantallaInicio_Load;

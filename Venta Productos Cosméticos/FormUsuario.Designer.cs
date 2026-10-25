@@ -383,6 +383,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Name = "FormUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormUsuario";
             FormClosing += FormUsuario_FormClosing;
             Load += FormUsuario_Load;

@@ -197,6 +197,7 @@
             Controls.Add(btnAgregar_657SGA);
             Controls.Add(label1);
             Name = "FormVenta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormVenta";
             Load += FormVenta_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewLibros).EndInit();

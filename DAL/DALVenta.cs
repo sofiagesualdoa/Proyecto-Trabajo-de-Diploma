@@ -21,7 +21,6 @@ namespace DAL
                 {
                     try
                     {
-                        // 1. INSERT EN FACTURA
                         string queryFactura = @"INSERT INTO Factura (NumeroFactura, Fecha, Hora, Total, DNICliente, DVH) 
                                                 VALUES (@NumeroFactura, @Fecha, @Hora, @Total, @DNICliente, @DVH);
                                                 SELECT CAST(SCOPE_IDENTITY() AS INT);";
@@ -61,7 +60,6 @@ namespace DAL
                             cmdDVHFactura.ExecuteNonQuery();
                         }
 
-                        // 2. INSERT EN DETALLE FACTURA
                         string queryDetalleFactura = @"INSERT INTO DetalleFactura (IdFactura, ISBN_657SGA, Cantidad, Precio, DVH) 
                                                        VALUES (@IdFactura, @ISBN, @Cantidad, @Precio, @DVH);
                                                        SELECT CAST(SCOPE_IDENTITY() AS INT);";
@@ -119,6 +117,8 @@ namespace DAL
             List<BEVenta> lista = new List<BEVenta>();
             string query = @"SELECT f.IdFactura AS IdVenta, f.DNICliente, f.Fecha, f.Hora, f.Total, f.DVH, f.NumeroFactura 
                              FROM Factura f 
+                             WHERE f.NumeroFactura LIKE 'FC-V%' 
+                               AND NOT EXISTS (SELECT 1 FROM Prestamo p WHERE p.IdFactura = f.IdFactura) 
                              ORDER BY f.IdFactura DESC;";
             using (SqlConnection conexion = new SqlConnection(cadena))
             {

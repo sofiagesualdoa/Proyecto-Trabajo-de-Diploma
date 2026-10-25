@@ -139,6 +139,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "FormInicioSesion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio de Sesión";
             TopMost = true;
             FormClosing += FormInicioSesion_FormClosing;

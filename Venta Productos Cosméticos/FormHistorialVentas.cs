@@ -26,12 +26,9 @@ namespace Venta_Productos_Cosméticos
             dtpFechaDesde.Value = DateTime.Today.AddDays(-30);
             dtpFechaHasta.Value = DateTime.Today;
             chkFiltrarFecha.Checked = false;
-
             RegistrarTextos(this.Controls);
             bllIdioma.AgregarSuscriptor(this);
-
             CargarVentas();
-
             var usuario = ServicioSessionManager.GetInstance().ObtenerUsuario();
             if (usuario != null && usuario.Idioma != null)
             {

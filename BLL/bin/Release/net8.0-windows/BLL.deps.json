@@ -10,10 +10,30 @@
         "dependencies": {
           "BE": "1.0.0",
           "DAL": "1.0.0",
-          "Servicios": "1.0.0"
+          "Servicios": "1.0.0",
+          "iTextSharp": "5.5.13.6"
         },
         "runtime": {
           "BLL.dll": {}
+        }
+      },
+      "BouncyCastle.Cryptography/2.6.2": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.6.2.46322"
+          }
+        }
+      },
+      "iTextSharp/5.5.13.6": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.6.2"
+        },
+        "runtime": {
+          "lib/net461/itextsharp.dll": {
+            "assemblyVersion": "5.5.13.6",
+            "fileVersion": "5.5.13.6"
+          }
         }
       },
       "Microsoft.Bcl.Cryptography/8.0.0": {
@@ -372,6 +392,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BouncyCastle.Cryptography/2.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
+    },
+    "iTextSharp/5.5.13.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v3gD7+SSRr/mCJK+sfTjfNScRsRzZhx4EXGFrMysPPCAnS475igheorWT5ChSVM+Tstozqu2kTY9l/kFZB1xDA==",
+      "path": "itextsharp/5.5.13.6",
+      "hashPath": "itextsharp.5.5.13.6.nupkg.sha512"
     },
     "Microsoft.Bcl.Cryptography/8.0.0": {
       "type": "package",

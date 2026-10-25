@@ -47,7 +47,8 @@ namespace Venta_Productos_Cosméticos
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 56);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(798, 248);
+            dataGridView1.ScrollBars = ScrollBars.Vertical;
+            dataGridView1.Size = new Size(851, 248);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
@@ -173,7 +174,7 @@ namespace Venta_Productos_Cosméticos
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
-            ClientSize = new Size(826, 450);
+            ClientSize = new Size(875, 450);
             Controls.Add(rbtnActivos_657SGA);
             Controls.Add(rbtnTodos_657SGA);
             Controls.Add(btnLimpiar_657SGA);
@@ -186,6 +187,7 @@ namespace Venta_Productos_Cosméticos
             Controls.Add(btnAgregar_657SGA);
             Controls.Add(label1);
             Name = "FormLibros";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLibros";
             Load += FormLibros_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -203,6 +203,7 @@ namespace Venta_Productos_Cosméticos
             nuevoPréstamoToolStripMenuItem.Size = new Size(250, 28);
             nuevoPréstamoToolStripMenuItem.Tag = "Registrar Préstamo";
             nuevoPréstamoToolStripMenuItem.Text = "Nuevo Préstamo";
+            nuevoPréstamoToolStripMenuItem.Click += nuevoPréstamoToolStripMenuItem_Click;
             // 
             // historialVentasToolStripMenuItem
             // 
@@ -218,6 +219,7 @@ namespace Venta_Productos_Cosméticos
             historialPréstamosToolStripMenuItem.Size = new Size(250, 28);
             historialPréstamosToolStripMenuItem.Tag = "Ver Historial Préstamos";
             historialPréstamosToolStripMenuItem.Text = "Historial Préstamos";
+            historialPréstamosToolStripMenuItem.Click += historialPréstamosToolStripMenuItem_Click;
             // 
             // inventarioToolStripMenuItem
             // 
@@ -229,7 +231,7 @@ namespace Venta_Productos_Cosméticos
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(180, 28);
+            librosToolStripMenuItem.Size = new Size(149, 28);
             librosToolStripMenuItem.Tag = "Gestionar Libros";
             librosToolStripMenuItem.Text = "Libros";
             librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
@@ -237,7 +239,7 @@ namespace Venta_Productos_Cosméticos
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(180, 28);
+            clientesToolStripMenuItem.Size = new Size(149, 28);
             clientesToolStripMenuItem.Tag = "Gestionar Clientes";
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
@@ -245,7 +247,7 @@ namespace Venta_Productos_Cosméticos
             // librosCToolStripMenuItem
             // 
             librosCToolStripMenuItem.Name = "librosCToolStripMenuItem";
-            librosCToolStripMenuItem.Size = new Size(180, 28);
+            librosCToolStripMenuItem.Size = new Size(149, 28);
             librosCToolStripMenuItem.Tag = "Gestionar Libros C";
             librosCToolStripMenuItem.Text = "Libros C";
             // 
@@ -358,6 +360,7 @@ namespace Venta_Productos_Cosméticos
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormSistema";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema Bookly - Venta y Préstamo de Libros";
             FormClosing += FormSistema_FormClosing;
             Load += FormSistema_Load;

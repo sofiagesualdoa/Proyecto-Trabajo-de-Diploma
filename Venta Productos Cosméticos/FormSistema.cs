@@ -447,5 +447,21 @@ namespace Venta_Productos_Cosméticos
             frmHistorial.Show();
             this.Close();
         }
+
+        private void nuevoPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPrestamo frm = new FormPrestamo();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            this.Close();
+        }
+
+        private void historialPréstamosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHistorialPrestamos frmHistorial = new FormHistorialPrestamos();
+            frmHistorial.MdiParent = this.MdiParent;
+            frmHistorial.Show();
+            this.Close();
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace Venta_Productos_Cosméticos
             // labelTitulo
             // 
             labelTitulo.AutoSize = true;
-            labelTitulo.BackColor = Color.Bisque;
+            labelTitulo.BackColor = Color.Sienna;
             labelTitulo.Font = new Font("Sitka Text", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             labelTitulo.Location = new Point(15, 12);
             labelTitulo.Name = "labelTitulo";

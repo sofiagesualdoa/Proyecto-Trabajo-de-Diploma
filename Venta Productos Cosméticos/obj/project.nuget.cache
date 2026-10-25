@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+SP9LOrd9oE=",
+  "dgSpecHash": "OiHAqmvSQQg=",
   "success": true,
   "projectFilePath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosméticos\\Venta y Préstamo de Libros.csproj",
   "expectedPackageFiles": [
@@ -40,7 +40,7 @@
       "filePath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosméticos\\Venta y Préstamo de Libros.csproj",
       "libraryId": "iTextSharp",
       "targetGraphs": [
-        "net8.0-windows"
+        "net8.0-windows7.0"
       ]
     }
   ]

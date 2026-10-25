@@ -22,6 +22,8 @@ namespace Servicios
         private static IDALEvento ObtenerDALEvento() => FabricaDAL.Crear<IDALEvento>("DALEvento");
         private static IDALPermiso ObtenerDALPermiso() => FabricaDAL.Crear<IDALPermiso>("DALPermiso");
         private static IDALIdioma ObtenerDALIdioma() => FabricaDAL.Crear<IDALIdioma>("DALIdioma");
+        private static IDALLibro ObtenerDALLibro() => FabricaDAL.Crear<IDALLibro>("DALLibro");
+        private static IDALPrestamo ObtenerDALPrestamo() => FabricaDAL.Crear<IDALPrestamo>("DALPrestamo");
 
         public void RecalcularDigitosVerificadores()
         {
@@ -36,6 +38,7 @@ namespace Servicios
             RecalcularDVHIdioma();
             RecalcularDVHPermiso();
             RecalcularDVHLibro();
+            RecalcularDVHPrestamo();
             RecalcularTodosLosDVV();
         }
 
@@ -52,6 +55,7 @@ namespace Servicios
             RecalcularDVVIdioma();
             RecalcularDVVPermiso();
             RecalcularDVVLibro();
+            RecalcularDVVPrestamo();
         }
 
         public void RecalcularDVHUsuario()
@@ -176,11 +180,23 @@ namespace Servicios
 
         public void RecalcularDVHLibro()
         {
-            List<BELibro> libros = dalDVV.ObtenerLibros();
+            IDALLibro dal = ObtenerDALLibro();
+            List<BELibro> libros = dal.ObtenerLibros();
             foreach (BELibro x in libros)
             {
                 x.DVH = generador.GenerarDVH(x);
-                dalDVV.ActualizarDVHLibro(x.ISBN_657SGA, x.DVH);
+                dal.ActualizarDVHLibro(x.ISBN_657SGA, x.DVH);
+            }
+        }
+
+        public void RecalcularDVHPrestamo()
+        {
+            IDALPrestamo dal = ObtenerDALPrestamo();
+            List<BEPrestamo> prestamos = dal.ObtenerTodosLosPrestamos();
+            foreach (BEPrestamo x in prestamos)
+            {
+                x.DVH = generador.GenerarDVH(x);
+                dal.ActualizarDVHPrestamo(x.IdPrestamo, x.DVH);
             }
         }
 
@@ -246,7 +262,12 @@ namespace Servicios
 
         public void RecalcularDVVLibro()
         {
-            GuardarDVV("Libro", dalDVV.ObtenerLibros().Cast<object>().ToList());
+            GuardarDVV("Libro", ObtenerDALLibro().ObtenerLibros().Cast<object>().ToList());
+        }
+
+        public void RecalcularDVVPrestamo()
+        {
+            GuardarDVV("Prestamo", ObtenerDALPrestamo().ObtenerTodosLosPrestamos().Cast<object>().ToList());
         }
 
         private void GuardarDVV(string nombreTabla, List<object> registros)
@@ -284,7 +305,8 @@ namespace Servicios
             errores.AddRange(ValidarDVHTabla("Familia_x_Familia", ObtenerDALFamilia().ObtenerRelacionesFamiliaFamilia().Cast<object>().ToList()));
             errores.AddRange(ValidarDVHTabla("Permiso", ObtenerDALPermiso().ObtenerTodos().Cast<object>().ToList()));
             errores.AddRange(ValidarDVHTabla("Idioma", ObtenerDALIdioma().ListarIdiomas().Cast<object>().ToList()));
-            errores.AddRange(ValidarDVHTabla("Libro", dalDVV.ObtenerLibros().Cast<object>().ToList()));
+            errores.AddRange(ValidarDVHTabla("Libro", ObtenerDALLibro().ObtenerLibros().Cast<object>().ToList()));
+            errores.AddRange(ValidarDVHTabla("Prestamo", ObtenerDALPrestamo().ObtenerTodosLosPrestamos().Cast<object>().ToList()));
             errores.AddRange(ValidarDVVDetallado());
 
             return errores;
@@ -331,7 +353,8 @@ namespace Servicios
             ValidarDVVTablaDetallado("Familia_x_Familia", ObtenerDALFamilia().ObtenerRelacionesFamiliaFamilia().Cast<object>().ToList(), dvvsGuardados, errores);
             ValidarDVVTablaDetallado("Permiso", ObtenerDALPermiso().ObtenerTodos().Cast<object>().ToList(), dvvsGuardados, errores);
             ValidarDVVTablaDetallado("Idioma", ObtenerDALIdioma().ListarIdiomas().Cast<object>().ToList(), dvvsGuardados, errores);
-            ValidarDVVTablaDetallado("Libro", dalDVV.ObtenerLibros().Cast<object>().ToList(), dvvsGuardados, errores);
+            ValidarDVVTablaDetallado("Libro", ObtenerDALLibro().ObtenerLibros().Cast<object>().ToList(), dvvsGuardados, errores);
+            ValidarDVVTablaDetallado("Prestamo", ObtenerDALPrestamo().ObtenerTodosLosPrestamos().Cast<object>().ToList(), dvvsGuardados, errores);
             return errores;
         }
 
@@ -369,7 +392,8 @@ namespace Servicios
                 "IdFamiliaPadre",
                 "IdFamiliaHijo",
                 "IdIdioma",
-                "ISBN_657SGA"
+                "ISBN_657SGA",
+                "IdPrestamo"
             };
 
             List<string> partes = new List<string>();

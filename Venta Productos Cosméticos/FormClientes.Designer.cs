@@ -320,6 +320,7 @@
             Controls.Add(btnAgregar_SGA657);
             Controls.Add(label1);
             Name = "FormClientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormClientes";
             Load += FormClientes_Load;
             groupBox1.ResumeLayout(false);

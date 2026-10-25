@@ -306,6 +306,7 @@
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
             Name = "FormPerfil";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPerfil";
             FormClosing += FormPerfil_FormClosing;
             Load += FormPerfil_Load;

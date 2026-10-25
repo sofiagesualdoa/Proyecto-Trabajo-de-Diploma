@@ -24,6 +24,9 @@ namespace Servicios
 
         public void GrabarBitacora(string accion, string modulo, int nivelCriticidad)
         {
+            if (accion != null && accion.Length > 50) accion = accion.Substring(0, 50);
+            if (modulo != null && modulo.Length > 50) modulo = modulo.Substring(0, 50);
+
             ServicioEvento registro = new ServicioEvento();
             registro.NombreEvento = accion;
             registro.Modulo = modulo;

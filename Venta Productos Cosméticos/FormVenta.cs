@@ -1,20 +1,20 @@
-using BE;
-using BLL;
-using DAL;
-using Microsoft.VisualBasic;
-using Servicios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-namespace Venta_Productos_Cosméticos
-{
+using BE;
+using BLL;
+using DAL;
+using Microsoft.VisualBasic;
+using Servicios;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+namespace Venta_Productos_Cosméticos
+{
     public partial class FormVenta : Form, IObserver
     {
         private ServicioIdioma bllIdioma = new ServicioIdioma();
@@ -39,7 +39,7 @@ namespace Venta_Productos_Cosméticos
             dataGridViewCarrito.MultiSelect = false;
             RegistrarTextos(this.Controls);
             bllIdioma.AgregarSuscriptor(this);
-            MostrarGrilla(bllLibro.ObtenerLibros());
+            MostrarGrilla(bllLibro.ObtenerLibrosActivos().Where(l => l.Existencias_657SGA > 0 && l.Precio_657SGA > 0).ToList());
             ActualizarCarrito();
             var usuario = ServicioSessionManager.GetInstance().ObtenerUsuario();
             if (usuario != null && usuario.Idioma != null)
@@ -48,7 +48,7 @@ namespace Venta_Productos_Cosméticos
             }
             ConfigurarPlaceholder();
             this.BeginInvoke((Action)(() => this.ActiveControl = null));
-        }
+        }
         private void ConfigurarPlaceholder()
         {
             string textoBuscar = ServicioSessionManager.GetInstance().Traducir("Buscar por Título, Autor, ISBN...");
@@ -57,7 +57,7 @@ namespace Venta_Productos_Cosméticos
             {
                 SendMessage(textBox1_657SGA.Handle, EM_SETCUEBANNER, 1, textoBuscar);
             }
-        }
+        }
         private void RegistrarTextos(Control.ControlCollection controles)
         {
             foreach (Control c in controles)
@@ -66,11 +66,11 @@ namespace Venta_Productos_Cosméticos
                     textosOriginales[c] = c.Text;
                 if (c.Controls.Count > 0) RegistrarTextos(c.Controls);
             }
-        }
+        }
         public void Actualizar(ServicioIdioma idioma)
         {
             ActualizarIdioma(idioma);
-        }
+        }
         private void ActualizarIdioma(ServicioIdioma idioma)
         {
             var leyendas = idioma.DiccionarioLeyendas;
@@ -87,7 +87,7 @@ namespace Venta_Productos_Cosméticos
             TraducirHeadersCarrito();
             ConfigurarPlaceholder();
             ActualizarTotal();
-        }
+        }
         private void MostrarGrilla(Object lista)
         {
             dataGridViewLibros.DataSource = null;
@@ -98,9 +98,13 @@ namespace Venta_Productos_Cosméticos
                 dataGridViewLibros.Columns["DVH"].Visible = false;
             if (dataGridViewLibros.Columns["Existencias_657SGA"] != null)
                 dataGridViewLibros.Columns["Existencias_657SGA"].Visible = false;
+            if (dataGridViewLibros.Columns["ExistenciasPrestamo"] != null)
+                dataGridViewLibros.Columns["ExistenciasPrestamo"].Visible = false;
+            if (dataGridViewLibros.Columns["EsParaPrestamo"] != null)
+                dataGridViewLibros.Columns["EsParaPrestamo"].Visible = false;
             var usuarioActivo = ServicioSessionManager.GetInstance().ObtenerUsuario();
             TraducirHeadersLibros(usuarioActivo?.Idioma?.DiccionarioLeyendas);
-        }
+        }
         private void TraducirHeadersLibros(Dictionary<string, string> leyendas)
         {
             if (dataGridViewLibros.DataSource == null || dataGridViewLibros.Columns.Count == 0) return;
@@ -112,7 +116,7 @@ namespace Venta_Productos_Cosméticos
                     columna.HeaderText = leyendas[columna.Name];
                 }
             }
-        }
+        }
         private void TraducirHeadersCarrito()
         {
             if (dataGridViewCarrito.DataSource == null || dataGridViewCarrito.Columns.Count == 0) return;
@@ -127,23 +131,23 @@ namespace Venta_Productos_Cosméticos
                 dataGridViewCarrito.Columns["Cantidad"].HeaderText = session.Traducir("Cantidad");
             if (dataGridViewCarrito.Columns["Subtotal"] != null)
                 dataGridViewCarrito.Columns["Subtotal"].HeaderText = session.Traducir("Subtotal");
-        }
+        }
         private void btnConsultar_657SGA_Click(object sender, EventArgs e)
         {
             var listaFiltrada = bllLibro.BuscarLibros(textBox1_657SGA.Text);
-            MostrarGrilla(listaFiltrada.Where(l => l.Activo_657SGA).ToList());
-        }
+            MostrarGrilla(listaFiltrada.Where(l => l.Activo_657SGA && l.Existencias_657SGA > 0 && l.Precio_657SGA > 0).ToList());
+        }
         private void btnLimpiar_657SGA_Click(object sender, EventArgs e)
         {
             textBox1_657SGA.Clear();
             btnConsultar_657SGA_Click(sender, e);
-        }
+        }
         private void btnSalir_657SGA_Click(object sender, EventArgs e)
         {
             FormSistema frmMenu = new FormSistema();
             frmMenu.Show();
             this.Close();
-        }
+        }
         private void btnAgregar_657SGA_Click(object sender, EventArgs e)
         {
             var s = ServicioSessionManager.GetInstance();
@@ -152,6 +156,8 @@ namespace Venta_Productos_Cosméticos
                 if (dataGridViewLibros.SelectedRows.Count == 0)
                     throw new Exception(s.Traducir("Debe seleccionar un libro del catálogo para agregarlo al carrito."));
                 var libroSeleccionado = (BELibro)dataGridViewLibros.SelectedRows[0].DataBoundItem;
+                if (libroSeleccionado.Existencias_657SGA <= 0 || libroSeleccionado.Precio_657SGA <= 0)
+                    throw new Exception(s.Traducir("El ejemplar seleccionado no cuenta con copias disponibles para venta."));
                 string prompt = s.Traducir("Ingrese la cantidad a agregar al carrito:");
                 string titulo = s.Traducir("Cantidad");
                 string cantidadStr = Interaction.InputBox(prompt, titulo, "");
@@ -168,7 +174,7 @@ namespace Venta_Productos_Cosméticos
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-        }
+        }
         private void ActualizarCarrito()
         {
             dataGridViewCarrito.DataSource = null;
@@ -191,7 +197,7 @@ namespace Venta_Productos_Cosméticos
                 dataGridViewCarrito.Columns["Subtotal"].DefaultCellStyle.Format = "C2";
             TraducirHeadersCarrito();
             ActualizarTotal();
-        }
+        }
         private void ActualizarTotal()
         {
             var s = ServicioSessionManager.GetInstance();
@@ -204,7 +210,7 @@ namespace Venta_Productos_Cosméticos
             {
                 label3.Text = $"{s.Traducir("Total")}: $";
             }
-        }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             var s = ServicioSessionManager.GetInstance();
@@ -227,9 +233,8 @@ namespace Venta_Productos_Cosméticos
                                 s.Traducir("Información"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
-            }
-        }
-
+            }
+        }
         private void btnPagar_SGA657_Click(object sender, EventArgs e)
         {
             var s = ServicioSessionManager.GetInstance();
@@ -276,26 +281,24 @@ namespace Venta_Productos_Cosméticos
                                 ContinuarConPago(clienteNuevo);
                             }
                         }
-                    }
-                }
+                    }                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, s.Traducir("Información"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void ContinuarConPago(BECliente cliente)
         {
-            using (FormCobroVenta frmCobro = new FormCobroVenta(bllCarrito.ObtenerCarrito(), cliente))
+            using (FormCobro frmCobro = new FormCobro(bllCarrito.ObtenerCarrito(), cliente))
             {
                 if (frmCobro.ShowDialog() == DialogResult.OK)
                 {
                     bllCarrito = new BLLCarrito();
                     ActualizarCarrito();
-                    MostrarGrilla(bllLibro.ObtenerLibros());
+                    MostrarGrilla(bllLibro.ObtenerLibrosActivos().Where(l => l.Existencias_657SGA > 0 && l.Precio_657SGA > 0).ToList());
                 }
             }
-        }
-    }
+        }
+    }
 }

@@ -15,7 +15,9 @@ namespace BE
         public string Autor_657SGA { get; set; }
         public decimal Precio_657SGA { get; set; }
         public int Existencias_657SGA { get; set; }
+        public int ExistenciasPrestamo { get; set; }
         public bool Activo_657SGA { get; set; }
+        public bool EsParaPrestamo { get; set; }
         public string DVH { get; set; }
     }
 }

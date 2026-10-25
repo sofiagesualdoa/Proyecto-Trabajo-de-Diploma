@@ -109,6 +109,7 @@
             Controls.Add(btnRecalcular);
             ForeColor = Color.Black;
             Name = "FormErrorIntegridad";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormErrorIntegridad";
             Load += FormErrorIntegridad_Load;
             ((System.ComponentModel.ISupportInitialize)dgvErrores).EndInit();
