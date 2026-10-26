@@ -123,7 +123,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Sienna;
             label1.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(25, 13);
+            label1.Location = new Point(25, 19);
             label1.Name = "label1";
             label1.Size = new Size(181, 30);
             label1.TabIndex = 46;
@@ -142,7 +142,7 @@
             // 
             button2.BackColor = Color.Sienna;
             button2.Font = new Font("Sitka Text", 9.749999F);
-            button2.Location = new Point(662, 7);
+            button2.Location = new Point(662, 20);
             button2.Name = "button2";
             button2.Size = new Size(113, 36);
             button2.TabIndex = 55;

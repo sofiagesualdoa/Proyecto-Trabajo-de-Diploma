@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace Venta_Productos_Cosméticos
     {
         private ServicioIdioma bllIdioma = new ServicioIdioma();
         private BLLPrestamo bllPrestamo = new BLLPrestamo();
+        private BLLCliente bllCliente = new BLLCliente();
+        private BLLLibro bllLibro = new BLLLibro();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
 
         public FormHistorialPrestamos()
@@ -26,6 +29,7 @@ namespace Venta_Productos_Cosméticos
             dtpFechaDesde.Value = DateTime.Today.AddDays(-30);
             dtpFechaHasta.Value = DateTime.Today;
             chkFiltrarFecha.Checked = false;
+            btnDevolver.Enabled = false;
             RegistrarTextos(this.Controls);
             bllIdioma.AgregarSuscriptor(this);
             CargarPrestamos();
@@ -114,12 +118,14 @@ namespace Venta_Productos_Cosméticos
                 if (dgvPrestamos.Rows[0].DataBoundItem is BEPrestamo prestamo)
                 {
                     CargarDetallesPrestamo(prestamo);
+                    btnDevolver.Enabled = (prestamo.Estado == "Activo");
                 }
             }
             else
             {
                 dgvDetalles.DataSource = null;
                 lblDetalleInfo.Text = ServicioSessionManager.GetInstance().Traducir("Seleccione un préstamo para visualizar sus detalles.");
+                btnDevolver.Enabled = false;
             }
         }
 
@@ -278,6 +284,11 @@ namespace Venta_Productos_Cosméticos
             if (dgvPrestamos.CurrentRow != null && dgvPrestamos.CurrentRow.DataBoundItem is BEPrestamo prestamo)
             {
                 CargarDetallesPrestamo(prestamo);
+                btnDevolver.Enabled = (prestamo.Estado == "Activo");
+            }
+            else
+            {
+                btnDevolver.Enabled = false;
             }
         }
 
@@ -286,6 +297,7 @@ namespace Venta_Productos_Cosméticos
             if (e.RowIndex >= 0 && dgvPrestamos.Rows[e.RowIndex].DataBoundItem is BEPrestamo prestamo)
             {
                 CargarDetallesPrestamo(prestamo);
+                btnDevolver.Enabled = (prestamo.Estado == "Activo");
             }
         }
 
@@ -298,13 +310,141 @@ namespace Venta_Productos_Cosméticos
 
         private void btnDevolver_Click(object sender, EventArgs e)
         {
+            var session = ServicioSessionManager.GetInstance();
+            if (dgvPrestamos.CurrentRow == null || !(dgvPrestamos.CurrentRow.DataBoundItem is BEPrestamo prestamo))
+            {
+                MessageBox.Show(
+                    session.Traducir("Debe seleccionar un préstamo de la lista para registrar la devolución."),
+                    session.Traducir("Aviso"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
+            if (prestamo.Estado != "Activo")
+            {
+                MessageBox.Show(
+                    session.Traducir("Solo es posible registrar la devolución de préstamos con estado 'Activo'."),
+                    session.Traducir("Aviso"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            BECliente cliente = bllCliente.BuscarClientePorDNI(prestamo.DNI);
+            BELibro? libro = bllLibro.ObtenerLibros().FirstOrDefault(l => l.ISBN_657SGA == prestamo.ISBN);
+
+            DialogResult confirmacion = MessageBox.Show(
+                string.Format(
+                    session.Traducir("¿Confirma la recepción del ejemplar físico en buen estado y el registro de la devolución para el préstamo #{0}?\n\nLibro: {1}\nCliente: {2} (DNI: {3})"),
+                    prestamo.IdPrestamo,
+                    libro?.Título_657SGA ?? prestamo.ISBN,
+                    cliente != null ? $"{cliente.Nombre_657SGA} {cliente.Apellido_657SGA}" : "N/A",
+                    prestamo.DNI
+                ),
+                session.Traducir("Confirmar Devolución"),
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmacion != DialogResult.Yes) return;
+
+            var (diasMora, montoMora) = bllPrestamo.CalcularMora(prestamo);
+            if (diasMora > 0 && montoMora > 0)
+            {
+                DialogResult respMora = MessageBox.Show(
+                    string.Format(
+                        session.Traducir("El préstamo presenta {0} día(s) de demora respecto a la fecha pactada ({1:dd/MM/yyyy}).\n\nSe ha calculado un recargo por mora de ${2:N2}.\n\n¿Desea proceder al cobro del recargo con tarjeta para continuar con la devolución?"),
+                        diasMora,
+                        prestamo.FechaDevolucion,
+                        montoMora
+                    ),
+                    session.Traducir("Recargo por Mora"),
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (respMora != DialogResult.Yes) return;
+
+                using (FormCobro frmCobro = new FormCobro(prestamo, cliente, montoMora))
+                {
+                    if (frmCobro.ShowDialog() != DialogResult.OK)
+                    {
+                        MessageBox.Show(
+                            session.Traducir("No se pudo completar la devolución debido a que el recargo por mora no fue abonado."),
+                            session.Traducir("Operación Cancelada"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return;
+                    }
+                }
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Documento PDF (*.pdf)|*.pdf";
+            sfd.FileName = $"Comprobante_Devolucion_Prestamo_{prestamo.IdPrestamo}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            sfd.Title = session.Traducir("Guardar Comprobante de Devolución");
+
+            string rutaPdf = string.Empty;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                rutaPdf = sfd.FileName;
+            }
+            else
+            {
+                string carpetaMisDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                rutaPdf = Path.Combine(carpetaMisDocs, $"Comprobante_Devolucion_Prestamo_{prestamo.IdPrestamo}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+            }
+
+            try
+            {
+                bllPrestamo.RegistrarDevolucion(prestamo, rutaPdf);
+
+                MessageBox.Show(
+                    string.Format(
+                        session.Traducir("¡Devolución registrada exitosamente!\n\nEstado final del préstamo: {0}\nEjemplar reincorporado al catálogo de préstamos.\nComprobante emitido en:\n{1}"),
+                        prestamo.Estado,
+                        rutaPdf
+                    ),
+                    session.Traducir("Éxito"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                try
+                {
+                    if (File.Exists(rutaPdf))
+                    {
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = rutaPdf,
+                            UseShellExecute = true
+                        });
+                    }
+                }
+                catch
+                {
+                }
+
+                CargarPrestamos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    session.Traducir(ex.Message),
+                    session.Traducir("Error"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void FormHistorialPrestamos_FormClosing(object sender, FormClosingEventArgs e)
         {
             bllIdioma.BorrarSuscriptor(this);
         }
-        
     }
 }

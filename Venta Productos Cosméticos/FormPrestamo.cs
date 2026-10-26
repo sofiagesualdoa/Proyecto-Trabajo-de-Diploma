@@ -107,6 +107,12 @@ namespace Venta_Productos_Cosméticos
                 dataGridViewLibros.Columns["Existencias_657SGA"].Visible = false;
             if (dataGridViewLibros.Columns["EsParaPrestamo"] != null)
                 dataGridViewLibros.Columns["EsParaPrestamo"].Visible = false;
+            if (dataGridViewLibros.Columns["Precio"] != null)
+                dataGridViewLibros.Columns["Precio"].Visible = false;
+            if (dataGridViewLibros.Columns["Precio_657SGA"] != null)
+                dataGridViewLibros.Columns["Precio_657SGA"].Visible = false;
+            if (dataGridViewLibros.Columns["ExistenciasPrestamo"] != null)
+                dataGridViewLibros.Columns["ExistenciasPrestamo"].Visible = false;
             var usuarioActivo = ServicioSessionManager.GetInstance().ObtenerUsuario();
             TraducirHeadersLibros(usuarioActivo?.Idioma?.DiccionarioLeyendas);
         }

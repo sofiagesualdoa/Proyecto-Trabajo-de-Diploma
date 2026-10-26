@@ -284,7 +284,7 @@ namespace BLL
                 celdaComp.PaddingBottom = 10f;
                 tablaEncabezado.AddCell(celdaComp);
 
-                string numFactura = prestamo.IdFactura.HasValue ? $"FC-ID {prestamo.IdFactura.Value}" : "N/A";
+                string numFactura = !string.IsNullOrWhiteSpace(prestamo.NumeroFactura) ? prestamo.NumeroFactura : (prestamo.IdFactura.HasValue ? $"FC-ID {prestamo.IdFactura.Value}" : "N/A");
                 PdfPCell celdaFactura = new PdfPCell(new Phrase($"Préstamo ID: {prestamo.IdPrestamo}\nFactura Asociada: {numFactura}\nFecha Inicio: {prestamo.FechaInicio:dd/MM/yyyy}", fuenteTexto));
                 celdaFactura.Border = iTextSharp.text.Rectangle.NO_BORDER;
                 celdaFactura.HorizontalAlignment = Element.ALIGN_RIGHT;
