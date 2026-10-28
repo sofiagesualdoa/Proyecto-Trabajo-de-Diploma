@@ -48,6 +48,7 @@
     <Compile Include="BEDetalleVenta.cs" />
     <Compile Include="BEFactura.cs" />
     <Compile Include="BELibro.cs" />
+    <Compile Include="BELibroCambios.cs" />
     <Compile Include="BEPago.cs" />
     <Compile Include="BEPrestamo.cs" />
     <Compile Include="BETarjeta.cs" />

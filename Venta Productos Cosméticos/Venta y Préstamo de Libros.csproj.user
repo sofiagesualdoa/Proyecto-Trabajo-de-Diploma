@@ -25,6 +25,9 @@
     <Compile Update="FormHistorialVentas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormLibroCambios.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormLibros.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1354,11 +1354,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\Runner.csproj",
+      "projectUniqueName": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\Runner.csproj",
       "projectName": "Runner",
-      "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\Runner.csproj",
+      "projectPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\Runner.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\obj\\",
+      "outputPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\scratch\\Runner\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1380,17 +1380,17 @@
           "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BE\\BE.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BE\\BE.csproj"
+            "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BE\\BE.csproj": {
+              "projectPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BE\\BE.csproj"
             },
-            "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj"
+            "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj": {
+              "projectPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\BLL\\BLL.csproj"
             },
-            "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj"
+            "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj": {
+              "projectPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\DAL\\DAL.csproj"
             },
-            "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj": {
-              "projectPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj"
+            "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj": {
+              "projectPath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj"
             }
           }
         }

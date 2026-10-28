@@ -1,0 +1,260 @@
+P67 [Title]: G01. Propósito y Motivación
+P79 [Title]: G02. Requisitos Funcionales
+P80 [Normal]: PN1: Gestión de ventas en tienda física
+P110 [Normal]: PN2: Gestión de préstamos y devolución de libros en tienda física
+P145 [Title]: G03. Definiciones, Acrónimos y Abreviaciones
+P154 [Title]: G04. Tabla de Roles
+P158 [Title]: G05. Otros Requisitos
+P172 [Normal]: Requisitos de desempeño
+P180 [Normal]: Requisitos del sistema y del entorno
+P205 [Title]: G06. Diagramas de Clases
+P207 [Title]: G07. Diagrama Entidad Relación
+P210 [Normal]: N01. Especificación funcional por proceso de negocio
+P211 [Normal]: PN1: Gestión de ventas en tienda física
+P212 [Title]: Roles intervinientes
+P215 [List Paragraph]: Vendedor (Persona. Es un actor primario porque usa la GUI).
+P218 [Title]: Diagrama de Roles
+P221 [Normal]: Diagrama de Secuencia
+P225 [Normal]: Diagrama Entrada – Comportamiento – Salida
+P227 [Normal]: Diagrama de Proceso
+P229 [Normal]: Modelo Conceptual
+P233 [Normal]: PN2: Gestión de préstamos y devolución de libros en tienda física
+P234 [Title]: Roles intervinientes
+P237 [List Paragraph]: Vendedor (Persona. Es un actor primario porque usa la GUI).
+P240 [Title]: Diagrama de Roles
+P243 [Normal]: Diagrama de Secuencia
+P246 [Normal]: Diagrama Entrada – Comportamiento – Salida
+P251 [Normal]: Diagrama de Proceso
+P254 [Normal]: Modelo Conceptual
+P256 [Normal]: N02. Especificaciones de Casos de Uso por Proceso de Negocio
+P258 [Normal]: PN1: Gestión de ventas en tienda física
+P259 [Normal]: N02.PN1.1 Diagrama de casos de uso general
+P263 [Normal]: N02.PN1.2 CUN01 “Registrar libro en el carrito”
+P265 [Normal]: Especificación de Caso de Uso
+P268 [Normal]: Diagrama de secuencia
+P272 [Normal]: Diagrama de clases
+P275 [Normal]: Diagrama DER
+P279 [Normal]: GUI
+P284 [Normal]: N02.PN1.3 CUN02 “Seleccionar libro”
+P286 [Normal]: Especificación de Caso de Uso
+P289 [Normal]: Diagrama de secuencia
+P292 [Normal]: Diagrama de clases
+P295 [Normal]: Diagrama DER
+P297 [Normal]: GUI
+P299 [Normal]: N02.PN1.4 CUN03 “Cobrar venta”
+P301 [Normal]: Especificación de Caso de Uso
+P304 [Normal]: Diagrama de secuencia
+P307 [Normal]: Diagrama de clases
+P317 [Normal]: Diagrama DER
+P324 [Normal]: GUI
+P328 [Normal]: N02.PN1.5 CUN04 “Registrar cliente”
+P330 [Normal]: Especificación de Caso de Uso
+P333 [Normal]: Diagrama de secuencia
+P337 [Normal]: Diagrama de clases
+P343 [Normal]: GUI
+P348 [Normal]: PN2: Gestión de préstamos y devolución de libros en tienda física
+P349 [Normal]: N02.PN2.1 Diagrama de casos de uso general
+P354 [Normal]: N02.PN2.2 CUN05 “Registrar préstamo”
+P356 [Normal]: Especificación de Caso de Uso
+P359 [Normal]: Diagrama de secuencia
+P364 [Normal]: Diagrama de clases
+P371 [Normal]: GUI
+P375 [Normal]: N02.PN2.3 CUN06 “Cobrar préstamo”
+P377 [Normal]: Especificación de Caso de Uso
+P380 [Normal]: Diagrama de secuencia
+P383 [Normal]: Diagrama de clases
+P388 [Normal]: GUI
+P392 [Normal]: N02.PN2.4 CUN07 “Seleccionar préstamo vigente”
+P394 [Normal]: Especificación de Caso de Uso
+P397 [Normal]: Diagrama de secuencia
+P401 [Normal]: Diagrama de Clases
+P408 [Normal]: GUI
+P411 [Normal]: N02.PN2.5 CUN08 “Cobrar recargo”
+P413 [Normal]: Especificación de Caso de Uso
+P416 [Normal]: Diagrama de secuencia
+P420 [Normal]: Diagrama de Clases
+P429 [Normal]: GUI
+P431 [Normal]: N02.PN2.6 CUN09 “Registrar devolución”
+P433 [Normal]: Especificación de Caso de Uso
+P436 [Normal]: Diagrama de secuencia
+P439 [Normal]: Diagrama de Clases
+P448 [Normal]: GUI
+P451 [Title]: T01. Arquitectura
+P453 [Title]: T01.1. Diseño de la Arquitectura
+P473 [Title]: T01.2. Configuración de la Arquitectura en Visual Studio.
+P477 [Title]: T01.3. Diagrama de Secuencia de Persistencia de Datos.
+P492 [Title]: T01.4. Diagrama de Secuencia de Consulta de Datos.
+P510 [Title]: T01.5. Esquema Jerárquico.
+P523 [Title]: T01.6. GUI (Menú Principal)
+P542 [Title]: T02. Usuarios
+P544 [Title]: T02.1. Diseño Crear Usuario
+P559 [Normal]: 1.2. Diagrama de Caso de Uso
+P562 [Normal]: 1.3. Especificación de Caso de Uso
+P564 [Heading 3]: CU1 - CREAR USUARIO
+P566 [Normal]: 1.4. Diagrama de Secuencia
+P569 [Normal]: 1.5. Diagrama de Clase
+P572 [Normal]: 1.6. Diagrama Entidad Relación
+P575 [Normal]: 1.7. GUI
+P579 [Title]: T02.2. Diseño Login
+P598 [Normal]: 2.2. Diagrama de Caso de Uso
+P601 [Normal]: 2.3. Especificación de Caso de Uso
+P603 [Heading 3]: CU2 - INICIAR SESIÓN
+P607 [Normal]: 2.4. Diagrama de Secuencia
+P619 [Normal]: 2.5. Diagrama de Actividad
+P622 [Normal]: 2.6. Diagrama de Clase
+P631 [Normal]: 2.7. Diagrama Entidad Relación
+P641 [Normal]: 2.8. GUI
+P645 [Normal]: CU20 - ADMINISTRAR ERROR DE INTEGRIDAD
+P649 [Normal]: El Sistema bloquea el acceso y detiene el procesamiento del login (Capa GUI).
+P656 [Normal]: Diagrama de Caso de Uso
+P660 [Normal]: Especificación de Caso de Uso
+P662 [Heading 3]: CU20 - ADMINISTRAR ERROR DE INTEGRIDAD
+P665 [Normal]: Diagrama de Secuencia
+P675 [Normal]: GUI
+P679 [Title]: T02.3. Diseño Desbloquear Usuario
+P691 [Normal]: 3.2. Diagrama de Caso de Uso
+P694 [Normal]: 3.3. Especificación de Caso de Uso
+P696 [Heading 3]: CU3 - DESBLOQUEAR USUARIO
+P698 [Normal]: 3.4. Diagrama de Secuencia
+P702 [Normal]: 3.5. Diagrama de Clase
+P705 [Normal]: 3.6. Diagrama Entidad Relación
+P708 [Normal]: 3.7. GUI
+P711 [Title]: T02.4. Diseño Modificar Usuario
+P724 [Normal]: 4.2. Diagrama de Caso de Uso
+P727 [Normal]: 4.3. Especificación de Caso de Uso
+P729 [Heading 3]: CU4 - MODIFICAR USUARIO
+P730 [Normal]: 4.4. Diagrama de Secuencia
+P733 [Normal]: 4.5. Diagrama de Clase
+P736 [Normal]: 4.6. Diagrama Entidad Relación
+P739 [Normal]: 4.7. GUI
+P744 [Title]: T02.5. Diseño Cambiar Clave
+P761 [Normal]: 5.2. Diagrama de Caso de Uso
+P764 [Normal]: 5.3. Especificación de Caso de Uso
+P766 [Heading 3]: CU5 - CAMBIAR CLAVE
+P769 [Normal]: 5.4. Diagrama de Secuencia
+P772 [Normal]: 5.5. Diagrama de Clase
+P777 [Normal]: 5.6. Diagrama Entidad Relación
+P781 [Normal]: 5.7. GUI
+P784 [Title]: T02.6. Diseño Logout
+P800 [Normal]: 6.2. Diagrama de Caso de Uso
+P804 [Normal]: 6.3. Especificación de Caso de Uso
+P806 [Normal]: CU6 - CERRAR SESIÓN
+P809 [Normal]: 6.4. Diagrama de Secuencia
+P818 [Normal]: 6.5. Diagrama de Clase
+P822 [Normal]: 6.6. Diagrama Entidad Relación
+P826 [Normal]: 6.7. GUI
+P830 [Title]: T02.7. Diseño Activar/Desactivar Usuario
+P846 [Normal]: 7.2. Diagrama de Caso de Uso
+P849 [Normal]: 7.3. Especificación de Caso de Uso
+P851 [Normal]: CU7 - ACTIVAR / DESACTIVAR USUARIO
+P854 [Normal]: 7.4. Diagrama de Secuencia
+P860 [Normal]: 7.5. Diagrama de Clase
+P864 [Normal]: 7.6. Diagrama Entidad Relación
+P868 [Normal]: 7.7. GUI
+P872 [Title]: T03. Encriptación
+P928 [Title]: T04. Perfiles (Documentación)
+P943 [Normal]: Diagrama de Casos de Uso
+P946 [Normal]: Especificación de Casos de Uso
+P948 [Heading 3]: CU10 - CREAR FAMILIA
+P950 [Normal]: Diagrama de Secuencia
+P953 [Normal]: Diagrama de Actividad
+P956 [Normal]: Diagrama de Clases
+P961 [Normal]: Diagrama Entidad Relación
+P975 [Normal]: Diagrama de Casos de Uso
+P977 [Normal]: Especificación de Casos de Uso
+P979 [Heading 3]: CU11 - ELIMINAR FAMILIA
+P982 [Normal]: Diagrama de Secuencia
+P985 [Normal]: Diagrama de Actividad
+P988 [Normal]: Diagrama de Clases
+P990 [Normal]: Diagrama Entidad Relación
+P1006 [Normal]: Diagrama de Casos de Uso
+P1009 [Normal]: Especificación de Casos de Uso
+P1011 [Heading 3]: CU12 - CREAR PERFIL
+P1014 [Normal]: Diagrama de Secuencia
+P1018 [Normal]: Diagrama de Actividad
+P1021 [Normal]: Diagrama de Clases
+P1023 [Normal]: Diagrama Entidad Relación
+P1039 [Normal]: Diagrama de Casos de Uso
+P1042 [Normal]: Especificación de Casos de Uso
+P1044 [Heading 3]: CU13 - ELIMINAR PERFIL
+P1047 [Normal]: Diagrama de Secuencia
+P1051 [Normal]: Diagrama de Actividad
+P1054 [Normal]: Diagrama de Clases
+P1056 [Normal]: Diagrama Entidad Relación
+P1073 [Normal]: Diagrama de Casos de Uso
+P1077 [Normal]: Especificación de Casos de Uso
+P1079 [Heading 3]: CU14 - AGREGAR PERMISOS A FAMILIA
+P1082 [Normal]: Diagrama de Secuencia
+P1086 [Normal]: Diagrama de Actividad
+P1090 [Normal]: Diagrama de Clases
+P1094 [Normal]: Diagrama Entidad Relación
+P1108 [Normal]: Diagrama de Casos de Uso
+P1111 [Normal]: Especificación de Casos de Uso
+P1113 [Heading 3]: CU15 - QUITAR PERMISOS A FAMILIA
+P1115 [Normal]: Diagrama de Secuencia
+P1117 [Normal]: Diagrama de Actividad
+P1120 [Normal]: Diagrama de Clases
+P1125 [Normal]: Diagrama Entidad Relación
+P1140 [Normal]: Diagrama de Casos de Uso
+P1144 [Normal]: Especificación de Casos de Uso
+P1146 [Heading 3]: CU16 - AGREGAR PERMISOS A PERFIL
+P1149 [Normal]: Diagrama de Secuencia
+P1153 [Normal]: Diagrama de Actividad
+P1157 [Normal]: Diagrama de Clases
+P1161 [Normal]: Diagrama Entidad Relación
+P1175 [Normal]: Diagrama de Casos de Uso
+P1179 [Normal]: Especificación de Casos de Uso
+P1181 [Heading 3]: CU17 - QUITAR PERMISOS A PERFIL
+P1184 [Normal]: Diagrama de Secuencia
+P1188 [Normal]: Diagrama de Actividad
+P1190 [Normal]: Diagrama de Clases
+P1194 [Normal]: Diagrama Entidad Relación
+P1210 [Normal]: Diagrama de Casos de Uso
+P1214 [Normal]: Especificación de Casos de Uso
+P1216 [Heading 3]: CU18 - AGREGAR FAMILIAS A PERFIL
+P1219 [Normal]: Diagrama de Secuencia
+P1224 [Normal]: Diagrama de Actividad
+P1227 [Normal]: Diagrama de Clases
+P1232 [Normal]: Diagrama Entidad Relación
+P1246 [Normal]: Diagrama de Casos de Uso
+P1250 [Normal]: Especificación de Casos de Uso
+P1252 [Heading 3]: CU19 - QUITAR FAMILIAS A PERFIL
+P1255 [Normal]: Diagrama de Secuencia
+P1259 [Normal]: Diagrama de Actividad
+P1262 [Normal]: Diagrama de Clases
+P1264 [Normal]: Diagrama Entidad Relación
+P1267 [Normal]: GUI PERFILES
+P1271 [Title]: T05. Idiomas (Documentación)
+P1276 [Normal]: 5.1 Descomposición Funcional CU9 “Cambiar Idioma”
+P1287 [Normal]: Nota Técnica sobre la Localización del Archivo de Idiomas:
+P1293 [Normal]: 5.2 Diagrama de Caso de Uso
+P1298 [Normal]: 5.3 Especificación
+P1300 [Heading 3]: CU9 - CAMBIAR IDIOMA
+P1302 [Normal]: 5.4 Diagrama de Secuencia
+P1318 [Normal]: 5.5 Diagrama de Clases
+P1328 [Normal]: 5.6 Diagrama Entidad Relación
+P1332 [Normal]: 5.7 GUI
+P1336 [Title]: T06. Bitácora de Eventos (Documentación)
+P1354 [Normal]: 1. Descomposición Funcional CU8 “Auditar Bitácora de Eventos”
+P1367 [Normal]: 2. Diagrama de Caso de Uso / Especificación Caso de Uso
+P1371 [Normal]: CU8 - AUDITAR BITÁCORA DE EVENTOS
+P1374 [Normal]: 3. Diagrama de Secuencia de Sistema
+P1377 [Normal]: 4. Diagrama Entidad Relación / Diagrama de Clases
+P1383 [Normal]: 5. GUI
+P1385 [Title]: T07. Gestión de Respaldos (Documentación)
+P1414 [Normal]: 2. Diagrama de Casos de Uso
+P1421 [Normal]: 3. Especificación de Casos de Uso
+P1425 [Heading 3]: CU21 - REALIZAR BACKUP
+P1427 [Heading 3]: CU22 - REALIZAR RESTORE
+P1430 [Normal]: 4. Diagrama de Secuencia
+P1447 [Normal]: 5. Diagrama de Clases
+P1456 [Normal]: 7. GUI
+P1468 [Title]: T08. Dígito Verificador
+P1470 [Normal]: Objetivo del Uso de Dígitos Verificadores
+P1478 [Normal]: Dígito Verificador Horizontal (DVH)
+P1497 [Normal]: Dígito Verificador Vertical (DVV)
+P1527 [Normal]: Generar Dígito Verificador
+P1535 [Normal]: Diagrama de Secuencia - Generar Dígito Verificador Horizontal
+P1538 [Normal]: Diagrama de Secuencia - Generar Dígito Verificador Vertical
+P1542 [Normal]: Diagrama de Secuencia - Validar Integridad de Datos
+P1546 [Normal]: Diagrama de Clases

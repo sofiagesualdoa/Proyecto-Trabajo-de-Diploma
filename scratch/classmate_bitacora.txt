@@ -1,0 +1,63 @@
+P972: 
+P973: T06.4 Bitácora de cambios explicación.
+P974: En este proyecto, la bitácora de cambios se enfoca en la tabla Producto del negocio, lo que asegura un control sobre las inserciones, actualizaciones y eliminaciones que ocurren en esta tabla. La sincronización y el registro histórico se manejan a través de triggers que actúan directamente sobre las tablas Producto y Producto_C.
+P975: 
+P976: Tablas asociadas:
+P977: 
+P978: 
+P979: 
+P980: Explicación de los Triggers:
+P981: El trigger producto_actualizado se utiliza para mantener la tabla Producto _C actualizada con la información más reciente de la tabla Producto cuando se produce una inserción o una actualización. Su funcionamiento implica que cada vez que se actualiza o inserta un registro en Producto, el trigger desactiva las versiones previas del producto en Producto_C marcándolas como inactivas (activo = 0). Posteriormente, inserta un nuevo registro en Producto_C con los datos actualizados, asignándole el estado de activo (activo = 1). Esto permite mantener un histórico de las diferentes versiones de los productos, garantizando que solo una versión esté activa en un momento dado.
+P982: 
+P983: 
+P984: El trigger producto_eliminado se encarga de gestionar la eliminación de productos de manera controlada. En lugar de eliminar completamente los registros de Producto_C, este trigger simplemente desactiva el registro correspondiente al producto eliminado al marcar su campo activo como 0. De esta forma, se conserva un historial de los productos eliminados en el sistema sin necesidad de borrarlos definitivamente, lo que es útil para auditorías y análisis posteriores.
+P985: 
+P986: 
+P987: 
+P988: El trigger producto_c_actualizado tiene la tarea de sincronizar los datos de la tabla Producto basándose en los cambios realizados en Producto_C, siempre y cuando el producto haya sido activado (activo = 1). Si se detecta un cambio en Producto_C que indica que un registro ha sido activado, el trigger actualiza o inserta la información correspondiente en la tabla Producto, garantizando que los datos en Producto siempre reflejen los últimos cambios realizados en Producto_C.
+P989: 
+P990: 
+P991: 
+P992: Diagrama de actividad explicado:
+P993: 
+P994: 
+P995: T06.4 CU14 “Auditoría de cambios”
+P996: 
+P997: T06.4.1. Descomposición funcional CU14 “Auditoria de cambios”.
+P998: El administrador inicia sesión en el sistema con el permiso de “administrador”.
+P999: El administrador ingresa a la opción de “Bitácora de cambios” en la sección “Admin”.
+P1000: El sistema abre una pantalla donde se pueden visualizar todos los cambios que se hicieron en la tabla producto dentro de una grilla. 
+P1001: El administrador puede realizar una consulta según el código del producto, la fecha desde/hasta y por nombre de producto.
+P1002: El administrador carga su consulta y presiona el botón “Aplicar”.
+P1003: El sistema le muestra en la grilla todos los cambios filtrados por la consulta. 
+P1004: 
+P1005: T06.4.2. Diagrama de caso de uso CU 14 “Auditoria de cambios”.
+P1006: 
+P1007: 
+P1008: 
+P1009: T06.4.3. Especificación de caso de uso CU 14 “Auditoria de cambios”
+P1010: 
+P1011: 
+P1012: 
+P1013: T06.4.4. Diagrama de secuencia de CU 14  “Auditoría de cambios”.
+P1014: 
+P1015: 
+P1016: 
+P1017: 
+P1018: T06.4.5. Modelo de clases CU 14 “Auditoría de cambios”.
+P1019: 
+P1020: 
+P1021: 
+P1022: T06.4.6. Diagrama DER CU 14 “Auditoría de cambios”.
+P1023: 
+P1024: 
+P1025: T06.4.7. GUI CU 14 “Auditoría de cambios”.
+P1026: 
+P1027: T07.Gestión respaldos.
+P1028: 
+P1029: T07.1 CU13 “Gestión de respaldo”
+P1030: 
+P1031: T07.1.1. Descomposición funcional CU13 “Gestión de respaldo”.
+P1032: El administrador inicia en el sistema con sus permisos correspondientes. 
+P1033: El administrador selecciona la opción “Gestión de respaldo” en la sección de “Admin”.
+P1034: El sistema abre una pantalla donde se puede visualizar una opción “Backup” y otra de “Restore”.

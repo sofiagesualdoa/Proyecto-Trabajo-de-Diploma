@@ -169,3 +169,4 @@ C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Debug\net8.0-windows\Venta_Productos_Cosméticos.FormPrestamo.resources
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Debug\net8.0-windows\Venta_Productos_Cosméticos.FormCobro.resources
 C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Debug\net8.0-windows\Venta_Productos_Cosméticos.FormHistorialPrestamos.resources
+C:\Users\usuario\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Debug\net8.0-windows\Venta_Productos_Cosméticos.FormLibroCambios.resources
