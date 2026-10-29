@@ -1,4 +1,4 @@
-namespace Venta_Productos_Cosméticos
+﻿namespace Venta_Productos_Cosméticos
 {
     partial class FormHistorialPrestamos
     {
@@ -214,7 +214,8 @@ namespace Venta_Productos_Cosméticos
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPrestamos.Size = new Size(920, 170);
             dgvPrestamos.TabIndex = 0;
-            dgvPrestamos.CellClick += dgvPrestamos_CellClick;
+            dgvPrestamos.CellClick += dgvPrestamos_CellClick;
+            dgvPrestamos.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvPrestamos.SelectionChanged += dgvPrestamos_SelectionChanged;
             // 
             // groupBoxDetalle
@@ -237,7 +238,8 @@ namespace Venta_Productos_Cosméticos
             dgvDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetalles.Location = new Point(15, 48);
             dgvDetalles.MultiSelect = false;
-            dgvDetalles.Name = "dgvDetalles";
+            dgvDetalles.Name = "dgvDetalles";
+            dgvDetalles.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvDetalles.ReadOnly = true;
             dgvDetalles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDetalles.Size = new Size(920, 175);

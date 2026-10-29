@@ -344,5 +344,21 @@
   "¿Confirma restaurar el libro a la versión seleccionada del día {0} a las {1}?": "Confirm restoring the book to the selected version from {0} at {1}?",
   "Confirmar Rollback": "Confirm Rollback",
   "El libro fue restaurado exitosamente a la versión seleccionada.": "The book was successfully restored to the selected version.",
-  "La fecha inicial no puede ser mayor a la fecha final.": "The start date cannot be greater than the end date."
+  "La fecha inicial no puede ser mayor a la fecha final.": "The start date cannot be greater than the end date.",
+  "Serializar": "Serialize",
+  "Des Serializar": "Deserialize",
+  "Actualizar": "Refresh",
+  "Confirmar Serialización": "Confirm Serialization",
+  "Confirmar Des-serialización": "Confirm Deserialization",
+  "No hay clientes en la grilla para serializar.": "There are no clients in the grid to serialize.",
+  "Serialización realizada con éxito.": "Serialization completed successfully.",
+  "Des-serialización realizada con éxito.": "Deserialization completed successfully.",
+  "Matriz de datos actualizada con los registros actuales de la base de datos.": "Data matrix refreshed with current database records.",
+  "Seleccionar destino para serializar clientes": "Select destination to serialize clients",
+  "Seleccionar archivo XML de clientes para des-serializar": "Select clients XML file to deserialize",
+  "Imprimir Factura": "Print Invoice",
+  "Guardar Factura de Venta": "Save Sales Invoice",
+  "Factura emitida exitosamente en:\n{0}": "Invoice issued successfully in:\n{0}",
+  "Seleccione una venta de la grilla para imprimir su factura.": "Select a sale from the grid to print its invoice.",
+  "¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}": "Sale confirmed successfully!\nInvoice No: {0}\nAmount paid: ${1:N2}\n\nInvoice issued in:\n{2}"
 }

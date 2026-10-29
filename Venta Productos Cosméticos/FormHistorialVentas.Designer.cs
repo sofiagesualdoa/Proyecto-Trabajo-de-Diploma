@@ -1,4 +1,4 @@
-namespace Venta_Productos_Cosméticos
+﻿namespace Venta_Productos_Cosméticos
 {
     partial class FormHistorialVentas
     {
@@ -33,6 +33,7 @@ namespace Venta_Productos_Cosméticos
             groupBoxDetalle = new GroupBox();
             dgvDetalles = new DataGridView();
             lblDetalleInfo = new Label();
+            btnImprimirFactura = new Button();
             groupBoxFiltros.SuspendLayout();
             groupBoxVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
@@ -214,10 +215,13 @@ namespace Venta_Productos_Cosméticos
             dgvVentas.Size = new Size(920, 170);
             dgvVentas.TabIndex = 0;
             dgvVentas.CellClick += dgvVentas_CellClick;
+
+            dgvVentas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvVentas.SelectionChanged += dgvVentas_SelectionChanged;
             // 
             // groupBoxDetalle
             // 
+            groupBoxDetalle.Controls.Add(btnImprimirFactura);
             groupBoxDetalle.Controls.Add(dgvDetalles);
             groupBoxDetalle.Controls.Add(lblDetalleInfo);
             groupBoxDetalle.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -237,6 +241,8 @@ namespace Venta_Productos_Cosméticos
             dgvDetalles.Location = new Point(15, 48);
             dgvDetalles.MultiSelect = false;
             dgvDetalles.Name = "dgvDetalles";
+
+            dgvDetalles.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvDetalles.ReadOnly = true;
             dgvDetalles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDetalles.Size = new Size(920, 175);
@@ -300,6 +306,7 @@ namespace Venta_Productos_Cosméticos
         private Label lblResumenVentas;
         private GroupBox groupBoxDetalle;
         private Label lblDetalleInfo;
-        private DataGridView dgvDetalles;
+        private DataGridView dgvDetalles;
+        private Button btnImprimirFactura;
     }
 }

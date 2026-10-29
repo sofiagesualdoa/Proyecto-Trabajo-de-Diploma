@@ -1,14 +1,11 @@
 using System;
-using DAL;
 
-class Program
+namespace scratch
 {
-    static void Main()
+    internal class Program
     {
-        DALIdioma dal = new DALIdioma();
-        var dict = dal.ObtenerTraducciones();
-        Console.WriteLine($"Traducciones cargadas con éxito: {dict.Count} elementos.");
-        Console.WriteLine($"Prueba 'Bitácora de Cambios': {dict["Bitácora de Cambios"]}");
-        Console.WriteLine($"Prueba 'Stock Venta': {dict["Stock Venta"]}");
+        static void Main(string[] args)
+        {
+        }
     }
 }

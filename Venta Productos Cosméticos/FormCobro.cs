@@ -1,3 +1,4 @@
+﻿using System.IO;
 using BE;
 using BLL;
 using Servicios;
@@ -115,11 +116,53 @@ namespace Venta_Productos_Cosméticos
                 {
                     BEPago pago = bllFactura.RealizarPago(tarjeta, carrito.Total);
                     BEFactura factura = bllVenta.ConcretarVenta(carrito, cliente, pago);
-                    MessageBox.Show(string.Format(s.Traducir("¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}"),
-                                                  factura.NumeroFactura, factura.Total),
+
+                    string numLimpio = factura.NumeroFactura.Replace('/', '_').Replace('\\', '_');
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+                    sfd.FileName = $"Factura_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                    sfd.Title = s.Traducir("Guardar Factura de Venta");
+
+                    string rutaPdf = string.Empty;
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        rutaPdf = sfd.FileName;
+                    }
+                    else
+                    {
+                        string carpetaMisDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        rutaPdf = Path.Combine(carpetaMisDocs, $"Factura_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+                    }
+
+                    try
+                    {
+                        bllFactura.GenerarFacturaPDF(factura, cliente, carrito.Detalles, pago, rutaPdf);
+                    }
+                    catch
+                    {
+                    }
+
+                    MessageBox.Show(string.Format(s.Traducir("¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}"),
+                                                  factura.NumeroFactura, factura.Total, rutaPdf),
                                     s.Traducir("Éxito"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
+
+                    if (File.Exists(rutaPdf))
+                    {
+                        try
+                        {
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = rutaPdf,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch
+                        {
+                        }
+                    }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

@@ -1,3 +1,4 @@
+﻿using System.IO;
 using BE;
 using BLL;
 using Servicios;
@@ -271,6 +272,84 @@ namespace Venta_Productos_Cosméticos
         private void FormHistorialVentas_FormClosing(object sender, FormClosingEventArgs e)
         {
             bllIdioma.BorrarSuscriptor(this);
+        }
+
+        private void btnImprimirFactura_Click(object sender, EventArgs e)
+        {
+            if (dgvVentas.CurrentRow == null || !(dgvVentas.CurrentRow.DataBoundItem is BEVenta venta))
+            {
+                MessageBox.Show(
+                    ServicioSessionManager.GetInstance().Traducir("Seleccione una venta de la grilla para imprimir su factura."),
+                    ServicioSessionManager.GetInstance().Traducir("Atención"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            var factura = bllVenta.BuscarFacturaPorVenta(venta.IdVenta);
+            if (factura == null)
+            {
+                factura = new BEFactura
+                {
+                    IdFactura = venta.IdVenta,
+                    NumeroFactura = venta.NumeroFactura,
+                    DNICliente = venta.DNICliente,
+                    Fecha = venta.Fecha,
+                    Total = venta.Total
+                };
+            }
+
+            var cliente = new BLLCliente().ObtenerClientes().FirstOrDefault(c => c.DNI_657SGA == venta.DNICliente);
+            var detalles = bllVenta.ObtenerDetallesPorVenta(venta.IdVenta);
+            var pago = new BEPago { MedioPago = "Tarjeta", Importe = venta.Total, Fecha = venta.Fecha };
+
+            string numLimpio = !string.IsNullOrWhiteSpace(factura.NumeroFactura) 
+                ? factura.NumeroFactura.Replace('/', '_').Replace('\\', '_') 
+                : $"Venta_{venta.IdVenta}";
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+            sfd.FileName = $"Factura_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            sfd.Title = ServicioSessionManager.GetInstance().Traducir("Guardar Factura de Venta");
+
+            string rutaPdf = string.Empty;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                rutaPdf = sfd.FileName;
+            }
+            else
+            {
+                string carpetaMisDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                rutaPdf = Path.Combine(carpetaMisDocs, $"Factura_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+            }
+
+            try
+            {
+                new BLLFactura().GenerarFacturaPDF(factura, cliente, detalles, pago, rutaPdf);
+                MessageBox.Show(
+                    string.Format(
+                        ServicioSessionManager.GetInstance().Traducir("Factura emitida exitosamente en:\n{0}"),
+                        rutaPdf
+                    ),
+                    ServicioSessionManager.GetInstance().Traducir("Éxito"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                if (File.Exists(rutaPdf))
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = rutaPdf,
+                        UseShellExecute = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ServicioSessionManager.GetInstance().Traducir("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

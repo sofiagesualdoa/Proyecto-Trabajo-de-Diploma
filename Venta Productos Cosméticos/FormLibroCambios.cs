@@ -1,4 +1,4 @@
-using BE;
+﻿using BE;
 using BLL;
 using Servicios;
 using System;
@@ -196,7 +196,7 @@ namespace Venta_Productos_Cosméticos
                 if (item.Act)
                 {
                     dgvCambios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(220, 245, 220);
-                    dgvCambios.Rows[rowIndex].DefaultCellStyle.Font = new Font("Sitka Text", 9F, FontStyle.Bold);
+                    dgvCambios.Rows[rowIndex].DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
                 }
             }
             ActualizarEstadoBotonActivar();
@@ -226,7 +226,7 @@ namespace Venta_Productos_Cosméticos
                 if (dgvCambios.Rows[e.RowIndex].Tag is BELibroCambios item && item.Act)
                 {
                     dgvCambios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(220, 245, 220);
-                    dgvCambios.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Sitka Text", 9F, FontStyle.Bold);
+                    dgvCambios.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
                 }
             }
         }

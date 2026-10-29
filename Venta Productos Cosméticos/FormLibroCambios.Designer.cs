@@ -1,4 +1,4 @@
-namespace Venta_Productos_Cosméticos
+﻿namespace Venta_Productos_Cosméticos
 {
     partial class FormLibroCambios
     {
@@ -217,7 +217,7 @@ namespace Venta_Productos_Cosméticos
             dgvCambios.BackgroundColor = Color.FloralWhite;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Sienna;
-            dataGridViewCellStyle1.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -226,12 +226,13 @@ namespace Venta_Productos_Cosméticos
             dgvCambios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.SandyBrown;
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvCambios.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvCambios.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvCambios.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvCambios.EnableHeadersVisualStyles = false;
             dgvCambios.Location = new Point(20, 199);
             dgvCambios.MultiSelect = false;

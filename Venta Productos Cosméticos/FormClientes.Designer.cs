@@ -1,4 +1,4 @@
-﻿namespace Venta_Productos_Cosméticos
+namespace Venta_Productos_Cosméticos
 {
     partial class FormClientes
     {
@@ -51,6 +51,11 @@
             label1 = new Label();
             btnConsultar_SGA657 = new Button();
             button1 = new Button();
+            btnSerializar = new Button();
+            btnDesSerializar = new Button();
+            btnActualizar = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -59,7 +64,7 @@
             // 
             rbtnActivos_SGA657.AutoSize = true;
             rbtnActivos_SGA657.Font = new Font("Sitka Text", 9F);
-            rbtnActivos_SGA657.Location = new Point(825, 27);
+            rbtnActivos_SGA657.Location = new Point(714, 27);
             rbtnActivos_SGA657.Name = "rbtnActivos_SGA657";
             rbtnActivos_SGA657.Size = new Size(69, 22);
             rbtnActivos_SGA657.TabIndex = 28;
@@ -71,7 +76,7 @@
             // 
             rbtnTodos_SGA657.AutoSize = true;
             rbtnTodos_SGA657.Font = new Font("Sitka Text", 9F);
-            rbtnTodos_SGA657.Location = new Point(759, 27);
+            rbtnTodos_SGA657.Location = new Point(648, 27);
             rbtnTodos_SGA657.Name = "rbtnTodos_SGA657";
             rbtnTodos_SGA657.Size = new Size(60, 22);
             rbtnTodos_SGA657.TabIndex = 27;
@@ -94,9 +99,9 @@
             groupBox1.Controls.Add(txtApellido_SGA657);
             groupBox1.Controls.Add(txtNombre_SGA657);
             groupBox1.Controls.Add(txtDNI_SGA657);
-            groupBox1.Location = new Point(12, 214);
+            groupBox1.Location = new Point(12, 257);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(426, 224);
+            groupBox1.Size = new Size(426, 181);
             groupBox1.TabIndex = 26;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos Personales";
@@ -104,7 +109,7 @@
             // txtTelefono_SGA657
             // 
             txtTelefono_SGA657.Font = new Font("Sitka Text", 9F);
-            txtTelefono_SGA657.Location = new Point(217, 173);
+            txtTelefono_SGA657.Location = new Point(227, 138);
             txtTelefono_SGA657.Name = "txtTelefono_SGA657";
             txtTelefono_SGA657.Size = new Size(173, 23);
             txtTelefono_SGA657.TabIndex = 18;
@@ -113,7 +118,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Sitka Text", 9.749999F);
-            label7.Location = new Point(217, 151);
+            label7.Location = new Point(227, 116);
             label7.Name = "label7";
             label7.Size = new Size(61, 19);
             label7.TabIndex = 10;
@@ -123,7 +128,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 9.749999F);
-            label6.Location = new Point(13, 151);
+            label6.Location = new Point(23, 116);
             label6.Name = "label6";
             label6.Size = new Size(44, 19);
             label6.TabIndex = 9;
@@ -133,7 +138,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Text", 9.749999F);
-            label5.Location = new Point(13, 85);
+            label5.Location = new Point(23, 68);
             label5.Name = "label5";
             label5.Size = new Size(59, 19);
             label5.TabIndex = 8;
@@ -143,7 +148,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 9.749999F);
-            label4.Location = new Point(217, 88);
+            label4.Location = new Point(227, 68);
             label4.Name = "label4";
             label4.Size = new Size(66, 19);
             label4.TabIndex = 7;
@@ -153,7 +158,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 9.749999F);
-            label3.Location = new Point(217, 26);
+            label3.Location = new Point(227, 20);
             label3.Name = "label3";
             label3.Size = new Size(58, 19);
             label3.TabIndex = 6;
@@ -163,7 +168,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 9.749999F);
-            label2.Location = new Point(13, 26);
+            label2.Location = new Point(23, 20);
             label2.Name = "label2";
             label2.Size = new Size(33, 19);
             label2.TabIndex = 5;
@@ -172,7 +177,7 @@
             // txtEmail_SGA657
             // 
             txtEmail_SGA657.Font = new Font("Sitka Text", 9F);
-            txtEmail_SGA657.Location = new Point(13, 173);
+            txtEmail_SGA657.Location = new Point(23, 138);
             txtEmail_SGA657.Name = "txtEmail_SGA657";
             txtEmail_SGA657.Size = new Size(173, 23);
             txtEmail_SGA657.TabIndex = 4;
@@ -180,7 +185,7 @@
             // txtDireccion_SGA657
             // 
             txtDireccion_SGA657.Font = new Font("Sitka Text", 9F);
-            txtDireccion_SGA657.Location = new Point(217, 110);
+            txtDireccion_SGA657.Location = new Point(227, 90);
             txtDireccion_SGA657.Name = "txtDireccion_SGA657";
             txtDireccion_SGA657.Size = new Size(173, 23);
             txtDireccion_SGA657.TabIndex = 3;
@@ -188,7 +193,7 @@
             // txtApellido_SGA657
             // 
             txtApellido_SGA657.Font = new Font("Sitka Text", 9F);
-            txtApellido_SGA657.Location = new Point(13, 107);
+            txtApellido_SGA657.Location = new Point(23, 90);
             txtApellido_SGA657.Name = "txtApellido_SGA657";
             txtApellido_SGA657.Size = new Size(173, 23);
             txtApellido_SGA657.TabIndex = 2;
@@ -196,7 +201,7 @@
             // txtNombre_SGA657
             // 
             txtNombre_SGA657.Font = new Font("Sitka Text", 9F);
-            txtNombre_SGA657.Location = new Point(217, 47);
+            txtNombre_SGA657.Location = new Point(227, 42);
             txtNombre_SGA657.Name = "txtNombre_SGA657";
             txtNombre_SGA657.Size = new Size(173, 23);
             txtNombre_SGA657.TabIndex = 1;
@@ -204,7 +209,7 @@
             // txtDNI_SGA657
             // 
             txtDNI_SGA657.Font = new Font("Sitka Text", 9F);
-            txtDNI_SGA657.Location = new Point(13, 47);
+            txtDNI_SGA657.Location = new Point(23, 42);
             txtDNI_SGA657.Name = "txtDNI_SGA657";
             txtDNI_SGA657.Size = new Size(173, 23);
             txtDNI_SGA657.TabIndex = 0;
@@ -214,7 +219,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 55);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(926, 150);
+            dataGridView1.Size = new Size(926, 196);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
@@ -223,9 +228,9 @@
             // 
             btnSalir_SGA657.BackColor = Color.Sienna;
             btnSalir_SGA657.Font = new Font("Sitka Text", 9.749999F);
-            btnSalir_SGA657.Location = new Point(639, 365);
+            btnSalir_SGA657.Location = new Point(818, 13);
             btnSalir_SGA657.Name = "btnSalir_SGA657";
-            btnSalir_SGA657.Size = new Size(113, 57);
+            btnSalir_SGA657.Size = new Size(113, 36);
             btnSalir_SGA657.TabIndex = 24;
             btnSalir_SGA657.Text = "Salir";
             btnSalir_SGA657.UseVisualStyleBackColor = false;
@@ -235,7 +240,7 @@
             // 
             btnActDesact_SGA657.BackColor = Color.Sienna;
             btnActDesact_SGA657.Font = new Font("Sitka Text", 9.749999F);
-            btnActDesact_SGA657.Location = new Point(580, 221);
+            btnActDesact_SGA657.Location = new Point(580, 257);
             btnActDesact_SGA657.Name = "btnActDesact_SGA657";
             btnActDesact_SGA657.Size = new Size(113, 57);
             btnActDesact_SGA657.TabIndex = 21;
@@ -247,7 +252,7 @@
             // 
             btnModificar_SGA657.BackColor = Color.Sienna;
             btnModificar_SGA657.Font = new Font("Sitka Text", 9.749999F);
-            btnModificar_SGA657.Location = new Point(699, 221);
+            btnModificar_SGA657.Location = new Point(699, 257);
             btnModificar_SGA657.Name = "btnModificar_SGA657";
             btnModificar_SGA657.Size = new Size(113, 57);
             btnModificar_SGA657.TabIndex = 20;
@@ -259,7 +264,7 @@
             // 
             btnAgregar_SGA657.BackColor = Color.Sienna;
             btnAgregar_SGA657.Font = new Font("Sitka Text", 9.749999F);
-            btnAgregar_SGA657.Location = new Point(461, 221);
+            btnAgregar_SGA657.Location = new Point(461, 258);
             btnAgregar_SGA657.Name = "btnAgregar_SGA657";
             btnAgregar_SGA657.Size = new Size(113, 57);
             btnAgregar_SGA657.TabIndex = 18;
@@ -282,7 +287,7 @@
             // 
             btnConsultar_SGA657.BackColor = Color.Sienna;
             btnConsultar_SGA657.Font = new Font("Sitka Text", 9.749999F);
-            btnConsultar_SGA657.Location = new Point(818, 221);
+            btnConsultar_SGA657.Location = new Point(818, 258);
             btnConsultar_SGA657.Name = "btnConsultar_SGA657";
             btnConsultar_SGA657.Size = new Size(113, 57);
             btnConsultar_SGA657.TabIndex = 29;
@@ -294,7 +299,7 @@
             // 
             button1.BackColor = Color.Sienna;
             button1.Font = new Font("Sitka Text", 9.749999F);
-            button1.Location = new Point(461, 365);
+            button1.Location = new Point(461, 321);
             button1.Name = "button1";
             button1.Size = new Size(113, 57);
             button1.TabIndex = 30;
@@ -302,12 +307,55 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // btnSerializar
+            // 
+            btnSerializar.BackColor = Color.Sienna;
+            btnSerializar.Font = new Font("Sitka Text", 9.749999F);
+            btnSerializar.Location = new Point(461, 381);
+            btnSerializar.Name = "btnSerializar";
+            btnSerializar.Size = new Size(113, 57);
+            btnSerializar.TabIndex = 31;
+            btnSerializar.Text = "Serializar";
+            btnSerializar.UseVisualStyleBackColor = false;
+            btnSerializar.Click += btnSerializar_Click;
+            // 
+            // btnDesSerializar
+            // 
+            btnDesSerializar.BackColor = Color.Sienna;
+            btnDesSerializar.Font = new Font("Sitka Text", 9.749999F);
+            btnDesSerializar.Location = new Point(580, 381);
+            btnDesSerializar.Name = "btnDesSerializar";
+            btnDesSerializar.Size = new Size(113, 57);
+            btnDesSerializar.TabIndex = 32;
+            btnDesSerializar.Text = "Des Serializar";
+            btnDesSerializar.UseVisualStyleBackColor = false;
+            btnDesSerializar.Click += btnDesSerializar_Click;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.BackColor = Color.Sienna;
+            btnActualizar.Font = new Font("Sitka Text", 9.749999F);
+            btnActualizar.Location = new Point(699, 381);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(113, 57);
+            btnActualizar.TabIndex = 33;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FormClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
             ClientSize = new Size(959, 450);
+            Controls.Add(btnActualizar);
+            Controls.Add(btnDesSerializar);
+            Controls.Add(btnSerializar);
             Controls.Add(button1);
             Controls.Add(btnConsultar_SGA657);
             Controls.Add(rbtnActivos_SGA657);
@@ -362,5 +410,10 @@
         private TextBox txtTelefono_SGA657;
         private Button btnConsultar_SGA657;
         private Button button1;
+        private Button btnSerializar;
+        private Button btnDesSerializar;
+        private Button btnActualizar;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
     }
 }
