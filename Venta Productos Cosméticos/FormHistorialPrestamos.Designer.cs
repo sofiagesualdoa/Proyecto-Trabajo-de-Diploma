@@ -34,6 +34,7 @@
             dgvDetalles = new DataGridView();
             lblDetalleInfo = new Label();
             btnDevolver = new Button();
+            btnImprimirComprobante = new Button();
             groupBoxFiltros.SuspendLayout();
             groupBoxPrestamos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPrestamos).BeginInit();
@@ -214,12 +215,14 @@
             dgvPrestamos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPrestamos.Size = new Size(920, 170);
             dgvPrestamos.TabIndex = 0;
-            dgvPrestamos.CellClick += dgvPrestamos_CellClick;
+            dgvPrestamos.CellClick += dgvPrestamos_CellClick;
+
             dgvPrestamos.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvPrestamos.SelectionChanged += dgvPrestamos_SelectionChanged;
             // 
             // groupBoxDetalle
             // 
+            groupBoxDetalle.Controls.Add(btnImprimirComprobante);
             groupBoxDetalle.Controls.Add(dgvDetalles);
             groupBoxDetalle.Controls.Add(lblDetalleInfo);
             groupBoxDetalle.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -238,7 +241,8 @@
             dgvDetalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDetalles.Location = new Point(15, 48);
             dgvDetalles.MultiSelect = false;
-            dgvDetalles.Name = "dgvDetalles";
+            dgvDetalles.Name = "dgvDetalles";
+
             dgvDetalles.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvDetalles.ReadOnly = true;
             dgvDetalles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -254,6 +258,19 @@
             lblDetalleInfo.Size = new Size(329, 19);
             lblDetalleInfo.TabIndex = 0;
             lblDetalleInfo.Text = "Seleccione un préstamo para visualizar sus detalles.";
+            // 
+            // btnImprimirComprobante
+            // 
+            btnImprimirComprobante.BackColor = Color.Sienna;
+            btnImprimirComprobante.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnImprimirComprobante.ForeColor = Color.Black;
+            btnImprimirComprobante.Location = new Point(740, 14);
+            btnImprimirComprobante.Name = "btnImprimirComprobante";
+            btnImprimirComprobante.Size = new Size(195, 30);
+            btnImprimirComprobante.TabIndex = 2;
+            btnImprimirComprobante.Text = "Imprimir Comprobante";
+            btnImprimirComprobante.UseVisualStyleBackColor = false;
+            btnImprimirComprobante.Click += btnImprimirComprobante_Click;
             // 
             // btnDevolver
             // 
@@ -319,5 +336,6 @@
         private Label lblDetalleInfo;
         private DataGridView dgvDetalles;
         private Button btnDevolver;
+        private Button btnImprimirComprobante;
     }
 }

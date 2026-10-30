@@ -33,7 +33,8 @@
             groupBoxDetalle = new GroupBox();
             dgvDetalles = new DataGridView();
             lblDetalleInfo = new Label();
-            btnImprimirFactura = new Button();
+            btnImprimirFactura = new Button();
+
             groupBoxFiltros.SuspendLayout();
             groupBoxVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
@@ -221,7 +222,8 @@
             // 
             // groupBoxDetalle
             // 
-            groupBoxDetalle.Controls.Add(btnImprimirFactura);
+            groupBoxDetalle.Controls.Add(btnImprimirFactura);
+
             groupBoxDetalle.Controls.Add(dgvDetalles);
             groupBoxDetalle.Controls.Add(lblDetalleInfo);
             groupBoxDetalle.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -257,6 +259,19 @@
             lblDetalleInfo.Size = new Size(312, 19);
             lblDetalleInfo.TabIndex = 0;
             lblDetalleInfo.Text = "Seleccione una venta para visualizar sus detalles.";
+            // 
+            // btnImprimirFactura
+            // 
+            btnImprimirFactura.BackColor = Color.Sienna;
+            btnImprimirFactura.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnImprimirFactura.ForeColor = Color.Black;
+            btnImprimirFactura.Location = new Point(765, 14);
+            btnImprimirFactura.Name = "btnImprimirFactura";
+            btnImprimirFactura.Size = new Size(170, 30);
+            btnImprimirFactura.TabIndex = 2;
+            btnImprimirFactura.Text = "Imprimir Factura";
+            btnImprimirFactura.UseVisualStyleBackColor = false;
+            btnImprimirFactura.Click += btnImprimirFactura_Click;
             // 
             // FormHistorialVentas
             // 
@@ -306,7 +321,8 @@
         private Label lblResumenVentas;
         private GroupBox groupBoxDetalle;
         private Label lblDetalleInfo;
-        private DataGridView dgvDetalles;
+        private DataGridView dgvDetalles;
+
         private Button btnImprimirFactura;
     }
 }

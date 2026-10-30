@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.IO;
+
 using BE;
 using BLL;
 using Servicios;
@@ -23,6 +24,7 @@ namespace Venta_Productos_Cosméticos
         private readonly BLLFactura bllFactura = new BLLFactura();
         private readonly BLLVenta bllVenta = new BLLVenta();
         private readonly BLLPrestamo bllPrestamo = new BLLPrestamo();
+        private readonly BLLLibro bllLibro = new BLLLibro();
         private readonly ServicioIdioma bllIdioma = new ServicioIdioma();
         private readonly Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         public FormCobro()
@@ -169,22 +171,164 @@ namespace Venta_Productos_Cosméticos
                 else if (prestamo != null && montoRecargo > 0)
                 {
                     BEFactura factura = bllPrestamo.CobrarRecargo(prestamo, cliente, tarjeta, montoRecargo);
-                    MessageBox.Show(string.Format(s.Traducir("¡Recargo por mora cobrado exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}"),
-                                                  factura.NumeroFactura, factura.Total),
+
+                    BELibro? libroPrestamo = bllLibro.ObtenerLibros().FirstOrDefault(l => l.ISBN_657SGA == prestamo.ISBN);
+                    string tituloLibro = libroPrestamo != null ? libroPrestamo.Título_657SGA : "Ejemplar Bookly";
+                    string descRecargo = $"Recargo por Devolución Tardía - {tituloLibro}";
+
+                    List<BEDetalleVenta> detallesRecargo = new List<BEDetalleVenta>
+                    {
+                        new BEDetalleVenta
+                        {
+                            ISBN = prestamo.ISBN,
+                            Cantidad = 1,
+                            PrecioUnitario = montoRecargo,
+                            Subtotal = montoRecargo,
+                            Libro = new BELibro
+                            {
+                                ISBN_657SGA = prestamo.ISBN,
+                                Título_657SGA = descRecargo,
+                                Autor_657SGA = libroPrestamo?.Autor_657SGA ?? string.Empty
+                            }
+                        }
+                    };
+
+                    BEPago pago = new BEPago
+                    {
+                        IdVenta = factura.IdFactura,
+                        MedioPago = tarjeta.Tipo == "Débito" ? "Tarjeta de Débito" : "Tarjeta de Crédito",
+                        Importe = montoRecargo,
+                        Fecha = DateTime.Now
+                    };
+
+                    string numLimpio = factura.NumeroFactura.Replace('/', '_').Replace('\\', '_');
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+                    sfd.FileName = $"Factura_Recargo_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                    sfd.Title = s.Traducir("Guardar Factura de Recargo por Mora");
+
+                    string rutaPdf = string.Empty;
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        rutaPdf = sfd.FileName;
+                    }
+                    else
+                    {
+                        string carpetaMisDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        rutaPdf = Path.Combine(carpetaMisDocs, $"Factura_Recargo_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+                    }
+
+                    try
+                    {
+                        bllFactura.GenerarFacturaPDF(factura, cliente, detallesRecargo, pago, rutaPdf);
+                    }
+                    catch
+                    {
+                    }
+
+                    MessageBox.Show(string.Format(s.Traducir("¡Recargo por mora cobrado exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}"),
+                                                  factura.NumeroFactura, factura.Total, rutaPdf),
                                     s.Traducir("Éxito"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
+
+                    if (File.Exists(rutaPdf))
+                    {
+                        try
+                        {
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = rutaPdf,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch
+                        {
+                        }
+                    }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else if (prestamo != null)
                 {
                     BEFactura factura = bllPrestamo.ConcretarPrestamo(prestamo, cliente, tarjeta);
-                    MessageBox.Show(string.Format(s.Traducir("¡Préstamo confirmado exitosamente!\nN° Factura: {0}\nFecha Pactada de Devolución: {1:dd/MM/yyyy}\nImporte abonado: ${2:N2}"),
-                                                  factura.NumeroFactura, prestamo.FechaDevolucion, factura.Total),
+
+                    BELibro? libroPrestamo = bllLibro.ObtenerLibros().FirstOrDefault(l => l.ISBN_657SGA == prestamo.ISBN);
+                    string tituloLibro = libroPrestamo != null ? libroPrestamo.Título_657SGA : "Ejemplar Bookly";
+                    string descPrestamo = $"Alquiler de Préstamo - {tituloLibro}";
+
+                    List<BEDetalleVenta> detallesPrestamo = new List<BEDetalleVenta>
+                    {
+                        new BEDetalleVenta
+                        {
+                            ISBN = prestamo.ISBN,
+                            Cantidad = 1,
+                            PrecioUnitario = factura.Total,
+                            Subtotal = factura.Total,
+                            Libro = new BELibro
+                            {
+                                ISBN_657SGA = prestamo.ISBN,
+                                Título_657SGA = descPrestamo,
+                                Autor_657SGA = libroPrestamo?.Autor_657SGA ?? string.Empty
+                            }
+                        }
+                    };
+
+                    BEPago pago = new BEPago
+                    {
+                        IdVenta = factura.IdFactura,
+                        MedioPago = tarjeta.Tipo == "Débito" ? "Tarjeta de Débito" : "Tarjeta de Crédito",
+                        Importe = factura.Total,
+                        Fecha = DateTime.Now
+                    };
+
+                    string numLimpio = factura.NumeroFactura.Replace('/', '_').Replace('\\', '_');
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+                    sfd.FileName = $"Factura_Prestamo_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                    sfd.Title = s.Traducir("Guardar Factura de Préstamo");
+
+                    string rutaPdf = string.Empty;
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        rutaPdf = sfd.FileName;
+                    }
+                    else
+                    {
+                        string carpetaMisDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                        rutaPdf = Path.Combine(carpetaMisDocs, $"Factura_Prestamo_{numLimpio}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
+                    }
+
+                    try
+                    {
+                        bllFactura.GenerarFacturaPDF(factura, cliente, detallesPrestamo, pago, rutaPdf);
+                    }
+                    catch
+                    {
+                    }
+
+                    MessageBox.Show(string.Format(s.Traducir("¡Préstamo confirmado exitosamente!\nN° Factura: {0}\nFecha Pactada de Devolución: {1:dd/MM/yyyy}\nImporte abonado: ${2:N2}\n\nFactura emitida en:\n{3}"),
+                                                  factura.NumeroFactura, prestamo.FechaDevolucion, factura.Total, rutaPdf),
                                     s.Traducir("Éxito"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
+
+                    if (File.Exists(rutaPdf))
+                    {
+                        try
+                        {
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = rutaPdf,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch
+                        {
+                        }
+                    }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

@@ -360,5 +360,12 @@
   "Guardar Factura de Venta": "Save Sales Invoice",
   "Factura emitida exitosamente en:\n{0}": "Invoice issued successfully in:\n{0}",
   "Seleccione una venta de la grilla para imprimir su factura.": "Select a sale from the grid to print its invoice.",
-  "¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}": "Sale confirmed successfully!\nInvoice No: {0}\nAmount paid: ${1:N2}\n\nInvoice issued in:\n{2}"
+  "¡Venta confirmada exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}": "Sale confirmed successfully!\nInvoice No: {0}\nAmount paid: ${1:N2}\n\nInvoice issued in:\n{2}",
+  "Guardar Factura de Recargo por Mora": "Guardar Factura de Recargo por Mora",
+  "Guardar Factura de Préstamo": "Guardar Factura de Préstamo",
+  "¡Recargo por mora cobrado exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}": "¡Recargo por mora cobrado exitosamente!\nN° Factura: {0}\nImporte abonado: ${1:N2}\n\nFactura emitida en:\n{2}",
+  "¡Préstamo confirmado exitosamente!\nN° Factura: {0}\nFecha Pactada de Devolución: {1:dd/MM/yyyy}\nImporte abonado: ${2:N2}\n\nFactura emitida en:\n{3}": "¡Préstamo confirmado exitosamente!\nN° Factura: {0}\nFecha Pactada de Devolución: {1:dd/MM/yyyy}\nImporte abonado: ${2:N2}\n\nFactura emitida en:\n{3}",
+  "Imprimir Comprobante": "Imprimir Comprobante",
+  "Seleccione un préstamo de la grilla para imprimir su comprobante.": "Seleccione un préstamo de la grilla para imprimir su comprobante.",
+  "El comprobante oficial de devolución sólo puede emitirse una vez finalizado el préstamo.": "El comprobante oficial de devolución sólo puede emitirse una vez finalizado el préstamo."
 }

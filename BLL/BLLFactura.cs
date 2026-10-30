@@ -57,7 +57,19 @@ namespace BLL
                 titulo.Alignment = Element.ALIGN_CENTER;
                 documento.Add(titulo);
 
-                Paragraph subtitulo = new Paragraph("FACTURA ELECTRÓNICA OFICIAL DE VENTA\n\n", fuenteSubtitulo);
+                string textoSubtitulo = "FACTURA ELECTRÓNICA OFICIAL DE VENTA";
+                if (!string.IsNullOrWhiteSpace(factura.NumeroFactura))
+                {
+                    if (factura.NumeroFactura.StartsWith("FC-R"))
+                    {
+                        textoSubtitulo = "FACTURA ELECTRÓNICA OFICIAL - RECARGO POR MORA";
+                    }
+                    else if (factura.NumeroFactura.StartsWith("FC-P"))
+                    {
+                        textoSubtitulo = "FACTURA ELECTRÓNICA OFICIAL - ALQUILER DE PRÉSTAMO";
+                    }
+                }
+                Paragraph subtitulo = new Paragraph(textoSubtitulo + "\n\n", fuenteSubtitulo);
                 subtitulo.Alignment = Element.ALIGN_CENTER;
                 documento.Add(subtitulo);
 
