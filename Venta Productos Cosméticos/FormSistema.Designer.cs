@@ -53,8 +53,7 @@ namespace Venta_Productos_Cosméticos
             clientesToolStripMenuItem = new ToolStripMenuItem();
             librosCToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
-            productosMásVendidosToolStripMenuItem = new ToolStripMenuItem();
-            productosMenosVendidosToolStripMenuItem = new ToolStripMenuItem();
+            reporteInteligenteToolStripMenuItem = new ToolStripMenuItem();
             centroDeAyudaToolStripMenuItem = new ToolStripMenuItem();
             manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
             guíaDeInstalaciónArchivoLeémeToolStripMenuItem = new ToolStripMenuItem();
@@ -245,25 +244,18 @@ namespace Venta_Productos_Cosméticos
             // 
             // reportesToolStripMenuItem
             // 
-            reportesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productosMásVendidosToolStripMenuItem, productosMenosVendidosToolStripMenuItem });
+            reportesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { reporteInteligenteToolStripMenuItem });
             reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             reportesToolStripMenuItem.Size = new Size(97, 28);
             reportesToolStripMenuItem.Text = "Reportes";
-            reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
-            // productosMásVendidosToolStripMenuItem
+            // reporteInteligenteToolStripMenuItem
             // 
-            productosMásVendidosToolStripMenuItem.Name = "productosMásVendidosToolStripMenuItem";
-            productosMásVendidosToolStripMenuItem.Size = new Size(308, 28);
-            productosMásVendidosToolStripMenuItem.Tag = "Reporte Mas Vendidos";
-            productosMásVendidosToolStripMenuItem.Text = "Productos Más Vendidos";
-            // 
-            // productosMenosVendidosToolStripMenuItem
-            // 
-            productosMenosVendidosToolStripMenuItem.Name = "productosMenosVendidosToolStripMenuItem";
-            productosMenosVendidosToolStripMenuItem.Size = new Size(308, 28);
-            productosMenosVendidosToolStripMenuItem.Tag = "Reporte Menos Vendidos";
-            productosMenosVendidosToolStripMenuItem.Text = "Productos Menos Vendidos";
+            reporteInteligenteToolStripMenuItem.Name = "reporteInteligenteToolStripMenuItem";
+            reporteInteligenteToolStripMenuItem.Size = new Size(240, 28);
+            reporteInteligenteToolStripMenuItem.Tag = "Reporte Inteligente";
+            reporteInteligenteToolStripMenuItem.Text = "Reporte Inteligente";
+            reporteInteligenteToolStripMenuItem.Click += reporteInteligenteToolStripMenuItem_Click;
             // 
             // centroDeAyudaToolStripMenuItem
             // 
@@ -368,7 +360,7 @@ namespace Venta_Productos_Cosméticos
         private ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private ToolStripMenuItem nuevaVentaToolStripMenuItem;
         private ToolStripMenuItem historialVentasToolStripMenuItem;
-        private ToolStripMenuItem productosMásVendidosToolStripMenuItem;
+        private ToolStripMenuItem reporteInteligenteToolStripMenuItem;
         private ToolStripMenuItem usuariosToolStripMenuItem;
         private ToolStripMenuItem perfilesToolStripMenuItem;
         private ToolStripMenuItem bitácoraEventosToolStripMenuItem;
@@ -376,7 +368,6 @@ namespace Venta_Productos_Cosméticos
         private ToolStripMenuItem restoreToolStripMenuItem;
         private ToolStripMenuItem librosToolStripMenuItem;
         private ToolStripMenuItem clientesToolStripMenuItem;
-        private ToolStripMenuItem productosMenosVendidosToolStripMenuItem;
         private ToolStripMenuItem cambiarClaveToolStripMenuItem;
         private ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;

@@ -67,7 +67,7 @@ namespace Venta_Productos_Cosméticos
                 rbtnTodos_SGA657.Enabled = false;
                 rbtnActivos_SGA657.Enabled = false;
                 btnAgregar_SGA657.Enabled = true;
-                btnSalir_SGA657.Enabled = false;
+                btnSalir_SGA657.Enabled = true;
                 btnSerializar.Enabled = false;
                 btnDesSerializar.Enabled = false;
                 btnActualizar.Enabled = false;
@@ -320,6 +320,12 @@ namespace Venta_Productos_Cosméticos
 
         private void btnSalir_SGA657_Click(object sender, EventArgs e)
         {
+            if (modoAsociarVenta)
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+                return;
+            }
             FormSistema frmMenu = new FormSistema();
             frmMenu.Show();
             this.Close();

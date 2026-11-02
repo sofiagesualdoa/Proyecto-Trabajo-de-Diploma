@@ -246,6 +246,13 @@ namespace Venta_Productos_Cosméticos
 
         }
 
+        private void reporteInteligenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReporteInteligente frm = new FormReporteInteligente();
+            frm.Show();
+            this.Close();
+        }
+
         private void cambiarIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
