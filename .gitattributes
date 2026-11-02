@@ -1,0 +1,3 @@
+# Excluir scripts de soporte y bases de datos de las estadísticas de lenguaje de GitHub Linguist
+*.sql linguist-vendored
+*.sql linguist-detectable=false
