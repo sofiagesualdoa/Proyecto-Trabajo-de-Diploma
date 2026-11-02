@@ -43,6 +43,9 @@
     <Compile Update="FormPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormReporteInteligente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormSistema.cs">
       <SubType>Form</SubType>
     </Compile>

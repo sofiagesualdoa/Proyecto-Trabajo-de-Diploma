@@ -89,7 +89,7 @@ namespace BLL
             if (reporte.VentasPorEditorial.Count > 0)
             {
                 var topEditorial = reporte.VentasPorEditorial[0];
-                sugerencias.Add($"• Negociación de Abastecimiento: El sello '{topEditorial.Etiqueta}' lidera el volumen comercial ({topEditorial.Porcentaje}% del total con ${topEditorial.TotalRecaudado:N2} recaudados). Se aconseja consolidar pedidos mayoristas y solicitar bonificaciones por volumen.");
+                sugerencias.Add($"• Abastecimiento: La editorial '{topEditorial.Etiqueta}' lidera el volumen comercial ({topEditorial.Porcentaje}% del total con ${topEditorial.TotalRecaudado:N2} recaudados). Se aconseja consolidar pedidos mayoristas y solicitar bonificaciones por volumen.");
             }
 
             if (reporte.DemandaPorAutor.Count > 0)
