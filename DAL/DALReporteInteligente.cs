@@ -166,11 +166,12 @@ namespace DAL
             return (vCount, ejVendidos, vTotal, pCount, pFinalizados, pMora, pTotal, recargos);
         }
 
-        public List<(string Titulo, string Autor, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> ObtenerMovimientosPorLibro(DateTime fechaDesde, DateTime fechaHasta)
+        public List<(string Titulo, string Autor, decimal Precio, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> ObtenerMovimientosPorLibro(DateTime fechaDesde, DateTime fechaHasta)
         {
-            List<(string Titulo, string Autor, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> lista = new List<(string Titulo, string Autor, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)>();
+            List<(string Titulo, string Autor, decimal Precio, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> lista = new List<(string Titulo, string Autor, decimal Precio, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)>();
             string query = @"SELECT l.Título_657SGA AS Titulo,
                                     ISNULL(l.Autor_657SGA, 'N/A') AS Autor,
+                                    ISNULL(l.Precio_657SGA, 0) AS Precio,
                                     l.Existencias_657SGA AS ExistenciasVenta,
                                     l.ExistenciasPrestamo,
                                     ISNULL(v.Vendidos, 0) + ISNULL(p.Prestados, 0) AS TotalMovimientos
@@ -180,6 +181,7 @@ namespace DAL
                                  FROM DetalleFactura df
                                  INNER JOIN Factura f ON df.IdFactura = f.IdFactura
                                  WHERE f.Fecha >= @FechaDesde AND f.Fecha <= @FechaHasta
+                                   AND f.NumeroFactura LIKE 'FC-V%'
                                  GROUP BY df.ISBN_657SGA
                              ) v ON l.ISBN_657SGA = v.ISBN_657SGA
                              LEFT JOIN (
@@ -204,6 +206,7 @@ namespace DAL
                             lista.Add((
                                 r["Titulo"].ToString() ?? "Libro",
                                 r["Autor"].ToString() ?? "N/A",
+                                Convert.ToDecimal(r["Precio"]),
                                 Convert.ToInt32(r["ExistenciasVenta"]),
                                 Convert.ToInt32(r["ExistenciasPrestamo"]),
                                 Convert.ToInt32(r["TotalMovimientos"])

@@ -124,8 +124,8 @@ namespace Venta_Productos_Cosméticos
             if (reporteActual == null) return;
 
             lblKpi1Valor.Text = $"$ {reporteActual.IngresosTotales:N2}";
-            lblKpi2Valor.Text = $"{reporteActual.TotalEjemplaresVendidos} ej. (${reporteActual.MontoTotalVentas:N2})";
-            lblKpi3Valor.Text = $"{reporteActual.TotalPrestamosRealizados} sol. (${(reporteActual.MontoTotalPrestamos + reporteActual.MontoTotalRecargosMora):N2})";
+            lblKpi2Valor.Text = $"{reporteActual.TotalEjemplaresVendidos} ejemplares (${reporteActual.MontoTotalVentas:N2})";
+            lblKpi3Valor.Text = $"{reporteActual.TotalPrestamosRealizados} solicitudes (${(reporteActual.MontoTotalPrestamos + reporteActual.MontoTotalRecargosMora):N2})";
         }
 
         private void ActualizarRecomendaciones()
@@ -272,7 +272,7 @@ namespace Venta_Productos_Cosméticos
 
                     string texto = item.Etiqueta.Length > 13 ? item.Etiqueta.Substring(0, 13) + ".." : item.Etiqueta;
                     g.DrawString($"{texto} ({item.Porcentaje}%)", fuenteTexto, brochaTexto, leyX + 14, leyY);
-                    g.DrawString($"{item.Cantidad} ej.", fuenteMonto, brochaGris, leyX + 14, leyY + 14);
+                    g.DrawString($"{item.Cantidad} ejemplares", fuenteMonto, brochaGris, leyX + 14, leyY + 14);
 
                     leyY += 34;
                 }
@@ -284,49 +284,61 @@ namespace Venta_Productos_Cosméticos
             Graphics g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
+            var s = ServicioSessionManager.GetInstance();
             using (Font fuenteTitulo = new Font("Segoe UI", 10F, FontStyle.Bold))
             using (Brush brochaTitulo = new SolidBrush(Color.FromArgb(45, 55, 72)))
             {
-                g.DrawString(ServicioSessionManager.GetInstance().Traducir("Rendimiento: Ventas vs. Préstamos"), fuenteTitulo, brochaTitulo, 10, 10);
+                g.DrawString(s.Traducir("Predicción: Libros Más Vendidos (Próximo Mes)"), fuenteTitulo, brochaTitulo, 10, 10);
             }
 
-            if (reporteActual == null || reporteActual.ComparativaVentasVsPrestamos == null)
+            if (reporteActual == null || reporteActual.PrediccionLibrosProximoMes == null || reporteActual.PrediccionLibrosProximoMes.Count == 0)
             {
                 DibujarSinDatos(g, pnlGraficoComparativa.ClientRectangle);
                 return;
             }
 
-            int inicioY = 48;
+            int inicioY = 38;
             int anchoMaximoBarra = 240;
+            int maxCantidad = reporteActual.PrediccionLibrosProximoMes.Max(p => p.Cantidad);
+            if (maxCantidad <= 0) maxCantidad = 1;
+
+            Color[] coloresBarras = new Color[]
+            {
+                Color.FromArgb(142, 68, 173),
+                Color.FromArgb(41, 128, 185),
+                Color.FromArgb(39, 174, 96),
+                Color.FromArgb(211, 84, 0)
+            };
 
             using (Font fuenteItem = new Font("Segoe UI", 8.5F, FontStyle.Bold))
             using (Font fuenteValores = new Font("Segoe UI", 8F, FontStyle.Regular))
             using (Brush brochaTexto = new SolidBrush(Color.FromArgb(30, 41, 59)))
             using (Brush brochaGris = new SolidBrush(Color.DimGray))
             {
-                for (int i = 0; i < reporteActual.ComparativaVentasVsPrestamos.Count; i++)
+                for (int i = 0; i < reporteActual.PrediccionLibrosProximoMes.Count && i < 4; i++)
                 {
-                    var item = reporteActual.ComparativaVentasVsPrestamos[i];
-                    Color colorBarra = (i == 0) ? Color.FromArgb(41, 128, 185) : Color.FromArgb(230, 126, 34);
+                    var item = reporteActual.PrediccionLibrosProximoMes[i];
+                    Color colorBarra = coloresBarras[i % coloresBarras.Length];
 
-                    g.DrawString(item.Etiqueta, fuenteItem, brochaTexto, 15, inicioY);
+                    string tituloMostrar = item.Etiqueta.Length > 28 ? item.Etiqueta.Substring(0, 26) + ".." : item.Etiqueta;
+                    g.DrawString(tituloMostrar, fuenteItem, brochaTexto, 15, inicioY);
 
-                    float porcentaje = (float)item.Porcentaje;
-                    int anchoBarra = Math.Max(6, (int)((porcentaje / 100f) * anchoMaximoBarra));
+                    float factor = (float)item.Cantidad / maxCantidad;
+                    int anchoBarra = Math.Max(12, (int)(factor * anchoMaximoBarra));
 
                     using (SolidBrush brochaFondo = new SolidBrush(Color.FromArgb(235, 238, 242)))
                     {
-                        g.FillRectangle(brochaFondo, 15, inicioY + 18, anchoMaximoBarra, 18);
+                        g.FillRectangle(brochaFondo, 15, inicioY + 16, anchoMaximoBarra, 12);
                     }
 
                     using (SolidBrush brochaBarra = new SolidBrush(colorBarra))
                     {
-                        g.FillRectangle(brochaBarra, 15, inicioY + 18, anchoBarra, 18);
+                        g.FillRectangle(brochaBarra, 15, inicioY + 16, anchoBarra, 12);
                     }
 
-                    g.DrawString($"{item.Porcentaje}%  |  ${item.TotalRecaudado:N2} ({item.Cantidad} ops)", fuenteValores, brochaGris, 15, inicioY + 40);
+                    g.DrawString($"{item.Cantidad} ejemplares estimados  |  ${item.TotalRecaudado:N2} proyectados", fuenteValores, brochaGris, 15, inicioY + 32);
 
-                    inicioY += 68;
+                    inicioY += 52;
                 }
             }
         }

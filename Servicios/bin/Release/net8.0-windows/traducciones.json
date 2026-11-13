@@ -333,5 +333,10 @@
   "Ventas Directas": "Ventas Directas",
   "Préstamos y Recargos": "Préstamos y Recargos",
   "La fecha de fin no puede ser anterior a la fecha de inicio.": "La fecha de fin no puede ser anterior a la fecha de inicio.",
-  "[Dato Protegido - Solo Gerente]": "[Protected Data - Manager Only]"
+  "[Dato Protegido - Solo Gerente]": "[Protected Data - Manager Only]",
+  "Predicción: Libros Más Vendidos (Próximo Mes)": "Prediction: Best-Selling Books (Next Month)",
+  "ejemplares estimados": "estimated copies",
+  "proyectados": "projected",
+  "ejemplares": "copies",
+  "solicitudes": "requests"
 }

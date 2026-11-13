@@ -77,14 +77,54 @@ namespace BLL
             };
             reporte.ComparativaVentasVsPrestamos = comparativa;
 
-            reporte.Recomendaciones = GenerarRecomendacionesInteligentes(reporte, dalReporte.ObtenerMovimientosPorLibro(fechaDesde, fechaHasta));
+            var libros = dalReporte.ObtenerMovimientosPorLibro(fechaDesde, fechaHasta);
+            List<BEItemEstadistico> predicciones = new List<BEItemEstadistico>();
+            foreach (var lib in libros.Where(l => l.TotalMovimientos > 0).OrderByDescending(l => l.TotalMovimientos).Take(4))
+            {
+                int baseDemanda = Math.Max(1, lib.TotalMovimientos);
+                int proyectados = (int)Math.Ceiling(baseDemanda * 1.25m);
+                if (proyectados < 2) proyectados = 2;
+                decimal recaudacionEstimada = proyectados * lib.Precio;
+
+                predicciones.Add(new BEItemEstadistico
+                {
+                    Etiqueta = lib.Titulo,
+                    Cantidad = proyectados,
+                    TotalRecaudado = recaudacionEstimada,
+                    Porcentaje = 25m
+                });
+            }
+
+            if (predicciones.Count == 0)
+            {
+                foreach (var lib in libros.Take(3))
+                {
+                    decimal precio = lib.Precio > 0 ? lib.Precio : 20000m;
+                    predicciones.Add(new BEItemEstadistico
+                    {
+                        Etiqueta = lib.Titulo,
+                        Cantidad = 2,
+                        TotalRecaudado = 2 * precio,
+                        Porcentaje = 15m
+                    });
+                }
+            }
+
+            reporte.PrediccionLibrosProximoMes = predicciones;
+            reporte.Recomendaciones = GenerarRecomendacionesInteligentes(reporte, libros);
 
             return reporte;
         }
 
-        private List<string> GenerarRecomendacionesInteligentes(BEReporteInteligente reporte, List<(string Titulo, string Autor, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> libros)
+        private List<string> GenerarRecomendacionesInteligentes(BEReporteInteligente reporte, List<(string Titulo, string Autor, decimal Precio, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> libros)
         {
             List<string> sugerencias = new List<string>();
+
+            if (reporte.PrediccionLibrosProximoMes.Count > 0)
+            {
+                var topPred = reporte.PrediccionLibrosProximoMes[0];
+                sugerencias.Add($"• Pronóstico Predictivo Futuro (Próximo Mes): Se proyecta que '{topPred.Etiqueta}' registrará la mayor demanda con una estimación de {topPred.Cantidad} ejemplares vendidos (facturación estimada: ${topPred.TotalRecaudado:N2}). Se sugiere gestionar la compra anticipada para asegurar disponibilidad.");
+            }
 
             if (reporte.VentasPorEditorial.Count > 0)
             {

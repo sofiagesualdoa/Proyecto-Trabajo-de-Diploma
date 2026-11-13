@@ -28,6 +28,7 @@ namespace BE
         public List<BEItemEstadistico> VentasPorEditorial { get; set; } = new List<BEItemEstadistico>();
         public List<BEItemEstadistico> DemandaPorAutor { get; set; } = new List<BEItemEstadistico>();
         public List<BEItemEstadistico> ComparativaVentasVsPrestamos { get; set; } = new List<BEItemEstadistico>();
+        public List<BEItemEstadistico> PrediccionLibrosProximoMes { get; set; } = new List<BEItemEstadistico>();
         public List<string> Recomendaciones { get; set; } = new List<string>();
     }
 }
