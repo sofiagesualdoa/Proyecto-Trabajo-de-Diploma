@@ -193,6 +193,7 @@ namespace Venta_Productos_Cosméticos
                 txtEmail_SGA657.Text = cli.Email_657SGA;
                 txtTelefono_SGA657.Text = cli.Teléfono_657SGA.ToString();
                 txtDireccion_SGA657.Text = cli.Dirección_657SGA;
+                txtDireccion_SGA657.ReadOnly = !s.EsUsuarioGerente();
                 if (modoAsociarVenta)
                 {
                     string nombreCompleto = bllCliente.ObtenerNombreCompleto(cli);
@@ -339,6 +340,7 @@ namespace Venta_Productos_Cosméticos
             txtEmail_SGA657.Clear();
             txtTelefono_SGA657.Clear();
             txtDireccion_SGA657.Clear();
+            txtDireccion_SGA657.ReadOnly = false;
         }
         private void RegistrarTextos(Control.ControlCollection controles)
         {

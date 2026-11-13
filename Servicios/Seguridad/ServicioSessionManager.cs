@@ -65,5 +65,13 @@ namespace Servicios
             }
             return textoBase;
         }
+
+        public bool EsUsuarioGerente()
+        {
+            if (_usuarioActivo == null) return false;
+            if (_usuarioActivo.IdPerfil == 8) return true;
+            if (_usuarioActivo.PerfilUsuario != null && string.Equals(_usuarioActivo.PerfilUsuario.Nombre, "Gerente", StringComparison.OrdinalIgnoreCase)) return true;
+            return false;
+        }
     }
 }

@@ -332,5 +332,6 @@
   "Sin datos para graficar en el rango seleccionado.": "Sin datos para graficar en el rango seleccionado.",
   "Ventas Directas": "Ventas Directas",
   "Préstamos y Recargos": "Préstamos y Recargos",
-  "La fecha de fin no puede ser anterior a la fecha de inicio.": "La fecha de fin no puede ser anterior a la fecha de inicio."
+  "La fecha de fin no puede ser anterior a la fecha de inicio.": "La fecha de fin no puede ser anterior a la fecha de inicio.",
+  "[Dato Protegido - Solo Gerente]": "[Protected Data - Manager Only]"
 }

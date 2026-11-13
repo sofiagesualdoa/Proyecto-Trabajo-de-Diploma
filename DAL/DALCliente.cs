@@ -89,7 +89,7 @@ namespace DAL
                     comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100).Value = cliente.Apellido_657SGA;
                     comando.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = cliente.Email_657SGA;
                     comando.Parameters.Add("@Telefono", SqlDbType.Int).Value = cliente.Teléfono_657SGA;
-                    comando.Parameters.Add("@Direccion", SqlDbType.NVarChar, 200).Value = cliente.Dirección_657SGA;
+                    comando.Parameters.Add("@Direccion", SqlDbType.NVarChar, 500).Value = cliente.Dirección_657SGA;
                     comando.Parameters.Add("@Activo", SqlDbType.Bit).Value = cliente.Activo_657SGA;
                     comando.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = cliente.DVH ?? (object)DBNull.Value;
                     conexion.Open();
@@ -118,7 +118,7 @@ namespace DAL
                     comando.Parameters.Add("@Apellido", SqlDbType.VarChar, 100).Value = cliente.Apellido_657SGA;
                     comando.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = cliente.Email_657SGA;
                     comando.Parameters.Add("@Telefono", SqlDbType.Int).Value = cliente.Teléfono_657SGA;
-                    comando.Parameters.Add("@Direccion", SqlDbType.NVarChar, 200).Value = cliente.Dirección_657SGA;
+                    comando.Parameters.Add("@Direccion", SqlDbType.NVarChar, 500).Value = cliente.Dirección_657SGA;
                     comando.Parameters.Add("@Activo", SqlDbType.Bit).Value = cliente.Activo_657SGA;
                     comando.Parameters.Add("@DVH", SqlDbType.VarChar, 64).Value = cliente.DVH ?? (object)DBNull.Value;
                     comando.Parameters.Add("@DNIOriginal", SqlDbType.Int).Value = dniOriginal;
