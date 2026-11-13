@@ -28,6 +28,7 @@ namespace Venta_Productos_Cosméticos
         public FormVenta()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
         private void FormVenta_Load(object sender, EventArgs e)
         {

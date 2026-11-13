@@ -22,6 +22,7 @@ namespace Venta_Productos_Cosméticos
         public FormHistorialPrestamos()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void FormHistorialPrestamos_Load(object sender, EventArgs e)

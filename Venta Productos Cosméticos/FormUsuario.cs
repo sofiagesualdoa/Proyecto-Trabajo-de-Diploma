@@ -19,6 +19,7 @@ namespace Venta_Productos_Cosméticos.Vista
         public FormUsuario()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void FormUsuario_Load(object sender, EventArgs e)

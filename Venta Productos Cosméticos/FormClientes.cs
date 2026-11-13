@@ -28,6 +28,7 @@ namespace Venta_Productos_Cosméticos
         public FormClientes()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         public FormClientes(int? dniInicial, bool modoVenta = false) : this()

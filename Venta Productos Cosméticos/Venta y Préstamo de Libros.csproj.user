@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\usuario\OneDrive\Facultad\3° Año\1° Cuatrimestre\Ingeniería de Software\Proyecto Ing Software\Venta Productos Cosméticos\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="FormAyudaContextual.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormBitacora.cs">
       <SubType>Form</SubType>
     </Compile>

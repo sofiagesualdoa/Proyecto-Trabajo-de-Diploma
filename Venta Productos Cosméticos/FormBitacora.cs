@@ -44,6 +44,7 @@ namespace Venta_Productos_Cosméticos
         public FormBitacora()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void button7_Click(object sender, EventArgs e)

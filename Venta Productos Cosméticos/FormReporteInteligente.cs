@@ -30,6 +30,7 @@ namespace Venta_Productos_Cosméticos
         public FormReporteInteligente()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void FormReporteInteligente_Load(object sender, EventArgs e)

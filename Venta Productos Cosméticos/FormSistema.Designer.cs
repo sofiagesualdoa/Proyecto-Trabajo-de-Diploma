@@ -55,6 +55,7 @@ namespace Venta_Productos_Cosméticos
             reportesToolStripMenuItem = new ToolStripMenuItem();
             reporteInteligenteToolStripMenuItem = new ToolStripMenuItem();
             centroDeAyudaToolStripMenuItem = new ToolStripMenuItem();
+            ayudaDelSistemaF1ToolStripMenuItem = new ToolStripMenuItem();
             manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
             guíaDeInstalaciónArchivoLeémeToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesiónToolStripMenuItem = new ToolStripMenuItem();
@@ -259,17 +260,26 @@ namespace Venta_Productos_Cosméticos
             // 
             // centroDeAyudaToolStripMenuItem
             // 
-            centroDeAyudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualDeUsuarioToolStripMenuItem, guíaDeInstalaciónArchivoLeémeToolStripMenuItem });
+            centroDeAyudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ayudaDelSistemaF1ToolStripMenuItem, manualDeUsuarioToolStripMenuItem, guíaDeInstalaciónArchivoLeémeToolStripMenuItem });
             centroDeAyudaToolStripMenuItem.Name = "centroDeAyudaToolStripMenuItem";
             centroDeAyudaToolStripMenuItem.Size = new Size(76, 28);
             centroDeAyudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // ayudaDelSistemaF1ToolStripMenuItem
+            // 
+            ayudaDelSistemaF1ToolStripMenuItem.Name = "ayudaDelSistemaF1ToolStripMenuItem";
+            ayudaDelSistemaF1ToolStripMenuItem.Size = new Size(388, 28);
+            ayudaDelSistemaF1ToolStripMenuItem.Tag = "Ver Manual Usuario";
+            ayudaDelSistemaF1ToolStripMenuItem.Text = "Ayuda Contextual del Sistema (F1)";
+            ayudaDelSistemaF1ToolStripMenuItem.Click += ayudaDelSistemaF1ToolStripMenuItem_Click;
             // 
             // manualDeUsuarioToolStripMenuItem
             // 
             manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
             manualDeUsuarioToolStripMenuItem.Size = new Size(388, 28);
             manualDeUsuarioToolStripMenuItem.Tag = "Ver Manual Usuario";
-            manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
+            manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario (PDF)";
+            manualDeUsuarioToolStripMenuItem.Click += manualDeUsuarioToolStripMenuItem_Click;
             // 
             // guíaDeInstalaciónArchivoLeémeToolStripMenuItem
             // 
@@ -371,6 +381,7 @@ namespace Venta_Productos_Cosméticos
         private ToolStripMenuItem cambiarClaveToolStripMenuItem;
         private ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
+        private ToolStripMenuItem ayudaDelSistemaF1ToolStripMenuItem;
         private ToolStripMenuItem guíaDeInstalaciónArchivoLeémeToolStripMenuItem;
         private Label label1;
         private PictureBox pictureBox1;

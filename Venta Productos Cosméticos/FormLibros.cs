@@ -103,17 +103,9 @@ private const int EM_SETCUEBANNER = 0x1501;
 
 
 public FormLibros()
-
-
-
 {
-
-
-
 InitializeComponent();
-
-
-
+AyudaContextualHelper.ActivarAyuda(this);
 }
 
 

@@ -30,6 +30,7 @@ namespace Venta_Productos_Cosméticos
         public FormCobro()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
         public FormCobro(BECarrito carrito, BECliente cliente) : this()
         {

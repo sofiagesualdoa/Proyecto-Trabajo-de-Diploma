@@ -91,6 +91,7 @@ namespace Venta_Productos_Cosméticos
             RegistrarTextosMenu(menuStrip1.Items);
             Actualizar(usuarioLogueado.Idioma);
             bllIdioma.AgregarSuscriptor(this);
+            AyudaContextualHelper.ActivarAyuda(this, "FormSistema");
         }
 
         private void RegistrarTextos(Control.ControlCollection controles)
@@ -414,6 +415,16 @@ namespace Venta_Productos_Cosméticos
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void manualDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AyudaContextualHelper.AbrirManualPdf();
+        }
+
+        private void ayudaDelSistemaF1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AyudaContextualHelper.MostrarAyuda(this, "FormSistema");
         }
 
         private void timer1_Tick(object sender, EventArgs e)

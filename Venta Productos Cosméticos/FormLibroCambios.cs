@@ -18,6 +18,7 @@ namespace Venta_Productos_Cosméticos
         public FormLibroCambios()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void FormLibroCambios_Load(object sender, EventArgs e)

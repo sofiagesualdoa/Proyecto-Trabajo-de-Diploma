@@ -18,6 +18,7 @@ namespace Venta_Productos_Cosméticos
         {
             InitializeComponent();
             this.FormClosing += FormErrorIntegridad_FormClosing;
+            AyudaContextualHelper.ActivarAyuda(this);
         }
         private ServicioIdioma bllIdioma = new ServicioIdioma();
         private Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();

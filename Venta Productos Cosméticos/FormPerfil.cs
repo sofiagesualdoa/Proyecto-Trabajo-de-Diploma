@@ -18,6 +18,7 @@ namespace Venta_Productos_Cosméticos
         public FormPerfil()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private ServicioPerfil bllPerfil = new ServicioPerfil();

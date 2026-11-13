@@ -18,6 +18,7 @@ namespace Venta_Productos_Cosméticos
         public FormCambioClave()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void FormCambioClave_Load(object sender, EventArgs e)

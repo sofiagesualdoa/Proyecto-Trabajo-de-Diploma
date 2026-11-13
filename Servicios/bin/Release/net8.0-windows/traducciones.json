@@ -338,5 +338,14 @@
   "ejemplares estimados": "estimated copies",
   "proyectados": "projected",
   "ejemplares": "copies",
-  "solicitudes": "requests"
+  "solicitudes": "requests",
+  "Ayuda Contextual del Sistema (F1)": "System Contextual Help (F1)",
+  "Manual de Usuario (PDF)": "User Manual (PDF)",
+  "Centro de Ayuda y Asistencia al Usuario (F1)": "Help & User Assistance Center (F1)",
+  "Módulo / Pantalla:": "Module / Screen:",
+  "Buscar:": "Search:",
+  "Buscar tema o palabra clave...": "Search topic or keyword...",
+  "📖 Abrir Manual de Usuario Completo (PDF)": "📖 Open Full User Manual (PDF)",
+  "Cerrar (Esc)": "Close (Esc)",
+  "? Ayuda (F1)": "? Help (F1)"
 }

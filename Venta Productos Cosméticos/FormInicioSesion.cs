@@ -20,6 +20,7 @@ namespace Venta_Productos_Cosméticos
         public FormInicioSesion()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)

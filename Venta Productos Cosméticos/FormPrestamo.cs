@@ -29,6 +29,7 @@ namespace Venta_Productos_Cosméticos
         public FormPrestamo()
         {
             InitializeComponent();
+            AyudaContextualHelper.ActivarAyuda(this);
         }
 
         private void button2_Click(object sender, EventArgs e)
