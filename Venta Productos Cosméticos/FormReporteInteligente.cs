@@ -158,13 +158,52 @@ namespace Venta_Productos_Cosméticos
                 dgvSobrestock.DataSource = null;
                 dgvSobrestock.DataSource = listaSobrestock;
 
-                if (dgvSobrestock.Columns["CapitalInmovilizado"] != null)
+                if (dgvSobrestock.Columns["ISBN"] != null)
                 {
-                    dgvSobrestock.Columns["CapitalInmovilizado"].DefaultCellStyle.Format = "C2";
+                    dgvSobrestock.Columns["ISBN"].HeaderText = "ISBN";
+                    dgvSobrestock.Columns["ISBN"].FillWeight = 110;
+                }
+                if (dgvSobrestock.Columns["Titulo"] != null)
+                {
+                    dgvSobrestock.Columns["Titulo"].HeaderText = "Título";
+                    dgvSobrestock.Columns["Titulo"].FillWeight = 140;
+                }
+                if (dgvSobrestock.Columns["Autor"] != null)
+                {
+                    dgvSobrestock.Columns["Autor"].HeaderText = "Autor";
+                    dgvSobrestock.Columns["Autor"].FillWeight = 110;
+                }
+                if (dgvSobrestock.Columns["Editorial"] != null)
+                {
+                    dgvSobrestock.Columns["Editorial"].HeaderText = "Editorial";
+                    dgvSobrestock.Columns["Editorial"].FillWeight = 90;
                 }
                 if (dgvSobrestock.Columns["Precio"] != null)
                 {
+                    dgvSobrestock.Columns["Precio"].HeaderText = "Precio";
                     dgvSobrestock.Columns["Precio"].DefaultCellStyle.Format = "C2";
+                    dgvSobrestock.Columns["Precio"].FillWeight = 75;
+                }
+                if (dgvSobrestock.Columns["StockAlmacen"] != null)
+                {
+                    dgvSobrestock.Columns["StockAlmacen"].HeaderText = "Stock";
+                    dgvSobrestock.Columns["StockAlmacen"].FillWeight = 55;
+                }
+                if (dgvSobrestock.Columns["UnidadesVendidas"] != null)
+                {
+                    dgvSobrestock.Columns["UnidadesVendidas"].HeaderText = "Vendidos";
+                    dgvSobrestock.Columns["UnidadesVendidas"].FillWeight = 65;
+                }
+                if (dgvSobrestock.Columns["CapitalInmovilizado"] != null)
+                {
+                    dgvSobrestock.Columns["CapitalInmovilizado"].HeaderText = "Inmovilizado ($)";
+                    dgvSobrestock.Columns["CapitalInmovilizado"].DefaultCellStyle.Format = "C2";
+                    dgvSobrestock.Columns["CapitalInmovilizado"].FillWeight = 100;
+                }
+                if (dgvSobrestock.Columns["NivelPrioridad"] != null)
+                {
+                    dgvSobrestock.Columns["NivelPrioridad"].HeaderText = "Prioridad";
+                    dgvSobrestock.Columns["NivelPrioridad"].FillWeight = 95;
                 }
 
                 if (dgvSobrestock.Rows.Count > 0)
@@ -207,9 +246,49 @@ namespace Venta_Productos_Cosméticos
                 dgvClientesVIP.DataSource = null;
                 dgvClientesVIP.DataSource = listaClientesVIP;
 
+                if (dgvClientesVIP.Columns["DNI"] != null)
+                {
+                    dgvClientesVIP.Columns["DNI"].HeaderText = "DNI";
+                    dgvClientesVIP.Columns["DNI"].FillWeight = 70;
+                }
+                if (dgvClientesVIP.Columns["NombreCompleto"] != null)
+                {
+                    dgvClientesVIP.Columns["NombreCompleto"].HeaderText = "Cliente";
+                    dgvClientesVIP.Columns["NombreCompleto"].FillWeight = 110;
+                }
+                if (dgvClientesVIP.Columns["Email"] != null)
+                {
+                    dgvClientesVIP.Columns["Email"].HeaderText = "Email";
+                    dgvClientesVIP.Columns["Email"].FillWeight = 110;
+                }
+                if (dgvClientesVIP.Columns["Telefono"] != null)
+                {
+                    dgvClientesVIP.Columns["Telefono"].Visible = false;
+                }
+                if (dgvClientesVIP.Columns["ComprasPrevias"] != null)
+                {
+                    dgvClientesVIP.Columns["ComprasPrevias"].HeaderText = "Compras";
+                    dgvClientesVIP.Columns["ComprasPrevias"].FillWeight = 60;
+                }
                 if (dgvClientesVIP.Columns["TotalGastado"] != null)
                 {
+                    dgvClientesVIP.Columns["TotalGastado"].HeaderText = "Total ($)";
                     dgvClientesVIP.Columns["TotalGastado"].DefaultCellStyle.Format = "C2";
+                    dgvClientesVIP.Columns["TotalGastado"].FillWeight = 75;
+                }
+                if (dgvClientesVIP.Columns["Afinidad"] != null)
+                {
+                    dgvClientesVIP.Columns["Afinidad"].HeaderText = "Afinidad Comercial";
+                    dgvClientesVIP.Columns["Afinidad"].FillWeight = 120;
+                }
+                if (dgvClientesVIP.Columns["TieneMora"] != null)
+                {
+                    dgvClientesVIP.Columns["TieneMora"].Visible = false;
+                }
+                if (dgvClientesVIP.Columns["EstadoCalificacion"] != null)
+                {
+                    dgvClientesVIP.Columns["EstadoCalificacion"].HeaderText = "Calificación";
+                    dgvClientesVIP.Columns["EstadoCalificacion"].FillWeight = 110;
                 }
 
                 if (dgvClientesVIP.Rows.Count > 0)
@@ -483,7 +562,7 @@ namespace Venta_Productos_Cosméticos
                 return;
             }
 
-            int inicioY = 38;
+            int inicioY = 30;
             int anchoMaximoBarra = 240;
             int maxCantidad = reporteActual.PrediccionLibrosProximoMes.Max(p => p.Cantidad);
             if (maxCantidad <= 0) maxCantidad = 1;
@@ -497,7 +576,7 @@ namespace Venta_Productos_Cosméticos
             };
 
             using (Font fuenteItem = new Font("Segoe UI", 8.5F, FontStyle.Bold))
-            using (Font fuenteValores = new Font("Segoe UI", 8F, FontStyle.Regular))
+            using (Font fuenteValores = new Font("Segoe UI", 7.5F, FontStyle.Regular))
             using (Brush brochaTexto = new SolidBrush(Color.FromArgb(30, 41, 59)))
             using (Brush brochaGris = new SolidBrush(Color.DimGray))
             {
@@ -514,17 +593,17 @@ namespace Venta_Productos_Cosméticos
 
                     using (SolidBrush brochaFondo = new SolidBrush(Color.FromArgb(235, 238, 242)))
                     {
-                        g.FillRectangle(brochaFondo, 15, inicioY + 16, anchoMaximoBarra, 12);
+                        g.FillRectangle(brochaFondo, 15, inicioY + 15, anchoMaximoBarra, 10);
                     }
 
                     using (SolidBrush brochaBarra = new SolidBrush(colorBarra))
                     {
-                        g.FillRectangle(brochaBarra, 15, inicioY + 16, anchoBarra, 12);
+                        g.FillRectangle(brochaBarra, 15, inicioY + 15, anchoBarra, 10);
                     }
 
-                    g.DrawString($"{item.Cantidad} ejemplares estimados  |  ${item.TotalRecaudado:N2} proyectados", fuenteValores, brochaGris, 15, inicioY + 32);
+                    g.DrawString($"{item.Cantidad} ejemplares estimados  |  ${item.TotalRecaudado:N2} proyectados", fuenteValores, brochaGris, 15, inicioY + 27);
 
-                    inicioY += 52;
+                    inicioY += 48;
                 }
             }
         }

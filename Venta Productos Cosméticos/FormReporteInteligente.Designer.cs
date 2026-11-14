@@ -120,7 +120,7 @@ namespace Venta_Productos_Cosméticos
             tabEstrategia.Padding = new Padding(3);
             tabEstrategia.Size = new Size(992, 583);
             tabEstrategia.TabIndex = 0;
-            tabEstrategia.Text = "Estrategia Comercial VIP (Liquidación de Sobrestock)";
+            tabEstrategia.Text = "Estrategia Comercial";
             grpSobrestock.Controls.Add(dgvSobrestock);
             grpSobrestock.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpSobrestock.Location = new Point(10, 6);
@@ -128,7 +128,7 @@ namespace Venta_Productos_Cosméticos
             grpSobrestock.Size = new Size(972, 215);
             grpSobrestock.TabIndex = 0;
             grpSobrestock.TabStop = false;
-            grpSobrestock.Text = "1. Detección de Libros con Mayor Stock y Baja Rotación (Primer SELECT - Almacén)";
+            grpSobrestock.Text = "1. Detección de Libros con Mayor Stock y Baja Rotación";
             dgvSobrestock.AllowUserToAddRows = false;
             dgvSobrestock.AllowUserToDeleteRows = false;
             dgvSobrestock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -151,7 +151,7 @@ namespace Venta_Productos_Cosméticos
             grpClientesVIP.Size = new Size(595, 345);
             grpClientesVIP.TabIndex = 1;
             grpClientesVIP.TabStop = false;
-            grpClientesVIP.Text = "2. Identificación de Clientes VIP 'Buena Paga' (Segundo y Tercer SELECT)";
+            grpClientesVIP.Text = "2. Identificación de Clientes VIP 'Buena Paga'";
             dgvClientesVIP.AllowUserToAddRows = false;
             dgvClientesVIP.AllowUserToDeleteRows = false;
             dgvClientesVIP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
