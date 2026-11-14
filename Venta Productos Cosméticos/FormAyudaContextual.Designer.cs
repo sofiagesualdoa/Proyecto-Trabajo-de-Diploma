@@ -59,7 +59,7 @@ namespace Venta_Productos_Cosméticos
             lblTituloHeader.Name = "lblTituloHeader";
             lblTituloHeader.Size = new Size(415, 25);
             lblTituloHeader.TabIndex = 0;
-            lblTituloHeader.Text = "📖 Centro de Ayuda y Asistencia al Usuario (F1)";
+            lblTituloHeader.Text = "Centro de Ayuda y Asistencia al Usuario (F1)";
 
             pnlFiltros.BackColor = Color.FromArgb(245, 240, 235);
             pnlFiltros.Controls.Add(txtBuscar);
@@ -151,7 +151,7 @@ namespace Venta_Productos_Cosméticos
             btnAbrirManual.Name = "btnAbrirManual";
             btnAbrirManual.Size = new Size(290, 33);
             btnAbrirManual.TabIndex = 0;
-            btnAbrirManual.Text = "📖 Abrir Manual de Usuario Completo (PDF)";
+            btnAbrirManual.Text = "Abrir Manual de Usuario Completo (PDF)";
             btnAbrirManual.UseVisualStyleBackColor = false;
             btnAbrirManual.Click += btnAbrirManual_Click;
 

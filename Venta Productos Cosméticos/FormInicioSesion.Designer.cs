@@ -2,15 +2,8 @@
 {
     partial class FormInicioSesion
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicioSesion));
@@ -40,9 +29,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
             pictureBox1.BackColor = Color.LightGray;
             pictureBox1.Location = new Point(75, 125);
             pictureBox1.Name = "pictureBox1";
@@ -50,9 +36,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
             label1.AutoSize = true;
             label1.BackColor = Color.Bisque;
             label1.Font = new Font("Sitka Text", 14.2499981F, FontStyle.Bold);
@@ -61,9 +44,6 @@
             label1.Size = new Size(93, 28);
             label1.TabIndex = 4;
             label1.Text = "Usuario:";
-            // 
-            // label2
-            // 
             label2.AutoSize = true;
             label2.BackColor = Color.Bisque;
             label2.Font = new Font("Sitka Text", 14.2499981F, FontStyle.Bold);
@@ -72,23 +52,14 @@
             label2.Size = new Size(125, 28);
             label2.TabIndex = 5;
             label2.Text = "Contraseña:";
-            // 
-            // txtUsuario
-            // 
             txtUsuario.Location = new Point(537, 204);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(218, 23);
             txtUsuario.TabIndex = 6;
-            // 
-            // txtContraseña
-            // 
             txtContraseña.Location = new Point(537, 250);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(218, 23);
             txtContraseña.TabIndex = 7;
-            // 
-            // btnIniciar
-            // 
             btnIniciar.BackColor = Color.Bisque;
             btnIniciar.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnIniciar.Location = new Point(508, 317);
@@ -98,9 +69,6 @@
             btnIniciar.Text = "Confirmar";
             btnIniciar.UseVisualStyleBackColor = false;
             btnIniciar.Click += btnIniciar_Click;
-            // 
-            // btnCambioIdioma
-            // 
             btnCambioIdioma.BackColor = Color.Bisque;
             btnCambioIdioma.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCambioIdioma.Location = new Point(266, 63);
@@ -110,9 +78,6 @@
             btnCambioIdioma.Text = "Cambiar Idioma";
             btnCambioIdioma.UseVisualStyleBackColor = false;
             btnCambioIdioma.Click += btnCambioIdioma_Click;
-            // 
-            // pictureBox2
-            // 
             pictureBox2.BackColor = Color.Gainsboro;
             pictureBox2.ErrorImage = null;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -123,9 +88,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
-            // 
-            // FormInicioSesion
-            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
@@ -141,7 +103,6 @@
             Name = "FormInicioSesion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio de Sesión";
-            TopMost = true;
             FormClosing += FormInicioSesion_FormClosing;
             FormClosed += FormInicioSesion_FormClosed;
             Load += FormInicioSesion_Load;

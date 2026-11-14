@@ -83,7 +83,8 @@
               "RelativeToolTip": "..\\DAL\\DALReporteInteligente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T17:51:06.879Z"
+              "WhenOpened": "2026-11-02T17:51:06.879Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -95,7 +96,8 @@
               "RelativeToolTip": "..\\BLL\\BLLReporteInteligente.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAAAAFsAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T17:49:01.709Z"
+              "WhenOpened": "2026-11-02T17:49:01.709Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

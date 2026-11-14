@@ -90,10 +90,10 @@ namespace Venta_Productos_Cosméticos
             AgregarEncabezadoPrincipal(item.TituloModulo);
             AgregarSeparador();
 
-            AgregarSeccion("🎯 Objetivo General de la Pantalla", item.Objetivo);
-            AgregarSeccion("📋 Procedimiento Operativo Paso a Paso", item.Pasos);
-            AgregarSeccion("⌨️ Controles Principales y Atajos de Teclado", item.ControlesAtajos);
-            AgregarSeccion("🔒 Reglas de Negocio, Validaciones y Seguridad", item.ReglasSeguridad);
+            AgregarSeccion("Objetivo General de la Pantalla", item.Objetivo);
+            AgregarSeccion("Procedimiento Operativo Paso a Paso", item.Pasos);
+            AgregarSeccion("Controles Principales y Atajos de Teclado", item.ControlesAtajos);
+            AgregarSeccion("Reglas de Negocio, Validaciones y Seguridad", item.ReglasSeguridad);
 
             rtbContenido.SelectionStart = 0;
             rtbContenido.ScrollToCaret();
@@ -110,7 +110,7 @@ namespace Venta_Productos_Cosméticos
         {
             rtbContenido.SelectionFont = new Font("Segoe UI", 8F, FontStyle.Regular);
             rtbContenido.SelectionColor = Color.LightGray;
-            rtbContenido.AppendText(new string('─', 78) + "\n\n");
+            rtbContenido.AppendText(new string('-', 78) + "\n\n");
         }
 
         private void AgregarSeccion(string tituloSeccion, string cuerpo)
