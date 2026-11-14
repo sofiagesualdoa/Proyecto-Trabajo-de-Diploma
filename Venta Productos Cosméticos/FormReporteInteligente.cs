@@ -3,8 +3,10 @@ using BLL;
 using Servicios;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,6 +18,8 @@ namespace Venta_Productos_Cosméticos
         private readonly ServicioIdioma bllIdioma = new ServicioIdioma();
         private readonly Dictionary<Control, string> textosOriginales = new Dictionary<Control, string>();
         private BEReporteInteligente? reporteActual;
+        private List<BELibroSobrestock> listaSobrestock = new List<BELibroSobrestock>();
+        private List<BEClienteVIP> listaClientesVIP = new List<BEClienteVIP>();
 
         private readonly Color[] paletaColores = new Color[]
         {
@@ -38,6 +42,11 @@ namespace Venta_Productos_Cosméticos
             dtpFechaDesde.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             dtpFechaHasta.Value = DateTime.Today;
 
+            if (cboDescuento.Items.Count > 2)
+            {
+                cboDescuento.SelectedIndex = 2;
+            }
+
             RegistrarTextos(this.Controls);
             bllIdioma.AgregarSuscriptor(this);
 
@@ -48,6 +57,7 @@ namespace Venta_Productos_Cosméticos
             }
 
             CargarReporte();
+            CargarEstrategiaSobrestock();
         }
 
         private void RegistrarTextos(Control.ControlCollection controles)
@@ -138,6 +148,181 @@ namespace Venta_Productos_Cosméticos
             }
 
             txtRecomendaciones.Text = string.Join(Environment.NewLine + Environment.NewLine, reporteActual.Recomendaciones);
+        }
+
+        private void CargarEstrategiaSobrestock()
+        {
+            try
+            {
+                listaSobrestock = bllReporte.ObtenerLibrosSobrestock();
+                dgvSobrestock.DataSource = null;
+                dgvSobrestock.DataSource = listaSobrestock;
+
+                if (dgvSobrestock.Columns["CapitalInmovilizado"] != null)
+                {
+                    dgvSobrestock.Columns["CapitalInmovilizado"].DefaultCellStyle.Format = "C2";
+                }
+                if (dgvSobrestock.Columns["Precio"] != null)
+                {
+                    dgvSobrestock.Columns["Precio"].DefaultCellStyle.Format = "C2";
+                }
+
+                if (dgvSobrestock.Rows.Count > 0)
+                {
+                    dgvSobrestock.Rows[0].Selected = true;
+                    ActualizarSeleccionLibro();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ServicioSessionManager.GetInstance().Traducir("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvSobrestock_SelectionChanged(object sender, EventArgs e)
+        {
+            ActualizarSeleccionLibro();
+        }
+
+        private void ActualizarSeleccionLibro()
+        {
+            if (dgvSobrestock.CurrentRow?.DataBoundItem is BELibroSobrestock libro)
+            {
+                lblLibroSeleccionado.Text = $"{libro.Titulo} ({libro.Autor}) - ${libro.Precio:N2}";
+                CargarClientesParaLibro(libro);
+                RecalcularPreciosPropuesta();
+            }
+            else
+            {
+                lblLibroSeleccionado.Text = "(Seleccione un libro arriba)";
+                dgvClientesVIP.DataSource = null;
+            }
+        }
+
+        private void CargarClientesParaLibro(BELibroSobrestock libro)
+        {
+            try
+            {
+                listaClientesVIP = bllReporte.ObtenerClientesCandidatosVIP(libro.ISBN, libro.Autor, libro.Editorial);
+                dgvClientesVIP.DataSource = null;
+                dgvClientesVIP.DataSource = listaClientesVIP;
+
+                if (dgvClientesVIP.Columns["TotalGastado"] != null)
+                {
+                    dgvClientesVIP.Columns["TotalGastado"].DefaultCellStyle.Format = "C2";
+                }
+
+                if (dgvClientesVIP.Rows.Count > 0)
+                {
+                    dgvClientesVIP.Rows[0].Selected = true;
+                    ActualizarSeleccionCliente();
+                }
+                else
+                {
+                    lblClienteSeleccionado.Text = "(Sin clientes registrados para este perfil)";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ServicioSessionManager.GetInstance().Traducir("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvClientesVIP_SelectionChanged(object sender, EventArgs e)
+        {
+            ActualizarSeleccionCliente();
+        }
+
+        private void ActualizarSeleccionCliente()
+        {
+            if (dgvClientesVIP.CurrentRow?.DataBoundItem is BEClienteVIP cliente)
+            {
+                lblClienteSeleccionado.Text = $"{cliente.NombreCompleto} (DNI: {cliente.DNI})";
+            }
+            else
+            {
+                lblClienteSeleccionado.Text = "(Seleccione un cliente a la izquierda)";
+            }
+        }
+
+        private void cboDescuento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RecalcularPreciosPropuesta();
+        }
+
+        private decimal ObtenerPorcentajeDescuento()
+        {
+            string texto = cboDescuento.SelectedItem?.ToString() ?? "20%";
+            if (texto.Contains("10")) return 10m;
+            if (texto.Contains("15")) return 15m;
+            if (texto.Contains("20")) return 20m;
+            if (texto.Contains("25")) return 25m;
+            if (texto.Contains("30")) return 30m;
+            return 20m;
+        }
+
+        private void RecalcularPreciosPropuesta()
+        {
+            if (dgvSobrestock.CurrentRow?.DataBoundItem is BELibroSobrestock libro)
+            {
+                decimal pct = ObtenerPorcentajeDescuento();
+                decimal descuento = Math.Round(libro.Precio * (pct / 100m), 2);
+                decimal precioFinal = Math.Max(0m, libro.Precio - descuento);
+
+                lblPrecioLista.Text = $"Precio de Lista: $ {libro.Precio:N2}";
+                lblDescuentoPesos.Text = $"Bonificación VIP ({pct:N0}%): - $ {descuento:N2}";
+                lblPrecioFinal.Text = $"Precio Final Oferta: $ {precioFinal:N2}";
+            }
+            else
+            {
+                lblPrecioLista.Text = "Precio de Lista: $ 0,00";
+                lblDescuentoPesos.Text = "Ahorro del Cliente: $ 0,00";
+                lblPrecioFinal.Text = "Precio Final Oferta: $ 0,00";
+            }
+        }
+
+        private void btnGenerarPropuestaPdf_Click(object sender, EventArgs e)
+        {
+            var s = ServicioSessionManager.GetInstance();
+
+            if (dgvSobrestock.CurrentRow?.DataBoundItem is not BELibroSobrestock libro)
+            {
+                MessageBox.Show(s.Traducir("Debe seleccionar un libro del catálogo con sobrestock."), s.Traducir("Atención"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvClientesVIP.CurrentRow?.DataBoundItem is not BEClienteVIP cliente)
+            {
+                MessageBox.Show(s.Traducir("Debe seleccionar un cliente destinatario VIP."), s.Traducir("Atención"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                decimal pct = ObtenerPorcentajeDescuento();
+                string carpetaDestino = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bookly_Propuestas_VIP");
+                if (!Directory.Exists(carpetaDestino))
+                {
+                    Directory.CreateDirectory(carpetaDestino);
+                }
+
+                string nombreArchivo = $"Propuesta_VIP_{cliente.DNI}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                string rutaCompleta = Path.Combine(carpetaDestino, nombreArchivo);
+
+                bllReporte.GenerarPropuestaComercialPdf(cliente, libro, pct, rutaCompleta);
+
+                if (File.Exists(rutaCompleta))
+                {
+                    Process.Start(new ProcessStartInfo(rutaCompleta) { UseShellExecute = true });
+                }
+
+                MessageBox.Show(string.Format(s.Traducir("Propuesta comercial VIP generada exitosamente en:\n{0}"), rutaCompleta),
+                    s.Traducir("Éxito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, s.Traducir("Error al generar PDF"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pnlGraficoEditorial_Paint(object sender, PaintEventArgs e)
@@ -355,6 +540,11 @@ namespace Venta_Productos_Cosméticos
                 float y = rect.Y + (rect.Height - tam.Height) / 2f;
                 g.DrawString(mensaje, f, b, x, y);
             }
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            AyudaContextualHelper.MostrarAyuda(this);
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

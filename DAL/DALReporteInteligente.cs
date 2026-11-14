@@ -217,5 +217,180 @@ namespace DAL
             }
             return lista;
         }
+
+        public List<BELibroSobrestock> ObtenerLibrosSobrestock()
+        {
+            List<BELibroSobrestock> lista = new List<BELibroSobrestock>();
+            string query = @"SELECT l.ISBN_657SGA AS ISBN,
+                                    l.Título_657SGA AS Titulo,
+                                    ISNULL(l.Autor_657SGA, 'N/A') AS Autor,
+                                    ISNULL(l.Editorial_657SGA, 'N/A') AS Editorial,
+                                    ISNULL(l.Precio_657SGA, 0) AS Precio,
+                                    l.Existencias_657SGA AS StockAlmacen,
+                                    ISNULL(v.Vendidos, 0) AS UnidadesVendidas
+                             FROM Libro l
+                             LEFT JOIN (
+                                 SELECT df.ISBN_657SGA, SUM(df.Cantidad) AS Vendidos
+                                 FROM DetalleFactura df
+                                 INNER JOIN Factura f ON df.IdFactura = f.IdFactura
+                                 WHERE f.NumeroFactura LIKE 'FC-V%'
+                                 GROUP BY df.ISBN_657SGA
+                             ) v ON l.ISBN_657SGA = v.ISBN_657SGA
+                             WHERE l.Activo_657SGA = 1 AND l.Existencias_657SGA > 0
+                             ORDER BY l.Existencias_657SGA DESC, UnidadesVendidas ASC;";
+
+            using (SqlConnection conexion = new SqlConnection(cadena))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    conexion.Open();
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            int stock = Convert.ToInt32(r["StockAlmacen"]);
+                            int vendidos = Convert.ToInt32(r["UnidadesVendidas"]);
+                            string prioridad;
+                            if (stock >= 15 && vendidos <= 1)
+                            {
+                                prioridad = "Sobrestock Crítico";
+                            }
+                            else if (stock >= 8 && vendidos <= 3)
+                            {
+                                prioridad = "Baja Rotación";
+                            }
+                            else
+                            {
+                                prioridad = "Rotación Normal";
+                            }
+
+                            lista.Add(new BELibroSobrestock
+                            {
+                                ISBN = r["ISBN"].ToString() ?? string.Empty,
+                                Titulo = r["Titulo"].ToString() ?? string.Empty,
+                                Autor = r["Autor"].ToString() ?? string.Empty,
+                                Editorial = r["Editorial"].ToString() ?? string.Empty,
+                                Precio = Convert.ToDecimal(r["Precio"]),
+                                StockAlmacen = stock,
+                                UnidadesVendidas = vendidos,
+                                NivelPrioridad = prioridad
+                            });
+                        }
+                    }
+                }
+            }
+            return lista;
+        }
+
+        public List<BEClienteVIP> ObtenerClientesCandidatosVIP(string isbn, string autor, string editorial)
+        {
+            List<BEClienteVIP> lista = new List<BEClienteVIP>();
+            string query = @"SELECT c.DNI_657SGA AS DNI,
+                                    c.Nombre_657SGA AS Nombre,
+                                    c.Apellido_657SGA AS Apellido,
+                                    ISNULL(c.Email_657SGA, 'N/A') AS Email,
+                                    ISNULL(CAST(c.Teléfono_657SGA AS VARCHAR), 'N/A') AS Telefono,
+                                    ISNULL(stats.ComprasPrevias, 0) AS ComprasPrevias,
+                                    ISNULL(stats.TotalGastado, 0) AS TotalGastado,
+                                    ISNULL(afinidad.ComproMismoLibro, 0) AS ComproMismoLibro,
+                                    ISNULL(afinidad.ComproMismoAutor, 0) AS ComproMismoAutor,
+                                    ISNULL(afinidad.ComproMismaEditorial, 0) AS ComproMismaEditorial,
+                                    ISNULL(mora.CantidadMoras, 0) AS CantidadMoras
+                             FROM Cliente c
+                             LEFT JOIN (
+                                 SELECT f.DNICliente,
+                                        COUNT(DISTINCT f.IdFactura) AS ComprasPrevias,
+                                        SUM(df.Cantidad * df.Precio) AS TotalGastado
+                                 FROM Factura f
+                                 INNER JOIN DetalleFactura df ON f.IdFactura = df.IdFactura
+                                 WHERE f.NumeroFactura LIKE 'FC-V%'
+                                 GROUP BY f.DNICliente
+                             ) stats ON c.DNI_657SGA = stats.DNICliente
+                             LEFT JOIN (
+                                 SELECT f.DNICliente,
+                                        SUM(CASE WHEN df.ISBN_657SGA = @ISBN THEN 1 ELSE 0 END) AS ComproMismoLibro,
+                                        SUM(CASE WHEN l.Autor_657SGA = @Autor THEN 1 ELSE 0 END) AS ComproMismoAutor,
+                                        SUM(CASE WHEN l.Editorial_657SGA = @Editorial THEN 1 ELSE 0 END) AS ComproMismaEditorial
+                                 FROM Factura f
+                                 INNER JOIN DetalleFactura df ON f.IdFactura = df.IdFactura
+                                 INNER JOIN Libro l ON df.ISBN_657SGA = l.ISBN_657SGA
+                                 WHERE f.NumeroFactura LIKE 'FC-V%'
+                                 GROUP BY f.DNICliente
+                             ) afinidad ON c.DNI_657SGA = afinidad.DNICliente
+                             LEFT JOIN (
+                                 SELECT p.DNI,
+                                        SUM(CASE WHEN p.MontoRecargo > 0 OR p.Estado LIKE '%Mora%' THEN 1 ELSE 0 END) AS CantidadMoras
+                                 FROM Prestamo p
+                                 GROUP BY p.DNI
+                             ) mora ON c.DNI_657SGA = mora.DNI
+                             WHERE c.Activo_657SGA = 1
+                             ORDER BY 
+                                 CASE WHEN ISNULL(mora.CantidadMoras, 0) = 0 THEN 0 ELSE 1 END,
+                                 (ISNULL(afinidad.ComproMismoLibro, 0) * 4 + ISNULL(afinidad.ComproMismoAutor, 0) * 2 + ISNULL(afinidad.ComproMismaEditorial, 0)) DESC,
+                                 ISNULL(stats.TotalGastado, 0) DESC;";
+
+            using (SqlConnection conexion = new SqlConnection(cadena))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.Add("@ISBN", SqlDbType.VarChar, 50).Value = isbn ?? string.Empty;
+                    cmd.Parameters.Add("@Autor", SqlDbType.VarChar, 100).Value = autor ?? string.Empty;
+                    cmd.Parameters.Add("@Editorial", SqlDbType.NVarChar, 100).Value = editorial ?? string.Empty;
+                    conexion.Open();
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            int moras = Convert.ToInt32(r["CantidadMoras"]);
+                            bool tieneMora = moras > 0;
+                            int comproLibro = Convert.ToInt32(r["ComproMismoLibro"]);
+                            int comproAutor = Convert.ToInt32(r["ComproMismoAutor"]);
+                            int comproEditorial = Convert.ToInt32(r["ComproMismaEditorial"]);
+                            int comprasPrevias = Convert.ToInt32(r["ComprasPrevias"]);
+
+                            string afinidadTexto;
+                            if (comproLibro > 0)
+                            {
+                                afinidadTexto = "Compró este libro previamente";
+                            }
+                            else if (comproAutor > 0)
+                            {
+                                afinidadTexto = $"Comprador habitual de {autor}";
+                            }
+                            else if (comproEditorial > 0)
+                            {
+                                afinidadTexto = $"Comprador de editorial {editorial}";
+                            }
+                            else if (comprasPrevias > 0)
+                            {
+                                afinidadTexto = "Cliente frecuente de la librería";
+                            }
+                            else
+                            {
+                                afinidadTexto = "Cliente activo registrado";
+                            }
+
+                            string calificacion = tieneMora
+                                ? $"Historial con Mora ({moras} recargo/s)"
+                                : "VIP - Buena Paga (0% Mora)";
+
+                            lista.Add(new BEClienteVIP
+                            {
+                                DNI = Convert.ToInt32(r["DNI"]),
+                                NombreCompleto = $"{r["Nombre"]} {r["Apellido"]}".Trim(),
+                                Email = r["Email"].ToString() ?? "N/A",
+                                Telefono = r["Telefono"].ToString() ?? "N/A",
+                                ComprasPrevias = comprasPrevias,
+                                TotalGastado = Convert.ToDecimal(r["TotalGastado"]),
+                                Afinidad = afinidadTexto,
+                                TieneMora = tieneMora,
+                                EstadoCalificacion = calificacion
+                            });
+                        }
+                    }
+                }
+            }
+            return lista;
+        }
     }
 }

@@ -1,8 +1,11 @@
 using BE;
 using DAL;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Servicios;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace BLL
@@ -114,6 +117,180 @@ namespace BLL
             reporte.Recomendaciones = GenerarRecomendacionesInteligentes(reporte, libros);
 
             return reporte;
+        }
+
+        public List<BELibroSobrestock> ObtenerLibrosSobrestock()
+        {
+            return dalReporte.ObtenerLibrosSobrestock();
+        }
+
+        public List<BEClienteVIP> ObtenerClientesCandidatosVIP(string isbn, string autor, string editorial)
+        {
+            return dalReporte.ObtenerClientesCandidatosVIP(isbn, autor, editorial);
+        }
+
+        public string GenerarPropuestaComercialPdf(BEClienteVIP cliente, BELibroSobrestock libro, decimal porcentajeDescuento, string rutaDestino)
+        {
+            if (cliente == null) throw new ArgumentNullException(nameof(cliente));
+            if (libro == null) throw new ArgumentNullException(nameof(libro));
+            if (string.IsNullOrWhiteSpace(rutaDestino)) throw new ArgumentException("Ruta de destino inválida.", nameof(rutaDestino));
+
+            string? dir = Path.GetDirectoryName(rutaDestino);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            decimal descuentoDecimal = porcentajeDescuento / 100m;
+            decimal montoDescuento = Math.Round(libro.Precio * descuentoDecimal, 2);
+            decimal precioFinal = Math.Max(0m, libro.Precio - montoDescuento);
+            string codigoPropuesta = $"VIP-{cliente.DNI}-{DateTime.Now:yyyyMMdd}-{Math.Abs(libro.ISBN.GetHashCode()) % 10000:D4}";
+
+            Document doc = new Document(PageSize.A4, 40f, 40f, 40f, 40f);
+            using (FileStream fs = new FileStream(rutaDestino, FileMode.Create))
+            {
+                PdfWriter.GetInstance(doc, fs);
+                doc.Open();
+
+                iTextSharp.text.Font fuenteEmpresa = FontFactory.GetFont("Segoe UI", 20f, iTextSharp.text.Font.BOLD, new BaseColor(160, 82, 45));
+                iTextSharp.text.Font fuenteLema = FontFactory.GetFont("Segoe UI", 10f, iTextSharp.text.Font.ITALIC, BaseColor.DARK_GRAY);
+                iTextSharp.text.Font fuenteTituloDoc = FontFactory.GetFont("Segoe UI", 13f, iTextSharp.text.Font.BOLD, new BaseColor(45, 55, 72));
+                iTextSharp.text.Font fuenteSub = FontFactory.GetFont("Segoe UI", 9.5f, iTextSharp.text.Font.NORMAL, BaseColor.GRAY);
+                iTextSharp.text.Font fuenteSeccion = FontFactory.GetFont("Segoe UI", 11f, iTextSharp.text.Font.BOLD, new BaseColor(160, 82, 45));
+                iTextSharp.text.Font fuenteTexto = FontFactory.GetFont("Segoe UI", 9.5f, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font fuenteNegrita = FontFactory.GetFont("Segoe UI", 9.5f, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                iTextSharp.text.Font fuenteDestacado = FontFactory.GetFont("Segoe UI", 11f, iTextSharp.text.Font.BOLD, new BaseColor(39, 174, 96));
+
+                PdfPTable tablaEncabezado = new PdfPTable(2);
+                tablaEncabezado.WidthPercentage = 100f;
+                tablaEncabezado.SetWidths(new float[] { 55f, 45f });
+
+                PdfPCell celdaMarca = new PdfPCell();
+                celdaMarca.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                celdaMarca.AddElement(new Paragraph("BOOKLY", fuenteEmpresa));
+                celdaMarca.AddElement(new Paragraph("Libros que te acompañan - Sistema de Gestión Bibliográfica", fuenteLema));
+                tablaEncabezado.AddCell(celdaMarca);
+
+                PdfPCell celdaDocInfo = new PdfPCell();
+                celdaDocInfo.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                celdaDocInfo.HorizontalAlignment = Element.ALIGN_RIGHT;
+                Paragraph pRef = new Paragraph("PROPUESTA ESTRATÉGICA VIP", fuenteTituloDoc);
+                pRef.Alignment = Element.ALIGN_RIGHT;
+                Paragraph pFecha = new Paragraph($"Fecha de Emisión: {DateTime.Now:dd/MM/yyyy}\nCódigo: {codigoPropuesta}", fuenteSub);
+                pFecha.Alignment = Element.ALIGN_RIGHT;
+                celdaDocInfo.AddElement(pRef);
+                celdaDocInfo.AddElement(pFecha);
+                tablaEncabezado.AddCell(celdaDocInfo);
+
+                doc.Add(tablaEncabezado);
+
+                Paragraph separador = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(1f, 100f, new BaseColor(210, 180, 140), Element.ALIGN_CENTER, -1)));
+                separador.SpacingBefore = 8f;
+                separador.SpacingAfter = 12f;
+                doc.Add(separador);
+
+                doc.Add(new Paragraph("DESTINATARIO PREFERENCIAL (PROGRAMA CLIENTES VIP)", fuenteSeccion));
+                PdfPTable tablaCliente = new PdfPTable(2);
+                tablaCliente.WidthPercentage = 100f;
+                tablaCliente.SpacingBefore = 5f;
+                tablaCliente.SpacingAfter = 12f;
+                tablaCliente.SetWidths(new float[] { 50f, 50f });
+
+                PdfPCell cCliente1 = new PdfPCell(new Phrase($"Titular: {cliente.NombreCompleto}\nDNI: {cliente.DNI}\nEmail: {cliente.Email}", fuenteTexto))
+                {
+                    Border = iTextSharp.text.Rectangle.BOX,
+                    BorderColor = new BaseColor(210, 180, 140),
+                    Padding = 7f,
+                    BackgroundColor = new BaseColor(253, 248, 242)
+                };
+                PdfPCell cCliente2 = new PdfPCell(new Phrase($"Historial Comercial: {cliente.Afinidad}\nCalificación de Crédito: {cliente.EstadoCalificacion}\nTeléfono: {cliente.Telefono}", fuenteTexto))
+                {
+                    Border = iTextSharp.text.Rectangle.BOX,
+                    BorderColor = new BaseColor(210, 180, 140),
+                    Padding = 7f,
+                    BackgroundColor = new BaseColor(253, 248, 242)
+                };
+                tablaCliente.AddCell(cCliente1);
+                tablaCliente.AddCell(cCliente2);
+                doc.Add(tablaCliente);
+
+                Paragraph carta = new Paragraph();
+                carta.Font = fuenteTexto;
+                carta.SpacingAfter = 14f;
+                carta.Add(new Chunk($"Estimado/a {cliente.NombreCompleto}:\n\n", fuenteNegrita));
+                carta.Add("Nos comunicamos directamente desde la Dirección Comercial de Bookly. En atención a su excelente trayectoria de preferencia, y valorando especialmente su condición de cliente intachable en cumplimiento, nuestra administración ha resuelto distinguir su perfil otorgándole un beneficio de compra preferencial.\n\n" +
+                          "En base a su afinidad de lectura, hemos reservado para usted una oportunidad exclusiva sobre el siguiente título selecto de nuestro catálogo con una bonificación única de liquidación anticipada:");
+                doc.Add(carta);
+
+                doc.Add(new Paragraph("DETALLE DE LA OBRA Y CONDICIONES COMERCIALES", fuenteSeccion));
+                PdfPTable tablaLibro = new PdfPTable(4);
+                tablaLibro.WidthPercentage = 100f;
+                tablaLibro.SpacingBefore = 5f;
+                tablaLibro.SpacingAfter = 15f;
+                tablaLibro.SetWidths(new float[] { 45f, 20f, 15f, 20f });
+
+                PdfPCell h1 = new PdfPCell(new Phrase("Título y Autor", fuenteNegrita)) { BackgroundColor = new BaseColor(240, 230, 220), Padding = 6f };
+                PdfPCell h2 = new PdfPCell(new Phrase("Precio Regular", fuenteNegrita)) { BackgroundColor = new BaseColor(240, 230, 220), Padding = 6f, HorizontalAlignment = Element.ALIGN_RIGHT };
+                PdfPCell h3 = new PdfPCell(new Phrase("Descuento VIP", fuenteNegrita)) { BackgroundColor = new BaseColor(240, 230, 220), Padding = 6f, HorizontalAlignment = Element.ALIGN_CENTER };
+                PdfPCell h4 = new PdfPCell(new Phrase("Precio Final Oferta", fuenteNegrita)) { BackgroundColor = new BaseColor(240, 230, 220), Padding = 6f, HorizontalAlignment = Element.ALIGN_RIGHT };
+
+                tablaLibro.AddCell(h1);
+                tablaLibro.AddCell(h2);
+                tablaLibro.AddCell(h3);
+                tablaLibro.AddCell(h4);
+
+                PdfPCell d1 = new PdfPCell(new Phrase($"'{libro.Titulo}'\nAutor: {libro.Autor} | Editorial: {libro.Editorial}\nISBN: {libro.ISBN}", fuenteTexto)) { Padding = 7f };
+                PdfPCell d2 = new PdfPCell(new Phrase($"$ {libro.Precio:N2}", fuenteTexto)) { Padding = 7f, HorizontalAlignment = Element.ALIGN_RIGHT };
+                PdfPCell d3 = new PdfPCell(new Phrase($"{porcentajeDescuento:N0}% OFF", fuenteDestacado)) { Padding = 7f, HorizontalAlignment = Element.ALIGN_CENTER };
+                PdfPCell d4 = new PdfPCell(new Phrase($"$ {precioFinal:N2}", fuenteDestacado)) { Padding = 7f, HorizontalAlignment = Element.ALIGN_RIGHT };
+
+                tablaLibro.AddCell(d1);
+                tablaLibro.AddCell(d2);
+                tablaLibro.AddCell(d3);
+                tablaLibro.AddCell(d4);
+
+                PdfPCell celdaAhorro = new PdfPCell(new Phrase($"AHORRO EXCLUSIVO PARA EL CLIENTE: $ {montoDescuento:N2}", fuenteDestacado));
+                celdaAhorro.Colspan = 4;
+                celdaAhorro.HorizontalAlignment = Element.ALIGN_RIGHT;
+                celdaAhorro.Padding = 7f;
+                celdaAhorro.BackgroundColor = new BaseColor(235, 247, 238);
+                tablaLibro.AddCell(celdaAhorro);
+
+                doc.Add(tablaLibro);
+
+                doc.Add(new Paragraph("TÉRMINOS Y CONDICIONES DE LA PROPUESTA", fuenteSeccion));
+                Paragraph terminos = new Paragraph();
+                terminos.Font = fuenteSub;
+                terminos.SpacingBefore = 4f;
+                terminos.SpacingAfter = 25f;
+                terminos.Add("1. Validez temporal: La presente bonificación tiene vigencia exclusiva por 15 días corridos a partir de su emisión.\n" +
+                             "2. Modalidad de canje: Para hacer efectivo este beneficio, presente esta propuesta impresa o mencione su código de validación al momento de abonar en caja.\n" +
+                             "3. Carácter intransferible: El descuento es personal y exclusivo para el titular registrado en el sistema.\n" +
+                             "4. Canales habilitados: Válido para compras en mostrador central y envíos coordinados.");
+                doc.Add(terminos);
+
+                PdfPTable tablaFirma = new PdfPTable(2);
+                tablaFirma.WidthPercentage = 100f;
+                tablaFirma.SetWidths(new float[] { 50f, 50f });
+
+                PdfPCell celdaSello = new PdfPCell(new Phrase($"Código Verificador de Seguridad:\n{codigoPropuesta}\nFirma Digital: EVERGLOW-SEC-OK", fuenteSub));
+                celdaSello.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                tablaFirma.AddCell(celdaSello);
+
+                PdfPCell celdaFirma = new PdfPCell();
+                celdaFirma.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                celdaFirma.HorizontalAlignment = Element.ALIGN_RIGHT;
+                Paragraph pFirma = new Paragraph("_____________________________________\nDepartamento de Estrategia Comercial\nBookly - Libros que te acompañan", fuenteSub);
+                pFirma.Alignment = Element.ALIGN_RIGHT;
+                celdaFirma.AddElement(pFirma);
+                tablaFirma.AddCell(celdaFirma);
+
+                doc.Add(tablaFirma);
+
+                doc.Close();
+            }
+
+            return rutaDestino;
         }
 
         private List<string> GenerarRecomendacionesInteligentes(BEReporteInteligente reporte, List<(string Titulo, string Autor, decimal Precio, int ExistenciasVenta, int ExistenciasPrestamo, int TotalMovimientos)> libros)

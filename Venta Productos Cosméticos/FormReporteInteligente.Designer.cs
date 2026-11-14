@@ -16,7 +16,27 @@ namespace Venta_Productos_Cosméticos
         private void InitializeComponent()
         {
             labelTitulo = new Label();
+            btnAyuda = new Button();
             btnVolver = new Button();
+            tabControlReportes = new TabControl();
+            tabEstrategia = new TabPage();
+            grpSobrestock = new GroupBox();
+            dgvSobrestock = new DataGridView();
+            grpClientesVIP = new GroupBox();
+            dgvClientesVIP = new DataGridView();
+            grpPropuesta = new GroupBox();
+            lblLibroSeleccionadoTitulo = new Label();
+            lblLibroSeleccionado = new Label();
+            lblClienteSeleccionadoTitulo = new Label();
+            lblClienteSeleccionado = new Label();
+            lblDescuentoTitulo = new Label();
+            cboDescuento = new ComboBox();
+            panelCalculoPrecios = new Panel();
+            lblPrecioLista = new Label();
+            lblDescuentoPesos = new Label();
+            lblPrecioFinal = new Label();
+            btnGenerarPropuestaPdf = new Button();
+            tabDashboard = new TabPage();
             groupBoxFiltros = new GroupBox();
             labelFechaDesde = new Label();
             dtpFechaDesde = new DateTimePicker();
@@ -39,15 +59,21 @@ namespace Venta_Productos_Cosméticos
             pnlGraficoComparativa = new Panel();
             groupBoxRecomendaciones = new GroupBox();
             txtRecomendaciones = new TextBox();
+            tabControlReportes.SuspendLayout();
+            tabEstrategia.SuspendLayout();
+            grpSobrestock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSobrestock).BeginInit();
+            grpClientesVIP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClientesVIP).BeginInit();
+            grpPropuesta.SuspendLayout();
+            panelCalculoPrecios.SuspendLayout();
+            tabDashboard.SuspendLayout();
             groupBoxFiltros.SuspendLayout();
             panelKPI1.SuspendLayout();
             panelKPI2.SuspendLayout();
             panelKPI3.SuspendLayout();
             groupBoxRecomendaciones.SuspendLayout();
             SuspendLayout();
-            // 
-            // labelTitulo
-            // 
             labelTitulo.AutoSize = true;
             labelTitulo.BackColor = Color.Sienna;
             labelTitulo.Font = new Font("Sitka Text", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
@@ -57,22 +83,211 @@ namespace Venta_Productos_Cosméticos
             labelTitulo.Size = new Size(266, 35);
             labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Reportes del Negocio";
-            // 
-            // btnVolver
-            // 
+            btnAyuda.BackColor = Color.Sienna;
+            btnAyuda.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAyuda.ForeColor = Color.Black;
+            btnAyuda.Location = new Point(765, 12);
+            btnAyuda.Name = "btnAyudaContextual_Auto";
+            btnAyuda.Size = new Size(120, 38);
+            btnAyuda.TabIndex = 1;
+            btnAyuda.Text = "Ayuda (F1)";
+            btnAyuda.UseVisualStyleBackColor = false;
+            btnAyuda.Click += btnAyuda_Click;
             btnVolver.BackColor = Color.Sienna;
             btnVolver.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = Color.Black;
-            btnVolver.Location = new Point(885, 12);
+            btnVolver.Location = new Point(895, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(120, 38);
-            btnVolver.TabIndex = 1;
+            btnVolver.TabIndex = 2;
             btnVolver.Text = "Salir";
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
-            // 
-            // groupBoxFiltros
-            // 
+            tabControlReportes.Controls.Add(tabEstrategia);
+            tabControlReportes.Controls.Add(tabDashboard);
+            tabControlReportes.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tabControlReportes.Location = new Point(15, 58);
+            tabControlReportes.Name = "tabControlReportes";
+            tabControlReportes.SelectedIndex = 0;
+            tabControlReportes.Size = new Size(1000, 615);
+            tabControlReportes.TabIndex = 3;
+            tabEstrategia.BackColor = Color.Tan;
+            tabEstrategia.Controls.Add(grpSobrestock);
+            tabEstrategia.Controls.Add(grpClientesVIP);
+            tabEstrategia.Controls.Add(grpPropuesta);
+            tabEstrategia.Location = new Point(4, 28);
+            tabEstrategia.Name = "tabEstrategia";
+            tabEstrategia.Padding = new Padding(3);
+            tabEstrategia.Size = new Size(992, 583);
+            tabEstrategia.TabIndex = 0;
+            tabEstrategia.Text = "Estrategia Comercial VIP (Liquidación de Sobrestock)";
+            grpSobrestock.Controls.Add(dgvSobrestock);
+            grpSobrestock.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpSobrestock.Location = new Point(10, 6);
+            grpSobrestock.Name = "grpSobrestock";
+            grpSobrestock.Size = new Size(972, 215);
+            grpSobrestock.TabIndex = 0;
+            grpSobrestock.TabStop = false;
+            grpSobrestock.Text = "1. Detección de Libros con Mayor Stock y Baja Rotación (Primer SELECT - Almacén)";
+            dgvSobrestock.AllowUserToAddRows = false;
+            dgvSobrestock.AllowUserToDeleteRows = false;
+            dgvSobrestock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSobrestock.BackgroundColor = Color.FloralWhite;
+            dgvSobrestock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSobrestock.Dock = DockStyle.Fill;
+            dgvSobrestock.Location = new Point(3, 20);
+            dgvSobrestock.MultiSelect = false;
+            dgvSobrestock.Name = "dgvSobrestock";
+            dgvSobrestock.ReadOnly = true;
+            dgvSobrestock.RowHeadersVisible = false;
+            dgvSobrestock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSobrestock.Size = new Size(966, 192);
+            dgvSobrestock.TabIndex = 0;
+            dgvSobrestock.SelectionChanged += dgvSobrestock_SelectionChanged;
+            grpClientesVIP.Controls.Add(dgvClientesVIP);
+            grpClientesVIP.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpClientesVIP.Location = new Point(10, 227);
+            grpClientesVIP.Name = "grpClientesVIP";
+            grpClientesVIP.Size = new Size(595, 345);
+            grpClientesVIP.TabIndex = 1;
+            grpClientesVIP.TabStop = false;
+            grpClientesVIP.Text = "2. Identificación de Clientes VIP 'Buena Paga' (Segundo y Tercer SELECT)";
+            dgvClientesVIP.AllowUserToAddRows = false;
+            dgvClientesVIP.AllowUserToDeleteRows = false;
+            dgvClientesVIP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientesVIP.BackgroundColor = Color.FloralWhite;
+            dgvClientesVIP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientesVIP.Dock = DockStyle.Fill;
+            dgvClientesVIP.Location = new Point(3, 20);
+            dgvClientesVIP.MultiSelect = false;
+            dgvClientesVIP.Name = "dgvClientesVIP";
+            dgvClientesVIP.ReadOnly = true;
+            dgvClientesVIP.RowHeadersVisible = false;
+            dgvClientesVIP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClientesVIP.Size = new Size(589, 322);
+            dgvClientesVIP.TabIndex = 0;
+            dgvClientesVIP.SelectionChanged += dgvClientesVIP_SelectionChanged;
+            grpPropuesta.Controls.Add(lblLibroSeleccionadoTitulo);
+            grpPropuesta.Controls.Add(lblLibroSeleccionado);
+            grpPropuesta.Controls.Add(lblClienteSeleccionadoTitulo);
+            grpPropuesta.Controls.Add(lblClienteSeleccionado);
+            grpPropuesta.Controls.Add(lblDescuentoTitulo);
+            grpPropuesta.Controls.Add(cboDescuento);
+            grpPropuesta.Controls.Add(panelCalculoPrecios);
+            grpPropuesta.Controls.Add(btnGenerarPropuestaPdf);
+            grpPropuesta.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpPropuesta.Location = new Point(615, 227);
+            grpPropuesta.Name = "grpPropuesta";
+            grpPropuesta.Size = new Size(367, 345);
+            grpPropuesta.TabIndex = 2;
+            grpPropuesta.TabStop = false;
+            grpPropuesta.Text = "3. Propuesta Comercial Personalizada (PDF)";
+            lblLibroSeleccionadoTitulo.AutoSize = true;
+            lblLibroSeleccionadoTitulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
+            lblLibroSeleccionadoTitulo.ForeColor = Color.DimGray;
+            lblLibroSeleccionadoTitulo.Location = new Point(15, 23);
+            lblLibroSeleccionadoTitulo.Name = "lblLibroSeleccionadoTitulo";
+            lblLibroSeleccionadoTitulo.Size = new Size(130, 13);
+            lblLibroSeleccionadoTitulo.TabIndex = 0;
+            lblLibroSeleccionadoTitulo.Text = "LIBRO SELECCIONADO:";
+            lblLibroSeleccionado.AutoEllipsis = true;
+            lblLibroSeleccionado.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblLibroSeleccionado.ForeColor = Color.MidnightBlue;
+            lblLibroSeleccionado.Location = new Point(15, 38);
+            lblLibroSeleccionado.Name = "lblLibroSeleccionado";
+            lblLibroSeleccionado.Size = new Size(335, 36);
+            lblLibroSeleccionado.TabIndex = 1;
+            lblLibroSeleccionado.Text = "(Seleccione un libro arriba)";
+            lblClienteSeleccionadoTitulo.AutoSize = true;
+            lblClienteSeleccionadoTitulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
+            lblClienteSeleccionadoTitulo.ForeColor = Color.DimGray;
+            lblClienteSeleccionadoTitulo.Location = new Point(15, 80);
+            lblClienteSeleccionadoTitulo.Name = "lblClienteSeleccionadoTitulo";
+            lblClienteSeleccionadoTitulo.Size = new Size(139, 13);
+            lblClienteSeleccionadoTitulo.TabIndex = 2;
+            lblClienteSeleccionadoTitulo.Text = "CLIENTE DESTINATARIO:";
+            lblClienteSeleccionado.AutoEllipsis = true;
+            lblClienteSeleccionado.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            lblClienteSeleccionado.ForeColor = Color.FromArgb(45, 55, 72);
+            lblClienteSeleccionado.Location = new Point(15, 95);
+            lblClienteSeleccionado.Name = "lblClienteSeleccionado";
+            lblClienteSeleccionado.Size = new Size(335, 22);
+            lblClienteSeleccionado.TabIndex = 3;
+            lblClienteSeleccionado.Text = "(Seleccione un cliente a la izquierda)";
+            lblDescuentoTitulo.AutoSize = true;
+            lblDescuentoTitulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
+            lblDescuentoTitulo.ForeColor = Color.DimGray;
+            lblDescuentoTitulo.Location = new Point(15, 126);
+            lblDescuentoTitulo.Name = "lblDescuentoTitulo";
+            lblDescuentoTitulo.Size = new Size(181, 13);
+            lblDescuentoTitulo.TabIndex = 4;
+            lblDescuentoTitulo.Text = "DESCUENTO PROMOCIONAL VIP:";
+            cboDescuento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDescuento.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            cboDescuento.FormattingEnabled = true;
+            cboDescuento.Items.AddRange(new object[] { "10% de bonificación", "15% de bonificación", "20% de bonificación", "25% de bonificación", "30% de bonificación" });
+            cboDescuento.Location = new Point(15, 143);
+            cboDescuento.Name = "cboDescuento";
+            cboDescuento.Size = new Size(200, 25);
+            cboDescuento.TabIndex = 5;
+            cboDescuento.SelectedIndexChanged += cboDescuento_SelectedIndexChanged;
+            panelCalculoPrecios.BackColor = Color.FloralWhite;
+            panelCalculoPrecios.BorderStyle = BorderStyle.FixedSingle;
+            panelCalculoPrecios.Controls.Add(lblPrecioLista);
+            panelCalculoPrecios.Controls.Add(lblDescuentoPesos);
+            panelCalculoPrecios.Controls.Add(lblPrecioFinal);
+            panelCalculoPrecios.Location = new Point(15, 178);
+            panelCalculoPrecios.Name = "panelCalculoPrecios";
+            panelCalculoPrecios.Size = new Size(335, 95);
+            panelCalculoPrecios.TabIndex = 6;
+            lblPrecioLista.AutoSize = true;
+            lblPrecioLista.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lblPrecioLista.Location = new Point(10, 8);
+            lblPrecioLista.Name = "lblPrecioLista";
+            lblPrecioLista.Size = new Size(117, 15);
+            lblPrecioLista.TabIndex = 0;
+            lblPrecioLista.Text = "Precio de Lista: $ 0,00";
+            lblDescuentoPesos.AutoSize = true;
+            lblDescuentoPesos.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblDescuentoPesos.ForeColor = Color.DarkGreen;
+            lblDescuentoPesos.Location = new Point(10, 34);
+            lblDescuentoPesos.Name = "lblDescuentoPesos";
+            lblDescuentoPesos.Size = new Size(140, 15);
+            lblDescuentoPesos.TabIndex = 1;
+            lblDescuentoPesos.Text = "Ahorro del Cliente: $ 0,00";
+            lblPrecioFinal.AutoSize = true;
+            lblPrecioFinal.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            lblPrecioFinal.ForeColor = Color.Sienna;
+            lblPrecioFinal.Location = new Point(10, 60);
+            lblPrecioFinal.Name = "lblPrecioFinal";
+            lblPrecioFinal.Size = new Size(196, 20);
+            lblPrecioFinal.TabIndex = 2;
+            lblPrecioFinal.Text = "Precio Final Oferta: $ 0,00";
+            btnGenerarPropuestaPdf.BackColor = Color.Sienna;
+            btnGenerarPropuestaPdf.Font = new Font("Sitka Text", 10F, FontStyle.Bold);
+            btnGenerarPropuestaPdf.ForeColor = Color.Black;
+            btnGenerarPropuestaPdf.Location = new Point(15, 285);
+            btnGenerarPropuestaPdf.Name = "btnGenerarPropuestaPdf";
+            btnGenerarPropuestaPdf.Size = new Size(335, 45);
+            btnGenerarPropuestaPdf.TabIndex = 7;
+            btnGenerarPropuestaPdf.Text = "Generar Propuesta VIP (PDF)";
+            btnGenerarPropuestaPdf.UseVisualStyleBackColor = false;
+            btnGenerarPropuestaPdf.Click += btnGenerarPropuestaPdf_Click;
+            tabDashboard.BackColor = Color.Tan;
+            tabDashboard.Controls.Add(groupBoxFiltros);
+            tabDashboard.Controls.Add(panelKPI1);
+            tabDashboard.Controls.Add(panelKPI2);
+            tabDashboard.Controls.Add(panelKPI3);
+            tabDashboard.Controls.Add(pnlGraficoEditorial);
+            tabDashboard.Controls.Add(pnlGraficoAutor);
+            tabDashboard.Controls.Add(pnlGraficoComparativa);
+            tabDashboard.Controls.Add(groupBoxRecomendaciones);
+            tabDashboard.Location = new Point(4, 28);
+            tabDashboard.Name = "tabDashboard";
+            tabDashboard.Padding = new Padding(3);
+            tabDashboard.Size = new Size(992, 583);
+            tabDashboard.TabIndex = 1;
+            tabDashboard.Text = "Tablero General de Métricas y Predicciones";
             groupBoxFiltros.Controls.Add(labelFechaDesde);
             groupBoxFiltros.Controls.Add(dtpFechaDesde);
             groupBoxFiltros.Controls.Add(labelFechaHasta);
@@ -81,256 +296,185 @@ namespace Venta_Productos_Cosméticos
             groupBoxFiltros.Controls.Add(btnMesActual);
             groupBoxFiltros.Controls.Add(btnHistorico);
             groupBoxFiltros.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBoxFiltros.Location = new Point(15, 58);
+            groupBoxFiltros.Location = new Point(10, 6);
             groupBoxFiltros.Name = "groupBoxFiltros";
-            groupBoxFiltros.Size = new Size(990, 75);
-            groupBoxFiltros.TabIndex = 2;
+            groupBoxFiltros.Size = new Size(972, 68);
+            groupBoxFiltros.TabIndex = 0;
             groupBoxFiltros.TabStop = false;
             groupBoxFiltros.Text = "Rango de Análisis";
-            // 
-            // labelFechaDesde
-            // 
             labelFechaDesde.AutoSize = true;
             labelFechaDesde.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelFechaDesde.Location = new Point(15, 23);
+            labelFechaDesde.Location = new Point(15, 20);
             labelFechaDesde.Name = "labelFechaDesde";
             labelFechaDesde.Size = new Size(80, 18);
             labelFechaDesde.TabIndex = 0;
             labelFechaDesde.Text = "Fecha Desde:";
-            // 
-            // dtpFechaDesde
-            // 
             dtpFechaDesde.CustomFormat = "dd/MM/yyyy";
             dtpFechaDesde.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpFechaDesde.Format = DateTimePickerFormat.Custom;
-            dtpFechaDesde.Location = new Point(15, 43);
+            dtpFechaDesde.Location = new Point(15, 38);
             dtpFechaDesde.Name = "dtpFechaDesde";
             dtpFechaDesde.Size = new Size(120, 23);
             dtpFechaDesde.TabIndex = 1;
-            // 
-            // labelFechaHasta
-            // 
             labelFechaHasta.AutoSize = true;
             labelFechaHasta.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelFechaHasta.Location = new Point(155, 23);
+            labelFechaHasta.Location = new Point(155, 20);
             labelFechaHasta.Name = "labelFechaHasta";
             labelFechaHasta.Size = new Size(79, 18);
             labelFechaHasta.TabIndex = 2;
             labelFechaHasta.Text = "Fecha Hasta:";
-            // 
-            // dtpFechaHasta
-            // 
             dtpFechaHasta.CustomFormat = "dd/MM/yyyy";
             dtpFechaHasta.Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpFechaHasta.Format = DateTimePickerFormat.Custom;
-            dtpFechaHasta.Location = new Point(155, 43);
+            dtpFechaHasta.Location = new Point(155, 38);
             dtpFechaHasta.Name = "dtpFechaHasta";
             dtpFechaHasta.Size = new Size(120, 23);
             dtpFechaHasta.TabIndex = 3;
-            // 
-            // btnFiltrar
-            // 
             btnFiltrar.BackColor = Color.Sienna;
             btnFiltrar.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnFiltrar.Location = new Point(300, 28);
+            btnFiltrar.Location = new Point(300, 24);
             btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Size = new Size(130, 38);
+            btnFiltrar.Size = new Size(130, 35);
             btnFiltrar.TabIndex = 4;
             btnFiltrar.Text = "Actualizar";
             btnFiltrar.UseVisualStyleBackColor = false;
             btnFiltrar.Click += btnFiltrar_Click;
-            // 
-            // btnMesActual
-            // 
             btnMesActual.BackColor = Color.Sienna;
             btnMesActual.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMesActual.Location = new Point(445, 28);
+            btnMesActual.Location = new Point(445, 24);
             btnMesActual.Name = "btnMesActual";
-            btnMesActual.Size = new Size(130, 38);
+            btnMesActual.Size = new Size(130, 35);
             btnMesActual.TabIndex = 5;
             btnMesActual.Text = "Mes Actual";
             btnMesActual.UseVisualStyleBackColor = false;
             btnMesActual.Click += btnMesActual_Click;
-            // 
-            // btnHistorico
-            // 
             btnHistorico.BackColor = Color.Sienna;
             btnHistorico.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHistorico.Location = new Point(590, 28);
+            btnHistorico.Location = new Point(590, 24);
             btnHistorico.Name = "btnHistorico";
-            btnHistorico.Size = new Size(140, 38);
+            btnHistorico.Size = new Size(140, 35);
             btnHistorico.TabIndex = 6;
             btnHistorico.Text = "Todo el Historial";
             btnHistorico.UseVisualStyleBackColor = false;
             btnHistorico.Click += btnHistorico_Click;
-            // 
-            // panelKPI1
-            // 
             panelKPI1.BackColor = Color.FloralWhite;
             panelKPI1.BorderStyle = BorderStyle.FixedSingle;
             panelKPI1.Controls.Add(lblKpi1Titulo);
             panelKPI1.Controls.Add(lblKpi1Valor);
-            panelKPI1.Location = new Point(15, 140);
+            panelKPI1.Location = new Point(10, 82);
             panelKPI1.Name = "panelKPI1";
-            panelKPI1.Size = new Size(315, 62);
-            panelKPI1.TabIndex = 3;
-            // 
-            // lblKpi1Titulo
-            // 
+            panelKPI1.Size = new Size(310, 58);
+            panelKPI1.TabIndex = 1;
             lblKpi1Titulo.AutoSize = true;
             lblKpi1Titulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblKpi1Titulo.ForeColor = Color.DimGray;
-            lblKpi1Titulo.Location = new Point(10, 8);
+            lblKpi1Titulo.Location = new Point(10, 6);
             lblKpi1Titulo.Name = "lblKpi1Titulo";
             lblKpi1Titulo.Size = new Size(122, 13);
             lblKpi1Titulo.TabIndex = 0;
             lblKpi1Titulo.Text = "RECAUDACIÓN TOTAL";
-            // 
-            // lblKpi1Valor
-            // 
             lblKpi1Valor.AutoSize = true;
-            lblKpi1Valor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            lblKpi1Valor.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             lblKpi1Valor.ForeColor = Color.DarkGreen;
-            lblKpi1Valor.Location = new Point(10, 26);
+            lblKpi1Valor.Location = new Point(10, 24);
             lblKpi1Valor.Name = "lblKpi1Valor";
-            lblKpi1Valor.Size = new Size(66, 25);
+            lblKpi1Valor.Size = new Size(61, 25);
             lblKpi1Valor.TabIndex = 1;
             lblKpi1Valor.Text = "$ 0.00";
-            // 
-            // panelKPI2
-            // 
             panelKPI2.BackColor = Color.FloralWhite;
             panelKPI2.BorderStyle = BorderStyle.FixedSingle;
             panelKPI2.Controls.Add(lblKpi2Titulo);
             panelKPI2.Controls.Add(lblKpi2Valor);
-            panelKPI2.Location = new Point(350, 140);
+            panelKPI2.Location = new Point(340, 82);
             panelKPI2.Name = "panelKPI2";
-            panelKPI2.Size = new Size(315, 62);
-            panelKPI2.TabIndex = 4;
-            // 
-            // lblKpi2Titulo
-            // 
+            panelKPI2.Size = new Size(310, 58);
+            panelKPI2.TabIndex = 2;
             lblKpi2Titulo.AutoSize = true;
             lblKpi2Titulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblKpi2Titulo.ForeColor = Color.DimGray;
-            lblKpi2Titulo.Location = new Point(10, 8);
+            lblKpi2Titulo.Location = new Point(10, 6);
             lblKpi2Titulo.Name = "lblKpi2Titulo";
             lblKpi2Titulo.Size = new Size(101, 13);
             lblKpi2Titulo.TabIndex = 0;
             lblKpi2Titulo.Text = "VENTAS DIRECTAS";
-            // 
-            // lblKpi2Valor
-            // 
             lblKpi2Valor.AutoSize = true;
-            lblKpi2Valor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            lblKpi2Valor.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             lblKpi2Valor.ForeColor = Color.MidnightBlue;
-            lblKpi2Valor.Location = new Point(10, 26);
+            lblKpi2Valor.Location = new Point(10, 24);
             lblKpi2Valor.Name = "lblKpi2Valor";
-            lblKpi2Valor.Size = new Size(123, 25);
+            lblKpi2Valor.Size = new Size(117, 25);
             lblKpi2Valor.TabIndex = 1;
             lblKpi2Valor.Text = "0 ejemplares";
-            // 
-            // panelKPI3
-            // 
             panelKPI3.BackColor = Color.FloralWhite;
             panelKPI3.BorderStyle = BorderStyle.FixedSingle;
             panelKPI3.Controls.Add(lblKpi3Titulo);
             panelKPI3.Controls.Add(lblKpi3Valor);
-            panelKPI3.Location = new Point(685, 140);
+            panelKPI3.Location = new Point(670, 82);
             panelKPI3.Name = "panelKPI3";
-            panelKPI3.Size = new Size(320, 62);
-            panelKPI3.TabIndex = 5;
-            // 
-            // lblKpi3Titulo
-            // 
+            panelKPI3.Size = new Size(312, 58);
+            panelKPI3.TabIndex = 3;
             lblKpi3Titulo.AutoSize = true;
             lblKpi3Titulo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblKpi3Titulo.ForeColor = Color.DimGray;
-            lblKpi3Titulo.Location = new Point(10, 8);
+            lblKpi3Titulo.Location = new Point(10, 6);
             lblKpi3Titulo.Name = "lblKpi3Titulo";
             lblKpi3Titulo.Size = new Size(164, 13);
             lblKpi3Titulo.TabIndex = 0;
             lblKpi3Titulo.Text = "CIRCULACIÓN DE PRÉSTAMOS";
-            // 
-            // lblKpi3Valor
-            // 
             lblKpi3Valor.AutoSize = true;
-            lblKpi3Valor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            lblKpi3Valor.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             lblKpi3Valor.ForeColor = Color.Firebrick;
-            lblKpi3Valor.Location = new Point(10, 26);
+            lblKpi3Valor.Location = new Point(10, 24);
             lblKpi3Valor.Name = "lblKpi3Valor";
-            lblKpi3Valor.Size = new Size(121, 25);
+            lblKpi3Valor.Size = new Size(118, 25);
             lblKpi3Valor.TabIndex = 1;
             lblKpi3Valor.Text = "0 solicitudes";
-            // 
-            // pnlGraficoEditorial
-            // 
             pnlGraficoEditorial.BackColor = Color.FloralWhite;
             pnlGraficoEditorial.BorderStyle = BorderStyle.FixedSingle;
-            pnlGraficoEditorial.Location = new Point(15, 210);
+            pnlGraficoEditorial.Location = new Point(10, 148);
             pnlGraficoEditorial.Name = "pnlGraficoEditorial";
-            pnlGraficoEditorial.Size = new Size(315, 250);
-            pnlGraficoEditorial.TabIndex = 6;
+            pnlGraficoEditorial.Size = new Size(310, 235);
+            pnlGraficoEditorial.TabIndex = 4;
             pnlGraficoEditorial.Paint += pnlGraficoEditorial_Paint;
-            // 
-            // pnlGraficoAutor
-            // 
             pnlGraficoAutor.BackColor = Color.FloralWhite;
             pnlGraficoAutor.BorderStyle = BorderStyle.FixedSingle;
-            pnlGraficoAutor.Location = new Point(350, 210);
+            pnlGraficoAutor.Location = new Point(340, 148);
             pnlGraficoAutor.Name = "pnlGraficoAutor";
-            pnlGraficoAutor.Size = new Size(315, 250);
-            pnlGraficoAutor.TabIndex = 7;
+            pnlGraficoAutor.Size = new Size(310, 235);
+            pnlGraficoAutor.TabIndex = 5;
             pnlGraficoAutor.Paint += pnlGraficoAutor_Paint;
-            // 
-            // pnlGraficoComparativa
-            // 
             pnlGraficoComparativa.BackColor = Color.FloralWhite;
             pnlGraficoComparativa.BorderStyle = BorderStyle.FixedSingle;
-            pnlGraficoComparativa.Location = new Point(685, 210);
+            pnlGraficoComparativa.Location = new Point(670, 148);
             pnlGraficoComparativa.Name = "pnlGraficoComparativa";
-            pnlGraficoComparativa.Size = new Size(320, 250);
-            pnlGraficoComparativa.TabIndex = 8;
+            pnlGraficoComparativa.Size = new Size(312, 235);
+            pnlGraficoComparativa.TabIndex = 6;
             pnlGraficoComparativa.Paint += pnlGraficoComparativa_Paint;
-            // 
-            // groupBoxRecomendaciones
-            // 
             groupBoxRecomendaciones.Controls.Add(txtRecomendaciones);
             groupBoxRecomendaciones.Font = new Font("Sitka Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBoxRecomendaciones.Location = new Point(15, 470);
+            groupBoxRecomendaciones.Location = new Point(10, 390);
             groupBoxRecomendaciones.Name = "groupBoxRecomendaciones";
-            groupBoxRecomendaciones.Size = new Size(990, 155);
-            groupBoxRecomendaciones.TabIndex = 9;
+            groupBoxRecomendaciones.Size = new Size(972, 185);
+            groupBoxRecomendaciones.TabIndex = 7;
             groupBoxRecomendaciones.TabStop = false;
             groupBoxRecomendaciones.Text = "Predicciones y Recomendaciones Inteligentes";
-            // 
-            // txtRecomendaciones
-            // 
             txtRecomendaciones.BackColor = Color.FloralWhite;
+            txtRecomendaciones.Dock = DockStyle.Fill;
             txtRecomendaciones.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtRecomendaciones.Location = new Point(15, 25);
+            txtRecomendaciones.Location = new Point(3, 20);
             txtRecomendaciones.Multiline = true;
             txtRecomendaciones.Name = "txtRecomendaciones";
             txtRecomendaciones.ReadOnly = true;
             txtRecomendaciones.ScrollBars = ScrollBars.Vertical;
-            txtRecomendaciones.Size = new Size(960, 115);
+            txtRecomendaciones.Size = new Size(966, 162);
             txtRecomendaciones.TabIndex = 0;
-            // 
-            // FormReporteInteligente
-            // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
-            ClientSize = new Size(1020, 640);
-            Controls.Add(groupBoxRecomendaciones);
-            Controls.Add(pnlGraficoComparativa);
-            Controls.Add(pnlGraficoAutor);
-            Controls.Add(pnlGraficoEditorial);
-            Controls.Add(panelKPI3);
-            Controls.Add(panelKPI2);
-            Controls.Add(panelKPI1);
-            Controls.Add(groupBoxFiltros);
+            ClientSize = new Size(1030, 685);
+            Controls.Add(tabControlReportes);
             Controls.Add(btnVolver);
+            Controls.Add(btnAyuda);
             Controls.Add(labelTitulo);
             Font = new Font("Sitka Text", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -340,6 +484,17 @@ namespace Venta_Productos_Cosméticos
             Text = "Reporte Inteligente de Negocio";
             FormClosing += FormReporteInteligente_FormClosing;
             Load += FormReporteInteligente_Load;
+            tabControlReportes.ResumeLayout(false);
+            tabEstrategia.ResumeLayout(false);
+            grpSobrestock.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSobrestock).EndInit();
+            grpClientesVIP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvClientesVIP).EndInit();
+            grpPropuesta.ResumeLayout(false);
+            grpPropuesta.PerformLayout();
+            panelCalculoPrecios.ResumeLayout(false);
+            panelCalculoPrecios.PerformLayout();
+            tabDashboard.ResumeLayout(false);
             groupBoxFiltros.ResumeLayout(false);
             groupBoxFiltros.PerformLayout();
             panelKPI1.ResumeLayout(false);
@@ -355,7 +510,27 @@ namespace Venta_Productos_Cosméticos
         }
 
         private System.Windows.Forms.Label labelTitulo;
+        private System.Windows.Forms.Button btnAyuda;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.TabControl tabControlReportes;
+        private System.Windows.Forms.TabPage tabEstrategia;
+        private System.Windows.Forms.TabPage tabDashboard;
+        private System.Windows.Forms.GroupBox grpSobrestock;
+        private System.Windows.Forms.DataGridView dgvSobrestock;
+        private System.Windows.Forms.GroupBox grpClientesVIP;
+        private System.Windows.Forms.DataGridView dgvClientesVIP;
+        private System.Windows.Forms.GroupBox grpPropuesta;
+        private System.Windows.Forms.Label lblLibroSeleccionadoTitulo;
+        private System.Windows.Forms.Label lblLibroSeleccionado;
+        private System.Windows.Forms.Label lblClienteSeleccionadoTitulo;
+        private System.Windows.Forms.Label lblClienteSeleccionado;
+        private System.Windows.Forms.Label lblDescuentoTitulo;
+        private System.Windows.Forms.ComboBox cboDescuento;
+        private System.Windows.Forms.Panel panelCalculoPrecios;
+        private System.Windows.Forms.Label lblPrecioLista;
+        private System.Windows.Forms.Label lblDescuentoPesos;
+        private System.Windows.Forms.Label lblPrecioFinal;
+        private System.Windows.Forms.Button btnGenerarPropuestaPdf;
         private System.Windows.Forms.GroupBox groupBoxFiltros;
         private System.Windows.Forms.Label labelFechaDesde;
         private System.Windows.Forms.DateTimePicker dtpFechaDesde;
