@@ -118,7 +118,13 @@ begin
       BatPath := ExpandConstant('{app}\Database\Ejecutar_Script_BD.bat');
       if FileExists(BatPath) then
       begin
-        Exec(BatPath, '', ExpandConstant('{app}\Database'), SW_HIDE, ewWaitUntilTerminated, ResultCode);
+        Exec(ExpandConstant('{cmd}'), '/C "' + BatPath + '"', ExpandConstant('{app}\Database'), SW_HIDE, ewWaitUntilTerminated, ResultCode);
+        if ResultCode <> 0 then
+        begin
+          MsgBox('Atención: La inicialización de la base de datos finalizó con código ' + IntToStr(ResultCode) + '.' + #13#10#13#10 +
+                 'Si es necesario, puede ejecutar manualmente el archivo:' + #13#10 +
+                 BatPath, mbInformation, MB_OK);
+        end;
       end;
     end;
   end;

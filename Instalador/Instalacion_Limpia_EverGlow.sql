@@ -1,4 +1,4 @@
-USE [master]
+﻿USE [master]
 GO
 IF EXISTS (SELECT name FROM sys.databases WHERE name = N'EverGlow')
 BEGIN
@@ -1230,6 +1230,11 @@ INSERT [dbo].[Perfil] ([IdPerfil], [Nombre], [DVH]) VALUES (2, N'Vendedor', N'YJ
 INSERT [dbo].[Perfil] ([IdPerfil], [Nombre], [DVH]) VALUES (8, N'Gerente', N'2jT+XVuRhTL1gnzqGQD+9i2RaQAFRtN156s/vNksdng=')
 SET IDENTITY_INSERT [dbo].[Perfil] OFF
 GO
+INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (12345678, N'Victoria', N'Fernandez', N'vicky', 0, 1, N'A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3', 0, N'vickyfs@gmail.com', 8, 1, N'YtkXh6i/csbeTyvv9cauB7zciY7yFsXpu6RCLAnPZ3g=')
+INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (46956657, N'Sofi', N'Gesualdo', N'sofigesualdo', 0, 1, N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 0, N'sofigesualdo@hotmail.com', 2, 1, N'Vdz/3EGCqB6x7bMZi3112aMqIq0AH2N1uHOXA6qwz8Y=')
+INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (87654321, N'Pepe', N'Argento', N'pepe', 0, 0, N'72B302BF297A228A75730123EFEF7C4140D2BF16CE9FBE7D187515CAD068BBCE', 0, N'pepe@gmail.com', 1, 1, N'M/x23BWTBeQJA+aKbBe2k3kVcB1Td/RJL2jT9ucPAmw=')
+INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (98765432, N'Prueba', N'Admin', N'pruebaAdmin', 0, 1, N'5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5', 0, N'pa@gmail.com', 1, 2, N'pul0dPNgHSDoE+hYvHNBEpggLSBqe/jveB7aNyQdgGM=')
+GO
 INSERT [dbo].[Perfil_x_Permiso] ([IdPerfil], [IdPermiso], [DVH]) VALUES (1, 1, N'8B+J3CmdHyW+/7eDpoxfBBxae593iSxaVKGzzTZM34Q=')
 INSERT [dbo].[Perfil_x_Permiso] ([IdPerfil], [IdPermiso], [DVH]) VALUES (1, 2, N'iy/0PaQ/OdCCP4kYnPZduo3DcB2uldpKZdZMdt8ro1U=')
 INSERT [dbo].[Perfil_x_Permiso] ([IdPerfil], [IdPermiso], [DVH]) VALUES (1, 3, N'kyM8OUVPjA4i95b0KyfU8chs30FUTXdPruiVEoGYWb8=')
@@ -1315,11 +1320,6 @@ INSERT [dbo].[Prestamo] ([IdPrestamo], [DNI], [ISBN], [IdFactura], [FechaInicio]
 INSERT [dbo].[Prestamo] ([IdPrestamo], [DNI], [ISBN], [IdFactura], [FechaInicio], [FechaDevolucion], [FechaRealDevolucion], [Estado], [MontoPrestamo], [MontoRecargo], [DVH]) VALUES (7, 11223344, N'9781526369874', 12, CAST(N'2026-10-24' AS Date), CAST(N'2026-10-31' AS Date), CAST(N'2026-10-25' AS Date), N'Finalizado', CAST(2000 AS Decimal(18, 0)), CAST(0 AS Decimal(18, 0)), N'YDfxgO5gSrQIz/Y16GNZvP3qa/C2sSBg53RaDjenVDg=')
 INSERT [dbo].[Prestamo] ([IdPrestamo], [DNI], [ISBN], [IdFactura], [FechaInicio], [FechaDevolucion], [FechaRealDevolucion], [Estado], [MontoPrestamo], [MontoRecargo], [DVH]) VALUES (8, 46956657, N'9784587653215', 13, CAST(N'2026-10-25' AS Date), CAST(N'2026-10-26' AS Date), CAST(N'2026-10-29' AS Date), N'Finalizado con Mora', CAST(400 AS Decimal(18, 0)), CAST(3000 AS Decimal(18, 0)), N'8YUwp7I73lZ1ILNfnPPaYSEbmFCCP/VXIVL2UsztGME=')
 SET IDENTITY_INSERT [dbo].[Prestamo] OFF
-GO
-INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (12345678, N'Victoria', N'Fernandez', N'vicky', 0, 1, N'A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3', 0, N'vickyfs@gmail.com', 8, 1, N'YtkXh6i/csbeTyvv9cauB7zciY7yFsXpu6RCLAnPZ3g=')
-INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (46956657, N'Sofi', N'Gesualdo', N'sofigesualdo', 0, 1, N'03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4', 0, N'sofigesualdo@hotmail.com', 2, 1, N'Vdz/3EGCqB6x7bMZi3112aMqIq0AH2N1uHOXA6qwz8Y=')
-INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (87654321, N'Pepe', N'Argento', N'pepe', 0, 0, N'72B302BF297A228A75730123EFEF7C4140D2BF16CE9FBE7D187515CAD068BBCE', 0, N'pepe@gmail.com', 1, 1, N'M/x23BWTBeQJA+aKbBe2k3kVcB1Td/RJL2jT9ucPAmw=')
-INSERT [dbo].[Usuario] ([DNI], [Nombre], [Apellido], [NombreUsuario], [Bloqueado], [Activo], [Contraseña], [IntentosInicio], [Email], [IdPerfil], [IdIdioma], [DVH]) VALUES (98765432, N'Prueba', N'Admin', N'pruebaAdmin', 0, 1, N'5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5', 0, N'pa@gmail.com', 1, 2, N'pul0dPNgHSDoE+hYvHNBEpggLSBqe/jveB7aNyQdgGM=')
 GO
 ALTER TABLE [dbo].[Cliente] ADD  CONSTRAINT [DF_Cliente_Activo]  DEFAULT ((1)) FOR [Activo_657SGA]
 GO
