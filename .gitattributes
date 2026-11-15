@@ -1,3 +1,9 @@
-# Excluir scripts de soporte y bases de datos de las estadísticas de lenguaje de GitHub Linguist
+# Excluir scripts de soporte, bases de datos e instaladores de las estadísticas de lenguaje de GitHub Linguist
 *.sql linguist-vendored
 *.sql linguist-detectable=false
+*.iss linguist-vendored
+*.iss linguist-detectable=false
+*.bat linguist-vendored
+*.bat linguist-detectable=false
+Instalador/** linguist-vendored
+Instalador/** linguist-detectable=false
