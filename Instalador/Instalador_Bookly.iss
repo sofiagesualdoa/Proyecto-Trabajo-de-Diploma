@@ -20,6 +20,7 @@ SolidCompression=yes
 WizardStyle=modern
 UsePreviousAppDir=yes
 DisableProgramGroupPage=yes
+SetupIconFile=bookly.ico
 ArchitecturesInstallIn64BitMode=x64compatible
 PrivilegesRequired=admin
 
@@ -34,15 +35,17 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "..\Venta Productos Cosméticos\bin\Debug\net8.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Manual de usuario
 Source: "..\ManualDeUsuario.pdf"; DestDir: "{app}"; Flags: ignoreversion
+; Icono de la aplicacion
+Source: "bookly.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; Scripts para instalacion limpia de base de datos
 Source: "Instalacion_Limpia_EverGlow.sql"; DestDir: "{app}\Database"; Flags: ignoreversion
 Source: "Ejecutar_Script_BD.bat"; DestDir: "{app}\Database"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\bookly.ico"
 Name: "{group}\Manual de Usuario"; Filename: "{app}\ManualDeUsuario.pdf"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\bookly.ico"
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent

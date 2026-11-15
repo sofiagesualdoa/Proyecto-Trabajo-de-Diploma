@@ -7,3 +7,5 @@
 *.bat linguist-detectable=false
 Instalador/** linguist-vendored
 Instalador/** linguist-detectable=false
+*.ico linguist-vendored
+*.ico linguist-detectable=false
