@@ -3,15 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formclientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\formlibrocambios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\formlibrocambios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:formlibrocambios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|c:\\users\\usuario\\onedrive\\facultad\\3\u00B0 a\u00F1o\\2\u00B0 cuatrimestre\\trabajo de diploma\\carpeta\\proyecto-trabajo-de-diploma\\venta productos cosm\u00E9ticos\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3B63EE9-592B-4F5F-8189-1E3638F73120}|Venta y Pr\u00E9stamo de Libros.csproj|solutionrelative:forminiciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -64,8 +64,7 @@
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormLibroCambios.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormLibroCambios.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-14T01:09:05.26Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-11-14T01:09:05.26Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "ToolTip": "C:\\Users\\usuario\\OneDrive\\Facultad\\3\u00B0 A\u00F1o\\2\u00B0 Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Venta Productos Cosm\u00E9ticos\\FormInicioSesion.cs [Dise\u00F1o]",
               "RelativeToolTip": "FormInicioSesion.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-14T01:07:46.185Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-11-14T01:07:46.185Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "..\\BE\\BECliente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-13T19:59:30.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-13T19:59:30.956Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "..\\BLL\\BLLSerializarCliente.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T21:18:12.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-02T21:18:12.226Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "..\\DAL\\DALReporteInteligente.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T17:51:06.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-02T17:51:06.879Z"
             },
             {
               "$type": "Document",
@@ -128,8 +123,7 @@
               "RelativeToolTip": "..\\BLL\\BLLReporteInteligente.cs",
               "ViewState": "AgIAAFIAAAAAAAAAAAAAAFsAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T17:49:01.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-02T17:49:01.709Z"
             },
             {
               "$type": "Document",

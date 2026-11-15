@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "nwwyXZF741Q=",
   "success": true,
-  "projectFilePath": "c:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj",
+  "projectFilePath": "C:\\Users\\usuario\\OneDrive\\Facultad\\3° Año\\2° Cuatrimestre\\Trabajo de Diploma\\Carpeta\\Proyecto-Trabajo-de-Diploma\\Servicios\\Servicios.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.bcl.cryptography\\8.0.0\\microsoft.bcl.cryptography.8.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.2\\microsoft.data.sqlclient.7.0.2.nupkg.sha512",
