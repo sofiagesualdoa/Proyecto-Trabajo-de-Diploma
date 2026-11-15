@@ -379,24 +379,30 @@ namespace Venta_Productos_Cosméticos
             try
             {
                 decimal pct = ObtenerPorcentajeDescuento();
-                string carpetaDestino = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bookly_Propuestas_VIP");
-                if (!Directory.Exists(carpetaDestino))
+
+                using (SaveFileDialog sfd = new SaveFileDialog())
                 {
-                    Directory.CreateDirectory(carpetaDestino);
+                    sfd.Filter = "Archivos PDF (*.pdf)|*.pdf";
+                    sfd.FileName = $"Propuesta_VIP_{cliente.DNI}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+                    sfd.Title = s.Traducir("Guardar Propuesta Comercial VIP");
+
+                    if (sfd.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+
+                    string rutaCompleta = sfd.FileName;
+
+                    bllReporte.GenerarPropuestaComercialPdf(cliente, libro, pct, rutaCompleta);
+
+                    if (File.Exists(rutaCompleta))
+                    {
+                        Process.Start(new ProcessStartInfo(rutaCompleta) { UseShellExecute = true });
+                    }
+
+                    MessageBox.Show(string.Format(s.Traducir("Propuesta comercial VIP generada exitosamente en:\n{0}"), rutaCompleta),
+                        s.Traducir("Éxito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                string nombreArchivo = $"Propuesta_VIP_{cliente.DNI}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
-                string rutaCompleta = Path.Combine(carpetaDestino, nombreArchivo);
-
-                bllReporte.GenerarPropuestaComercialPdf(cliente, libro, pct, rutaCompleta);
-
-                if (File.Exists(rutaCompleta))
-                {
-                    Process.Start(new ProcessStartInfo(rutaCompleta) { UseShellExecute = true });
-                }
-
-                MessageBox.Show(string.Format(s.Traducir("Propuesta comercial VIP generada exitosamente en:\n{0}"), rutaCompleta),
-                    s.Traducir("Éxito"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
