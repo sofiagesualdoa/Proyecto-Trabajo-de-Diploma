@@ -173,3 +173,4 @@ C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Ca
 C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Release\net8.0-windows\Venta_Productos_Cosméticos.FormHistorialPrestamos.resources
 C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Release\net8.0-windows\Venta_Productos_Cosméticos.FormLibroCambios.resources
 C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Release\net8.0-windows\Venta_Productos_Cosméticos.FormPrestamo.resources
+C:\Users\sofig\OneDrive\Facultad\3° Año\2° Cuatrimestre\Trabajo de Diploma\Carpeta\Proyecto-Trabajo-de-Diploma\Venta Productos Cosméticos\obj\Release\net8.0-windows\Venta_Productos_Cosméticos.FormReporteInteligente.resources
